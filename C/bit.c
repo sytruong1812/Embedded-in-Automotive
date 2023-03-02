@@ -1,5 +1,5 @@
-#include "stdio.h"
-#include "stdint.h"
+#include <stdio.h>
+#include <stdint.h>
 
 int PORTA = 0b00010010;     //0-7 từ trái qua phải
 
