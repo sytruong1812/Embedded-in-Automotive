@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdint.h>
 
-int PORTA = 0b00010010;     //0-7 từ trái qua phải
+int PORTA = 0b00010010;     //12
 
 void digitalWrite(uint8_t pin, uint8_t status)
 {
@@ -11,8 +11,9 @@ void digitalWrite(uint8_t pin, uint8_t status)
     }
     else if (status == 0)
     {
-        PORTA &= ~(0b10000000 >> pin);
+        PORTA &= ~(0b10000000 >> pin);      //PORTA = PORTA AND với Đảo bit của(0b10000000 dịch phải bit 3 đơn vị) = 2
     }
+    printf("KQ: %d", PORTA);
 }
 
 int main(int argc, char const *argv[])
