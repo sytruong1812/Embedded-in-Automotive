@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdint.h>
 
-int PORTA = 0bxxxxxxxx;    
+int PORTA = 0b00000000;    
 
 void digitalWrite(uint8_t pin, uint8_t status)
 {
