@@ -10,8 +10,10 @@ int16_t bien = -32768;     //1byte = 16 bit = 2^16 = 65536  (-32768 - 32767)
 //Định nghĩ 1 biết mới
 //typedef int bienmoi;
 //bienmoi bien = 10;
+
 float x = -12.11;
 float y = 36.1;
+
 int main(int argc, char const *argv[])
 {
     printf("Bien: %d\n", bien);
