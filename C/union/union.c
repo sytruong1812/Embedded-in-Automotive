@@ -55,13 +55,17 @@ int main(int argc, char const *argv[])
     }
     for (int i = 0; i < 4; i++)
     {
-        printf("Class %d: %d\n",i, data_sv.class[i]);   //Ghi đè giá trị
+        printf("Class %d: %d\n",i, data_sv.class[i]);   //Bị ghi đè giá trị khi chưa gán "data_sv.class[i] = 2*i;"
     }
     printf("............\n");
     for (int i = 0; i < 4; i++)
     {
-        data_sv.class[i] = 2*i;
-        printf("Class %d: %d\n",i, data_sv.class[i]);   //Giá trị cuối cùng
+        data_sv.class[i] = 2*i;                         //Gán giá trị "data_sv.class[i] = 2*i;"
+        printf("Class %d: %d\n",i, data_sv.class[i]);   //Giá trị cuối cùng được sử dụng
+    }
+    for (int i = 0; i < 8; i++)
+    {
+        printf("Name %d: %d\n",i, data_sv.name[i]);     //Bị ghi đè giá trị khi chưa gán "data_sv.name[i] = 3*i;"
     }
 
     return 0;
