@@ -1,5 +1,9 @@
 #include <stdio.h>
 
+/*  struct: Dữ liệu của các thành viên của struct được lưu trữ ở những vùng nhớ khác nhau.
+    Do đó kích thước của 1 struct tối thiểu bằng kích thước các thành viên cộng lại tại 
+    vì còn phụ thuộc vào bộ nhớ đệm (struct padding)*/
+
 struct Brithday
 {
     int Day;
