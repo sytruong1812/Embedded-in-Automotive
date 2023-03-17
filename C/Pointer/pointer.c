@@ -4,11 +4,11 @@
 int main(int argc, char const *argv[])
 {   
     // Con trỏ với Biến (Variables)
-    int a = 2;
+    int a = 10;
     int *ptr = &a;
 
-    printf("Dia chi cua bien: %p\n", ptr);
-    printf("Gia chi cua bien: %d\n", *ptr);
+    printf("Dia chi cua bien a: %p\n", ptr);
+    printf("Gia chi cua bien a: %d\n", *ptr);
 
     // Con trỏ với Mảng (Array)
     uint8_t arr[3];
