@@ -3,9 +3,9 @@
 
 struct data
 {
-    uint32_t C;     //4byte     
-    uint8_t A;      //1byte     
-    uint16_t B;     //2byte     
+    uint32_t C;     //4byte     0byte
+    uint8_t A;      //1byte     0byte
+    uint16_t B;     //2byte     1byte
     
 };
 
