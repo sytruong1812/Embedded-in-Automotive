@@ -1,4 +1,5 @@
 # Embedded-in-Automotive
+
 I: Phân vùng nhớ (Memory Layout of C Program)
     1. Có 5 phân vùng nhớ trong RAM (Text, Data, BSS, Heap, Stack)
         1.1. Text Segment
@@ -17,9 +18,9 @@ I: Phân vùng nhớ (Memory Layout of C Program)
         - Quyền truy cập là Read-Write
         - Được sử dụng để cấp phát bộ nhớ động như: malloc, calloc, realloc, new
         - Được giải phóng khi gọi hàm free, delete
-        1.5. Stack
+        1.5. Stack (Automatic Variable Storage)
         - Quyền truy cập Read-Write
-        - Được sử dụng để cấp phát cho các biến local, input parameter của hàm...
+        - Được sử dụng để cấp phát tự động cho các biến local, input parameter của hàm...
         - Sẽ được giải phóng khi ra khỏi block code or hàm
     2. Sự giống nhau và khác nhau của Data và BSS
     3. Sự giống nhau và khác nhau của Heap và Stack
