@@ -36,8 +36,27 @@
 
 ## II: Macro & Function
     1. Macro
-
-    2. Fucntion
+    - Được xử lý bởi Preprocessor (ở quá trình tiền xử lý trước quá trình biên dịch của compiler)
+    - Ứng dụng để định nghĩa các hằng số, tạo ra các hàm viết tắt và tối ưu hóa mã lệnh.
+    - Thay thế đoạn code đã được khai báo macro vào bất cứ chỗ nào xuất hiện macro đó.
+    2. Function
+    - Được xử lý bởi Compiler.
+    - Trước khi thấy hàm được gọi, compiler sẽ lưu con trỏ chương trình PC hiện tại vào 
+      stack pointer (lưu những địa chỉ của con trỏ PC), chuyển PC tới hàm được gọi, thực hiện 
+      hàm đó xong và lấy kết quả trả về, sau đó quay lại vị trí ban đầu trong stack trước khi 
+      gọi hàm và tiếp tục thực hiện chương trình. 
+    3. So sánh
+    - Macro đơn giản chỉ thay thế đoạn code đã được define vào chỗ được gọi trước khi biên dịch.
+    - Function phải tạo một function call, lưu địa chỉ trước khi gọi hàm vào stack pointer sau 
+      đó mới thực hiện hàm, sau cùng là quay trở về địa chỉ trên stack pointer trước khi gọi hàm 
+      và thực hiện tiếp chương trình.
+    - Macro khiến code dài hơn rất nhiều, nhưng quá trình chạy lại nhanh hơn 
+      (được xử lý trước khi mã chương trình được biên dịch)
+    - Function phải gọi function call nên tốn thời gian hơn 
+      (được xử lý khi chương trình đang chạy), nhưng code ngắn gọn hơn.
+    - Macro thường hay dính lỗi đánh máy, cú pháp, trùng tên và khó phát hiện. Function dễ debug hơn.
+    - Macro không cần định nghĩ kiểu dữ liệu của tham số, function phải định nghĩa kiểu dữ liệu 
+      của tham số và trả về kiểu dữ liệu nào.
 ## III: Static
 ## IV: Struct & Union
 ## V: Pointer (Hàm, Void, Null)
