@@ -20,12 +20,12 @@ void math(void (*ptr_math)(int, int), int a, int b){
 
 int main(int argc, char const *argv[])
 {
-    // void (*tinhtong)(int, int);             //Khai báo con trỏ hàm tính tổng
+    // void (*tinhtong)(int, int);             //Khai báo con trỏ void hàm tính tổng
 
     // tinhtong = &tong;
     // tinhtong(3, 6);
 
-    // void (*tinhhieu)(int, int);             //Khai báo con trỏ hàm tính hiệu
+    // void (*tinhhieu)(int, int);             //Khai báo con trỏ void hàm tính hiệu
     // tinhhieu  = &hieu;
     // tinhhieu(6, 3);
 
