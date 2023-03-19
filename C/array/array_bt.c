@@ -1,6 +1,6 @@
 #include "stdio.h"
 
-/* Cho một mảng số nguyên không âm và một số nguyên k, 
+/* Câu hỏi PV: Cho một mảng số nguyên không âm và một số nguyên k, 
 hãy viết chương trình để tìm tất cả các cặp số trong mảng 
 mà tổng của chúng bằng k, sử dụng bitmask để tối ưu hóa thuật toán.*/
 
