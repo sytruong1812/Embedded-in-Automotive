@@ -1,7 +1,9 @@
 # Embedded-in-Automotive
 
-I: Phân vùng nhớ (Memory Layout of C Program)
-    1. Có 5 phân vùng nhớ trong RAM (Text, Data, BSS, Heap, Stack)
+# I: Phân vùng nhớ (Memory Layout of C Program)
+
+    > 1. Có 5 phân vùng nhớ trong RAM (Text, Data, BSS, Heap, Stack)
+
         1.1. Text Segment
         - Quyền truy cập là Read-only, chứa các lệnh để thực thi nên tránh sửa đổi (Contains executable instructions)
         - Chứa khai báo hằng số trong chương trình (.rodata)
@@ -22,10 +24,10 @@ I: Phân vùng nhớ (Memory Layout of C Program)
         - Quyền truy cập Read-Write
         - Được sử dụng để cấp phát tự động cho các biến local, input parameter của hàm...
         - Sẽ được giải phóng khi ra khỏi block code or hàm
-    2. Sự giống nhau và khác nhau của Data và BSS
-    3. Sự giống nhau và khác nhau của Heap và Stack
+    > 2. Sự giống nhau và khác nhau của Data và BSS
+    > 3. Sự giống nhau và khác nhau của Heap và Stack
 
-II: Macro & Function
-III: Static
-IV: Struct & Union
-V: Pointer (Hàm, Void, Null)
+# II: Macro & Function
+# III: Static
+# IV: Struct & Union
+# V: Pointer (Hàm, Void, Null)
