@@ -31,6 +31,23 @@
         - Với phân vùng nhớ Data các biến toàn cục và static phải được khởi tạo với 
           giá trị khác không còn với phân vùng nhớ BSS thì ngược lại, các biến toàn cục 
           và static được khởi tạo với giá trị bằng không or không cần khởi tạo.
+    3. So sánh Heap và Stack
+      3.1 Giống nhau
+      - Bộ nhớ Heap và bộ nhớ Stack bản chất đều cùng là vùng nhớ được tạo ra 
+        và lưu trữ trong RAM khi chương trình được thực thi.
+      3.2 Khác nhau
+      - Bộ nhớ Stack được dùng để lưu trữ các biến cục bộ trong hàm, tham số truyền vào.. 
+        Truy cập vào bộ nhớ này rất nhanh và được thực thi khi chương trình được biên dịch.
+      - Bộ nhớ Heap được dùng để lưu trữ vùng nhớ cho các biến con trỏ được cấp phát động 
+        bởi các hàm malloc - calloc - realloc/new.
+      - Kích thước của bộ nhớ Stack là cố định, tùy thuộc vào từng hệ điều hành. 
+        Ngược lại kích thước của bộ nhớ Heap là không cố định, có thể tăng giảm do 
+        đó đáp ứng được nhu cầu lưu trữ dữ liệu của chương trình.
+      - Vùng nhớ Stack được quản lý bởi hệ điều hành, dữ liệu sẽ tự động bị hủy khi 
+        hàm thực hiện xong công việc. Vùng nhớ Heap được quản lý bởi lập trình viên, dữ liệu 
+        sẽ không tự động bị hủy mà phải tự tay hủy vùng nhớ bằng 
+        câu lệnh free/delete, nếu liên tục cấp phát vùng nhớ mà không giải phóng 
+        thì sẽ bị lỗi tràn vùng nhớ Heap (Heap Overflow).
 
 ## II: Macro & Function
     1. Macro
@@ -70,7 +87,12 @@
     3. Biến static toàn cục (biến tĩnh ngoài)
     - Biến static toàn cục sẽ chỉ có thể truy cập và sử dụng trong file khai báo nó, các file khác 
       không có cách nào truy cập được (không thể extern như đối với biến ngoài). 
-## IV: Struct & Union
-    1. Struct
-    2. Union
+## IV: So sánh Struct & Union
+    - Struct được gọi là kiểu dữ liệu người dùng định nghĩa. Dữ liệu của các member của struct được 
+      lưu trữ ở những vùng nhớ khác nhau. Do đó kích thước của 1 struct tối thiểu bằng kích thước các 
+      member cộng lại và còn phụ thuộc vào bộ nhớ đệm (struct padding). 
+    - Union cũng giống như Struct gồm nhiều member nhưng khác nhau ở chỗ các thành phần của các member 
+      của Union được cấp phát một vùng nhớ chung. Size của Union bằng size của thành phần lớn nhất. 
+      Việc thay đổi nội dung của 1 thành viên sẽ dẫn đến thay đổi nội dung của các thành viên khác. 
+      Union có thể được sử dụng để tiếp kiệm bộ nhớ.
 ## V: Pointer (Hàm, Void, Null)
