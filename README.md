@@ -1,3 +1,3 @@
 # Embedded-in-Automotive
-## In this is the code of the lessons I studied, along with some theoretical documents
+### This contains the code I learned about the C/C++ programming language, along with some theoretical material
 
