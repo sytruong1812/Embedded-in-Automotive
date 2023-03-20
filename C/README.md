@@ -1,6 +1,6 @@
 ## I: Phân vùng nhớ (Memory Layout of C Program)
     1. Có 5 phân vùng nhớ trong RAM (Text, Data, BSS, Heap, Stack) 
-    ![Hình ảnh](https://www.linhkien-36.com/wp-content/uploads/2020/05/page1-225px-Program_memory_layout.pdf.jpg)
+  ![alt](https://www.linhkien-36.com/wp-content/uploads/2020/05/page1-225px-Program_memory_layout.pdf.jpg)
         1.1. Text Segment
         - Quyền truy cập là Read-only, chứa các lệnh để thực thi nên tránh sửa đổi 
           (Contains executable instructions)
