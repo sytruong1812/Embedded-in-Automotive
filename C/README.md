@@ -103,7 +103,7 @@
       - Khi đã biết được địa chỉ của một biến thì ta chẳng những có thể sử dụng 
         giá trị của nó mà còn có thể gán cho nó một giá trị mới.
       - Vì có nhiều loại địa chỉ nên cũng có nhiều kiểu con trỏ (int, float, double...)
-  ### 2. Con trỏ hàm (Function pointers)
+  ### 2. Con trỏ hàm (kiểu (*ptr)(kiểu, kiểu))
       - Con trỏ hàm dùng để chứa địa chỉ của hàm. Muốn vậy ta sử dụng phép gán tên hàm cho con trỏ hàm. 
         Để phép gán đúng thì kiểu hàm và kiểu con trỏ phải tương thích. Sau phép gán, ta có thể dùng tên con trỏ hàm thay thế tên hàm.
       - VD: 
