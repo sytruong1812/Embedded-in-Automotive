@@ -100,6 +100,8 @@
   ### 1. Pointer (kiểu *tên_con_trỏ;)
       - Con trỏ (Pointer) là những biến để lưu trữ địa chỉ của các biến khác. 
         Giá trị của 1 con trỏ là địa chỉ của 1 biến được gán cho nó.
+      - Con trỏ chỉ lưu địa chỉ nên kích thước của các con trỏ như nhau, kích thước này 
+        phụ thuộc vào môi trường hệ thống máy tính (Win32: 4byte; Win64: 8byte)
       - Khi đã biết được địa chỉ của một biến thì ta chẳng những có thể sử dụng 
         giá trị của nó mà còn có thể gán cho nó một giá trị mới.
       - Vì có nhiều loại địa chỉ nên cũng có nhiều kiểu con trỏ (int, float, double...)
@@ -142,7 +144,7 @@
       - Là con trỏ không trỏ tới địa chỉ nào cả, khi khai báo con trỏ mà mình chưa biết 
         gán giá trị nào ta nên sử dụng con trỏ NULL.
       - VD: *ptr = NULL;
-  ### 6. Double Pointer (**pptr)
+  ### 6. Pointer to pointer - Double Pointer (**pptr)
       - Con trỏ đôi dùng để lưu địa chỉ của con trỏ, nói cách khác giá trị của con trỏ 
         đôi **pptr là địa chỉ của con trỏ *ptr.
       - VD:
