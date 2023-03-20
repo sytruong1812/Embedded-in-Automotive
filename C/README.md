@@ -52,9 +52,25 @@
       (được xử lý trước khi mã chương trình được biên dịch)
     - Function phải gọi function call nên tốn thời gian hơn 
       (được xử lý khi chương trình đang chạy), nhưng code ngắn gọn hơn.
-    - Macro thường hay dính lỗi đánh máy, cú pháp, trùng tên và khó phát hiện. Function dễ debug hơn.
+    - Macro thường hay dính lỗi đánh máy, trùng tên và không thể debug tìm 
+      lỗi trong thời gian thực thi. Function dễ debug hơn.
     - Macro không cần định nghĩ kiểu dữ liệu của tham số, function phải định nghĩa kiểu dữ liệu 
       của tham số và trả về kiểu dữ liệu nào.
 ## III: Static
+    1. Biến Static
+    - Biến static là một biến có phạm vi truy cập chỉ trong một file, nghĩa là nó không thể được 
+      truy cập từ các file khác. Từ khóa static dùng để khai báo các biến tĩnh trong (cục bộ) 
+      và biến tĩnh ngoài (toàn bộ).
+    2. Biến static cục bộ (biến tĩnh trong)
+    - Khi biến cục bộ được khai báo với từ khóa static. Biến sẽ chỉ được khởi tạo 1 lần duy nhất 
+      và tồn tại suốt thời gian chạy chương trình.
+    - Phạm vi sử dụng của biến static cục bộ chỉ giới hạn bên trong hàm mà nó khai báo. Tuy nhiên 
+      giá trị của nó vẫn được giữ khi ra khỏi hàm và mỗi lần hàm được gọi, giá trị của biến chính 
+      bằng giá trị tại lần gần nhất hàm được gọi.
+    3. Biến static toàn cục (biến tĩnh ngoài)
+    - Biến static toàn cục sẽ chỉ có thể truy cập và sử dụng trong file khai báo nó, các file khác 
+      không có cách nào truy cập được (không thể extern như đối với biến ngoài). 
 ## IV: Struct & Union
+    1. Struct
+    2. Union
 ## V: Pointer (Hàm, Void, Null)
