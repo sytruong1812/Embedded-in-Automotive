@@ -43,7 +43,7 @@ int main(int argc, char const *argv[])
     // printf("Address u32bit: %p\n", &(data.u16bit));
 
 //Việc thay đổi nội dung của 1 thành viên sẽ dẫn đến thay đổi nội dung của các thành viên khác.
-//Nói cách khác, việc gán giá trị cho các member của union trước thì chỉ thành phần cuối cùng được 
+//Nói cách khác, việc gán giá trị cho các member của union trước, thì chỉ thành phần cuối cùng được 
 //gián giá trị được sử dụng. Các thành phần trước đó sẽ bị ghi đè.
 
     sinhvien data_sv;
