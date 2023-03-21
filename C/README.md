@@ -100,14 +100,15 @@
   ### 1. Pointer (kiểu *tên_con_trỏ;)
       - Con trỏ (Pointer) là những biến để lưu trữ địa chỉ của các biến khác. 
         Giá trị của 1 con trỏ là địa chỉ của 1 biến được gán cho nó.
-      - Con trỏ chỉ lưu địa chỉ nên kích thước của các con trỏ như nhau, kích thước này 
-        phụ thuộc kiến trúc của vi xử lý (16bit: 2byte; 32bit: 4byte; 64bit: 8byte)
-      - Khi đã biết được địa chỉ của một biến thì ta chẳng những có thể sử dụng 
-        giá trị của nó mà còn có thể gán cho nó một giá trị mới.
+      - Con trỏ chỉ lưu địa chỉ nên kích thước của các con trỏ như nhau, kích thước này phụ thuộc kiến trúc của 
+        vi xử lý (16bit: 2byte; 32bit: 4byte; 64bit: 8byte)
+      - Khi đã biết được địa chỉ của một biến thì ta chẳng những có thể sử dụng giá trị của nó mà còn có thể gán cho 
+        nó một giá trị mới.
       - Vì có nhiều loại địa chỉ nên cũng có nhiều kiểu con trỏ (int, float, double...)
   ### 2. Con trỏ hàm (kiểu (*ptr)(kiểu, kiểu))
       - Con trỏ hàm dùng để chứa địa chỉ của hàm. Muốn vậy ta sử dụng phép gán tên hàm cho con trỏ hàm. 
-        Để phép gán đúng thì kiểu hàm và kiểu con trỏ phải tương thích. Sau phép gán, ta có thể dùng tên con trỏ hàm thay thế tên hàm.
+        Để phép gán đúng thì kiểu hàm và kiểu con trỏ phải tương thích. Sau phép gán, ta có thể dùng 
+        tên con trỏ hàm thay thế tên hàm.
       - VD: 
           float max(float x, float y)
           {
@@ -116,9 +117,9 @@
           // Khai báo và gán tên hàm max cho con trỏ hàm ptr
           float (*ptr)(float, float) = max;
   ### 3. Mảng con trỏ (kiểu *tên_mảng[N])
-      - Mảng con trỏ là một mảng mà mỗi phần tử của nó có thể chứa được một địa chỉ nào đó. 
-        Cũng giống như con trỏ, mảng con trỏ có nhiều kiểu: mỗi phần tử của mảng kiểu con trỏ 
-        kiểu int sẽ chứa được các địa chỉ kiểu int. Tương tự với kiểu char, float, double...
+      - Mảng con trỏ là một mảng mà mỗi phần tử của nó có thể chứa được một địa chỉ nào đó. Cũng giống như con trỏ, 
+        mảng con trỏ có nhiều kiểu: mỗi phần tử của mảng kiểu con trỏ kiểu int sẽ chứa được các địa chỉ kiểu int.
+        Tương tự với kiểu char, float, double...
       - VD:
           char* ds[] = {
               "Ma sai",               //ds[0]
@@ -129,9 +130,8 @@
               "Le Van Vu"             //ds[5]
           };
   ### 4. Con trỏ void (void *ptr)
-      - void *ptr là khai báo một con trỏ không kiểu. Đây là con trỏ đặc biệt, được sử dụng 
-        để lưu trữ địa chỉ của bất kỳ biến nào trong chương trình. Vì nó là một con trỏ không kiểu, 
-        nên nó có thể trỏ đến bất kỳ loại dữ liệu nào.
+      - void *ptr là khai báo một con trỏ không kiểu. Đây là con trỏ đặc biệt, được sử dụng để lưu trữ địa chỉ của bất kỳ 
+        biến nào trong chương trình. Vì nó là một con trỏ không kiểu, nên nó có thể trỏ đến bất kỳ loại dữ liệu nào.
       - VD:
           int a = 10;
           float b = 2.5;
@@ -141,9 +141,9 @@
 
           void *ptr = &a;
   ### 5. Con trỏ Null
-      - Là con trỏ không trỏ tới địa chỉ nào cả, con trỏ NULL là con trỏ lưu địa chỉ 0x00000000. Tức địa chỉ bộ nhớ 0, 
-        khi khai báo con trỏ mà mình chưa biết 
-        gán giá trị nào ta nên sử dụng con trỏ NULL.
+      - Là con trỏ không trỏ tới địa chỉ nào cả, con trỏ NULL là con trỏ lưu địa chỉ 0x00000000. 
+        Tức địa chỉ bộ nhớ 0, khi khai báo con trỏ mà mình chưa biết gán giá trị nào ta nên sử dụng con trỏ NULL.
+      - Không sử dụng con trỏ NULL: Tránh sử dụng con trỏ NULL trong ứng dụng vì nó có thể dẫn đến lỗi runtime hoặc crash hệ thống.
       - VD: *ptr = NULL;
   ### 6. Pointer to pointer - Double Pointer (**pptr)
       - Con trỏ đôi dùng để lưu địa chỉ của con trỏ, nói cách khác giá trị của con trỏ 
