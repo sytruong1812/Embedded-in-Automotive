@@ -101,7 +101,7 @@
       - Con trỏ (Pointer) là những biến để lưu trữ địa chỉ của các biến khác. 
         Giá trị của 1 con trỏ là địa chỉ của 1 biến được gán cho nó.
       - Con trỏ chỉ lưu địa chỉ nên kích thước của các con trỏ như nhau, kích thước này 
-        phụ thuộc vào môi trường hệ thống máy tính (Win32: 4byte; Win64: 8byte)
+        phụ thuộc kiến trúc của vi xử lý (16bit: 2byte; 32bit: 4byte; 64bit: 8byte)
       - Khi đã biết được địa chỉ của một biến thì ta chẳng những có thể sử dụng 
         giá trị của nó mà còn có thể gán cho nó một giá trị mới.
       - Vì có nhiều loại địa chỉ nên cũng có nhiều kiểu con trỏ (int, float, double...)
