@@ -141,7 +141,8 @@
 
           void *ptr = &a;
   ### 5. Con trỏ Null
-      - Là con trỏ không trỏ tới địa chỉ nào cả, khi khai báo con trỏ mà mình chưa biết 
+      - Là con trỏ không trỏ tới địa chỉ nào cả, con trỏ NULL là con trỏ lưu địa chỉ 0x00000000. Tức địa chỉ bộ nhớ 0, 
+        khi khai báo con trỏ mà mình chưa biết 
         gán giá trị nào ta nên sử dụng con trỏ NULL.
       - VD: *ptr = NULL;
   ### 6. Pointer to pointer - Double Pointer (**pptr)
