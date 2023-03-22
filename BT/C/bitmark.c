@@ -2,91 +2,89 @@
 #include "stdint.h"
 
 typedef enum{
-    AO          = 1 << 0,   //0b00000001
-    QUAN        = 1 << 1,   //0b00000010
-    VAY         = 1 << 2,   //0b00000100
-    DAM         = 1 << 3,   //0b00001000
-    NHAN        = 1 << 4,   //0b00010000
-    VONG_TAY    = 1 << 5,   //0b00100000
-    GIAY        = 1 << 6,   //0b01000000
-    TUI         = 1 << 7    //0b10000000
-}DoDungCaNhan;
+    SHIRT          = 1 << 0,   //0b00000001
+    PANT           = 1 << 1,   //0b00000010
+    SKIRT          = 1 << 2,   //0b00000100
+    DRESS          = 1 << 3,   //0b00001000
+    RING           = 1 << 4,   //0b00010000
+    BRACELET       = 1 << 5,   //0b00100000
+    SHOES          = 1 << 6,   //0b01000000
+    BAG            = 1 << 7    //0b10000000
+}PersonalBelongings;
 
-void Them_Vao_Gio_Hang(uint8_t *gio_hang, DoDungCaNhan ten_do_dung ){
-    *gio_hang |= ten_do_dung; 
+void Add_Cart(uint8_t *cart, PersonalBelongings item_name ){
+    *cart |= item_name; 
 }
 
-void Xoa_Khoi_Gio_Hang(uint8_t *gio_hang, DoDungCaNhan ten_do_dung){
-    *gio_hang &= ~ten_do_dung;          
+void Remove_From_Cart(uint8_t *cart, PersonalBelongings item_name){
+    *cart &= ~item_name;          
 }
 
-void Kiem_Tra_San_Pham(uint8_t gio_hang, DoDungCaNhan ten_do_dung)
-{
-                                                        // gio_hang  & ten_do_dung = kiem_tra
-                                                        //  AO|VAY   & AO|QUAN|VAY =  AO|VAY
-    uint8_t kiem_tra = gio_hang & ten_do_dung;          //0b00000101 & 0b00000111  = 0b00000101
-    
+void Check_Item(uint8_t cart, PersonalBelongings item_name)
+{                   
+    uint8_t check = cart & item_name;           //0b00000101 & 0b00000111  = 0b00000101
+
     for (int i = 0; i < 8; i++)
     {
-        if((kiem_tra & (1 << i)) != 0)                  //0b00000101 & 0b00000010 = 0b00000010  
+        if((check & (1 << i)) != 0)             //0b00000101 & 0b00000010 = 0b00000010  
         {
             switch(i)                                  
             {
                 case 0:
-                    printf("Ao da ton tai trong gio hang!\n");
+                    printf("Shirt already exists in cart!\n");
                     break;
                 case 1:                                            
-                    printf("Quan da ton tai trong gio hang!\n");
+                    printf("Pant already exists in cart!\n");
                     break;
                 case 2:
-                    printf("Vay da ton tai trong gio hang!\n");
+                    printf("Skirt already exists in cart!\n");
                     break;
                 case 3:
-                    printf("Dam da ton tai trong gio hang!\n");
+                    printf("Dress already exists in cart!\n");
                     break;
                 case 4:
-                    printf("Nhan da ton tai trong gio hang!\n");
+                    printf("Ring already exists in cart!\n");
                     break;
                 case 5:
-                    printf("Vong Tay da ton tai trong gio hang!\n");
+                    printf("Bracelet already exists in cart!\n");
                     break;
                 case 6:
-                    printf("Giay da ton tai trong gio hang!\n");
+                    printf("Shoes already exists in cart!\n");
                     break;
                 case 7:
-                    printf("Tui da ton tai trong gio hang!\n");
+                    printf("Bag already exists in cart!\n");
                     break;
                 default:
                     break;
             }
         }                                       
-        if(~(kiem_tra | ~(1 << i)) == (ten_do_dung & (1 << i)))
+        if(~(check | ~(1 << i)) == (item_name & (1 << i)))
         {
             switch(i)
             {
                 case 0:
-                    printf("Ao khong ton tai trong gio hang!\n");
+                    printf("Shirt do not exist in the cart!\n");
                     break;
                 case 1:
-                    printf("Quan khong ton tai trong gio hang!\n");
+                    printf("Pant do not exist in the cart!\n");
                     break;
                 case 2:
-                    printf("Vay khong ton tai trong gio hang!\n");
+                    printf("Skirt do not exist in the cart!\n");
                     break;
                 case 3:
-                    printf("Dam khong ton tai trong gio hang!\n");
+                    printf("Dress do not exist in the cart!\n");
                     break;
                 case 4:
-                    printf("Nhan khong ton tai trong gio hang!\n");
+                    printf("Ring do not exist in the cart!\n");
                     break;
                 case 5:
-                    printf("Vong tay khong ton tai trong gio hang!\n");
+                    printf("Bracelet do not exist in the cart!\n");
                     break;
                 case 6:
-                    printf("Giay khong ton tai trong gio hang!\n");
+                    printf("Shoes do not exist in the cart!\n");
                     break;
                 case 7:
-                    printf("Tui khong ton tai trong gio hang\n");
+                    printf("Bag do not exist in the cart!\n");
                     break;
                 default:
                     break;
@@ -95,35 +93,35 @@ void Kiem_Tra_San_Pham(uint8_t gio_hang, DoDungCaNhan ten_do_dung)
     }   
 }
 
-void Hien_Thi_Gio_Hang(uint8_t gio_hang){
-    printf("Cac san pham trong gio hang:\n");
+void Show_Cart(uint8_t cart){
+    printf("Item in the cart:\n");
     printf("STT\t NAME\n");
     for(int i=0; i<8; i++){
-        if((gio_hang & (1 << i)) != 0){
+        if((cart & (1 << i)) != 0){
             switch(i){
                 case 0:
-                    printf(" 1\t Ao\n");
+                    printf(" 1\t Shirt\n");
                     break;
                 case 1:
-                    printf(" 2\t Quan\n");
+                    printf(" 2\t Pant\n");
                     break;
                 case 2:
-                    printf(" 3\t Vay\n");
+                    printf(" 3\t Skirt\n");
                     break;
                 case 3:
-                    printf(" 4\t Dam\n");
+                    printf(" 4\t Dress\n");
                     break;
                 case 4:
-                    printf(" 5\t Nhan\n");
+                    printf(" 5\t Ring\n");
                     break;
                 case 5:
-                    printf(" 6\t Vong Tay\n");
+                    printf(" 6\t Bracelet\n");
                     break;
                 case 6:
-                    printf(" 7\t Giay\n");
+                    printf(" 7\t Shoes\n");
                     break;
                 case 7:
-                    printf(" 8\t Tui");
+                    printf(" 8\t Bag");
                     break;
                 default:
                     break;
@@ -134,10 +132,10 @@ void Hien_Thi_Gio_Hang(uint8_t gio_hang){
 
 int main(int argc, char const *argv[])
 {
-    uint8_t GIO_HANG;                                    //1byte: 0b00000000
-    Them_Vao_Gio_Hang(&GIO_HANG, AO|QUAN|VAY|DAM);       //GIO_HANG = 0b00000111 (Sử dụng toán tử OR)
-    Xoa_Khoi_Gio_Hang(&GIO_HANG, QUAN|AO);               //GIO_HANG = 0b00000101
-    Kiem_Tra_San_Pham(GIO_HANG, AO|QUAN|VAY|NHAN);
-    Hien_Thi_Gio_Hang(GIO_HANG);
+    uint8_t CART;                                       //1byte: 0b00000000
+    Add_Cart(&CART, SHIRT|PANT|SKIRT|DRESS);            //CART = 0b00000111 (Sử dụng toán tử OR)
+    Remove_From_Cart(&CART, PANT|SHIRT);                //CART = 0b00000101
+    Check_Item(CART, SHIRT|PANT|SKIRT|RING);
+    Show_Cart(CART);
     return 0;
 }
