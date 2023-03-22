@@ -137,7 +137,7 @@ int main(int argc, char const *argv[])
     uint8_t GIO_HANG;                                    //1byte: 0b00000000
     Them_Vao_Gio_Hang(&GIO_HANG, AO|QUAN|VAY|DAM);       //GIO_HANG = 0b00000111 (Sử dụng toán tử OR)
     Xoa_Khoi_Gio_Hang(&GIO_HANG, QUAN|AO);               //GIO_HANG = 0b00000101
-    Kiem_Tra_San_Pham(GIO_HANG, AO|QUAN|VAY|DAM);
+    Kiem_Tra_San_Pham(GIO_HANG, AO|QUAN|VAY|NHAN);
     Hien_Thi_Gio_Hang(GIO_HANG);
     return 0;
 }
