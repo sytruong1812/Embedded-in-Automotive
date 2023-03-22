@@ -22,11 +22,11 @@ void Remove_From_Cart(uint8_t *cart, PersonalBelongings item_name){
 
 void Check_Item(uint8_t cart, PersonalBelongings item_name)
 {                   
-    uint8_t check = cart & item_name;           //0b00000101 & 0b00000111  = 0b00000101
+    cart &= item_name;           //0b00000101 & 0b00000111  = 0b00000101
 
     for (int i = 0; i < 8; i++)
     {
-        if((check & (1 << i)) != 0)             //0b00000101 & 0b00000010 = 0b00000010  
+        if((cart & (1 << i)) != 0)             //0b00000101 & 0b00000010 = 0b00000010  
         {
             switch(i)                                  
             {
@@ -58,7 +58,7 @@ void Check_Item(uint8_t cart, PersonalBelongings item_name)
                     break;
             }
         }                                       
-        if(~(check | ~(1 << i)) == (item_name & (1 << i)))
+        if(~(cart | ~(1 << i)) == (item_name & (1 << i)))
         {
             switch(i)
             {
