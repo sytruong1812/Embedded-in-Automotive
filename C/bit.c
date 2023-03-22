@@ -7,7 +7,7 @@ void digitalWrite(uint8_t pin, uint8_t status)
 {
     if (status == 1)
     {
-        PORTA = PORTA|1 << (7 - pin);
+        PORTA |= (1 << (7 - pin));           //0b00000111
     }
     else if (status == 0)
     {
@@ -17,11 +17,11 @@ void digitalWrite(uint8_t pin, uint8_t status)
 
 int main(int argc, char const *argv[])
 {
-    digitalWrite(3,0);
+    digitalWrite(3,0);      //Xét chân PIN3 mức 0
 
 
     // Sử dụng phép toán AND để kiểm tra bit thứ 2 của biến num
-    int num = 5;
+    int num = 5;        //0b00000101
     if (num & (1 << 2)) {
         printf("Bit 2 of num is set\n");
     }
