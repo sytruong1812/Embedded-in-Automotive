@@ -12,10 +12,10 @@ void Sort_Array_And_Count_Occurrences(){
     printf("Sort array from largest to smallest: ");
     for (int i = 0; i < sizeof(arr); i++){
         for (int j = i + 1; j < sizeof(arr); j++){
-            if(arr[i] < arr[j]){
-                x = arr[i];
-                arr[i] = arr[j];
-                arr[j] = x;
+            if(arr[i] < arr[j]){        //Check the previous variable < the following variable
+                x = arr[i];         
+                arr[i] = arr[j];        //Reverse the position of 2 variables
+                arr[j] = x;             
             } 
         }
         printf("%d ", arr[i]);
@@ -23,12 +23,12 @@ void Sort_Array_And_Count_Occurrences(){
     printf("\nThe number of occurrences of the variables in the array is:\n");
     for (int i = 0; i < sizeof(arr); i++)
     {
-        if(arr[i] == arr[i+1]){
-            count++;
+        if(arr[i] == arr[i+1]){         //Check the previous variable = the following variable
+            count++;                    //Increase the count variable 
         }
         else{
             printf("Variable %d appears in the array %d times!\n", arr[i], count); 
-            count = 1;
+            count = 1;                  //Reassign counter = 1, a new count
         } 
     }   
 }
