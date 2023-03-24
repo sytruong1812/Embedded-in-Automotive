@@ -58,7 +58,7 @@ void Check_Item(uint8_t cart, PersonalBelongings item_name)
                     break;
             }
         }                                       
-        if(~(cart | ~(1 << i)) == (item_name & (1 << i)))
+        if(~(cart | ~(1 << i)) == (item_name & (1 << i)))           //0b00000010 == 0b00000010
         {
             switch(i)
             {
