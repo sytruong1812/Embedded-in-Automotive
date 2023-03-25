@@ -26,14 +26,15 @@ void removeItemsFromCart (uint8_t *cart, PersonalBelongings items){
 
 void checkItems (uint8_t cart, PersonalBelongings items){
 
+/*Ý tưởng: Kiểm tra lần lượt từng sản phẩm trong giỏ hàng. Nếu kiểm tra sản phẩm A, đồng thời giỏ hàng đang 
+chứa sản phẩm A thì in ra sản phẩm A có trong giỏ hàng. Ngược lại thì sản phẩm A không có trong giỏ hàng*/
+
     for(int i = 0; i < 8; i++)
     {
-        if(items & (1 << i) && cart & (1 << i))
-        {
+        if(items & (1 << i) && cart & (1 << i)){                 //Kiểm tra sản phẩm và giỏ hàng cũng có sản phẩm đó
             printf("THE CART HAS : %s\n", individual_items[i]);
         }
-        else if (items & (1 << i) || cart & (1 << i))
-        {
+        else if (items & (1 << i) || cart & (1 << i)){           //Kiểm tra sản phẩm hoặc giỏ hàng
             printf("THE CART HASN'T : %s\n", individual_items[i]); 
         }            
     }
