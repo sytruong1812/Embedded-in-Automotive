@@ -1,5 +1,6 @@
 #include "stdio.h"
 #include "stdint.h"
+#include "string.h"
 
 uint8_t arr[] = {1,2,3,4,6,5,5,3,2,5,5,1,4,1};
 
@@ -10,8 +11,8 @@ void Sort_Array_And_Count_Occurrences(){
     int x;
     int count = 1; 
     printf("Sort array from largest to smallest: ");
-    for (int i = 0; i < sizeof(arr); i++){
-        for (int j = i + 1; j < sizeof(arr); j++){
+    for (int i = 0; i < strlen(arr); i++){
+        for (int j = i + 1; j < strlen(arr); j++){
             if(arr[i] < arr[j]){        //Check the previous variable < the following variable
                 x = arr[i];         
                 arr[i] = arr[j];        //Reverse the position of 2 variables
@@ -21,7 +22,7 @@ void Sort_Array_And_Count_Occurrences(){
         printf("%d ", arr[i]);
     }
     printf("\nThe number of occurrences of the variables in the array is:\n");
-    for (int i = 0; i < sizeof(arr); i++)
+    for (int i = 0; i < strlen(arr); i++)
     {
         if(arr[i] == arr[i+1]){         //Check the previous variable = the following variable
             count++;                    //Increase the count variable 
@@ -35,6 +36,8 @@ void Sort_Array_And_Count_Occurrences(){
 
 int main(int argc, char const *argv[])
 {
+    // printf("Size arr: %d\n", sizeof(arr));
+    // printf("Size arr: %d\n", strlen(arr));
     Sort_Array_And_Count_Occurrences();
 
     return 0;
