@@ -1,5 +1,5 @@
 #include "stdio.h"
-#include "stdint.h"
+
 
 char InputArray[] = {"Make no mistake. All your attempts to create a chilling effect a throttling effect a strangulating effect on open fearless speech relating to public influence will not stop either Rahul Gandhi or the Congress Party"};
 char OutputArray[sizeof(InputArray)-1];
@@ -19,7 +19,6 @@ void ReverseString(const char InArray[], char OutArray[]){
         {
             for (int k = i; k < i + count; k++)
             {
-
                 OutArray[j] = InArray[k+1];
                 j++;
             }
