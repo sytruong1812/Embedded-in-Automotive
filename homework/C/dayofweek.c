@@ -17,11 +17,12 @@
     Từ ngày mốc đến ngày hiện tại có bao nhiêu ngày
 
     Từ số ngày đó chia lấy dư cho 7  
-    
+
     Phần dư cộng với thứ của 1-1-2000 -> thứ 25-3-2023
 */
 
 #define LeapYear(year) (year % 4 == 0) && (year % 100 !=0) || (year % 400 == 0)
+
 uint32_t sumDay;
 
 uint16_t numberOfDayInYear(uint16_t Year){
@@ -29,7 +30,7 @@ uint16_t numberOfDayInYear(uint16_t Year){
     return 365;
 }
 
-uint8_t numberOfDayInTheMonth(uint8_t Month, uint8_t Year){
+uint16_t numberOfDayInTheMonth(uint8_t Month, uint16_t Year){
     switch (Month)
     {
     case 1:
