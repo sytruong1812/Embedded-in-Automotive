@@ -7,23 +7,25 @@
     Công thức tính năm Nhuận: lấy số năm đem chia cho 4, nếu kết quả chia hết cho 4 
     thì năm nó là năm nhuận. Với những năm tròn thế kỷ có 2 số 00 ở cuối thì lấy số 
     năm chia cho 400, nếu kết quả chia hết cho 400 thì năm đó là năm nhuận.
-  
+
     Số ngày trong 1 tháng.
 
-    Ngày làm mốc: 1-1-2000 -> thứ mấy trong tuần
+    Ngày làm mốc: 1-1-1 -> thứ mấy trong tuần
 
     Ngày hiện tại: 25-3-2023 -> bao nhiêu ngày
 
     Từ ngày mốc đến ngày hiện tại có bao nhiêu ngày
+
     Từ số ngày đó chia lấy dư cho 7  
+    
     Phần dư cộng với thứ của 1-1-2000 -> thứ 25-3-2023
 */
 
-#define YearNhuan(year) (year % 4 == 0) && (year % 100 !=0) || (year % 400 == 0)
+#define LeapYear(year) (year % 4 == 0) && (year % 100 !=0) || (year % 400 == 0)
 uint32_t sumDay;
 
 uint16_t numberOfDayInYear(uint16_t Year){
-    if(YearNhuan(Year)) return 366;
+    if(LeapYear(Year)) return 366;
     return 365;
 }
 
@@ -46,7 +48,7 @@ uint8_t numberOfDayInTheMonth(uint8_t Month, uint8_t Year){
         return 30;
         break;
     case 2:
-        if (YearNhuan(Year)) return 29;
+        if (LeapYear(Year)) return 29;
         return 28;
         break;
     default:
