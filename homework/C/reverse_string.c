@@ -5,6 +5,7 @@
 
 char InputArray[] = {"Make no mistake. All your attempts to create a chilling effect a throttling effect a strangulating effect on open fearless speech relating to public influence will not stop either Rahul Gandhi or the Congress Party"};
 char OutputArray[LENG_ARRAY(InputArray)];
+
 //Đảo ngược chuỗi thành: Party Congress the or Gandhi Rahul.....
 
 
@@ -45,6 +46,7 @@ void ReverseString(const char InArray[], char OutArray[]){
 int main(int argc, char const *argv[])
 {
     // printf("%d\n", sizeof(InputArray));
+    // printf("%d\n", sizeof(OutputArray));
     ReverseString(InputArray, OutputArray);
     return 0;
 }

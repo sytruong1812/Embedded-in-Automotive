@@ -36,8 +36,8 @@ void Sort_Array_And_Count_Occurrences(){
 
 int main(int argc, char const *argv[])
 {
-    // printf("Size arr: %d\n", sizeof(arr));
-    // printf("Size arr: %d\n", strlen(arr));
+    // printf("Size arr: %d\n", sizeof(arr));       //Kích thước của kiểu dữ liệu
+    // printf("Size arr: %d\n", strlen(arr));       //Chiều dài chuỗi
     Sort_Array_And_Count_Occurrences();
 
     return 0;
