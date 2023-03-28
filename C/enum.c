@@ -18,23 +18,24 @@ enum Month {
     Thang12
 };
 
-typedef enum {
-    Thu2,
-    Thu3,
-    Thu4 = 1,
-    Thu5,
-    Thu6,
-    Thu7,
-    CN
-} TUAN;
+typedef enum{
+    Monday,
+    Tuesday,
+    Wednesday,
+    Thursday,
+    Friday,
+    Saturday,
+    Sunday
+}Week;
+
 
 int main(int argc, char const *argv[])
 {
-    enum Month nametest = Thang3;
-    printf("Enum Month = %d\n", nametest);
+    enum Month inputMonth = Thang3;
+    printf("Enum Month = %d\n", inputMonth);
 
-    TUAN nametest1 = Thu5;
-    printf("Enum TUAN = %d\n", nametest1);
+    Week inputWeek = Thursday;
+    printf("Enum TUAN = %d\n", inputWeek);
 
     return 0;
 }

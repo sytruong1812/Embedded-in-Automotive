@@ -33,15 +33,6 @@ uint16_t numberOfDayInYear(uint16_t Year){
 uint16_t numberOfDayInTheMonth(uint8_t Month, uint16_t Year){
     switch (Month)
     {
-    case 1:
-    case 3:
-    case 5:
-    case 7:
-    case 8:
-    case 10:
-    case 12:
-        return 31;
-        break;
     case 4:
     case 6:
     case 9:
@@ -53,7 +44,7 @@ uint16_t numberOfDayInTheMonth(uint8_t Month, uint16_t Year){
         return 28;
         break;
     default:
-        printf("Invalid");
+        return 31;
         break;
     }
 }
