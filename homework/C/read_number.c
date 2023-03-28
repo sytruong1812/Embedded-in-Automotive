@@ -1,5 +1,3 @@
-#include "stdio.h"
-
 /*
 Nhập vào từ bàn phím tối đa 7 chữ số, ví dụ: 1200019
 Đọc ra: Một triệu hai trăm mười chín

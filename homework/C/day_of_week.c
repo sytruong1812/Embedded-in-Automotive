@@ -21,12 +21,12 @@
     Phần dư cộng với thứ của 1-1-2000 -> thứ 25-3-2023
 */
 
-#define LeapYear(year) (year % 4 == 0) && (year % 100 !=0) || (year % 400 == 0)
+#define LEAP_YEAR(year) (year % 4 == 0) && (year % 100 !=0) || (year % 400 == 0)
 
 uint32_t sumDay;
 
 uint16_t numberOfDayInYear(uint16_t Year){
-    if(LeapYear(Year)) return 366;
+    if(LEAP_YEAR(Year)) return 366;
     return 365;
 }
 
@@ -40,7 +40,7 @@ uint16_t numberOfDayInTheMonth(uint8_t Month, uint16_t Year){
         return 30;
         break;
     case 2:
-        if (LeapYear(Year)) return 29;
+        if (LEAP_YEAR(Year)) return 29;
         return 28;
         break;
     default:
