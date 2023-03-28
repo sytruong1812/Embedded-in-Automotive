@@ -21,16 +21,16 @@
     Phần dư cộng với thứ của 1-1-2000 -> thứ 25-3-2023
 */
 
-#define LEAP_YEAR(year) (year % 4 == 0) && (year % 100 !=0) || (year % 400 == 0)
+#define LEAP_YEAR(year) (year % 4 == 0) && (year % 100 !=0) || (year % 400 == 0)        // Declare a macro to calculate leap years
 
-uint32_t sumDay;
+uint32_t sumDay;        // Declare a variable to store the total number of days
 
-uint16_t numberOfDayInYear(uint16_t Year){
+uint16_t numberOfDayInYear(uint16_t Year){          // The function checks for a leap year and returns the total number of days in that year
     if(LEAP_YEAR(Year)) return 366;
     return 365;
 }
 
-uint16_t numberOfDayInTheMonth(uint8_t Month, uint16_t Year){
+uint16_t numberOfDayInTheMonth(uint8_t Month, uint16_t Year){           // Function to check the number of days in a month and returns the total number of days in that month
     switch (Month)
     {
     case 4:
@@ -40,7 +40,7 @@ uint16_t numberOfDayInTheMonth(uint8_t Month, uint16_t Year){
         return 30;
         break;
     case 2:
-        if (LEAP_YEAR(Year)) return 29;
+        if (LEAP_YEAR(Year)) return 29;                     // Check leap year and return the number of days in the corresponding month
         return 28;
         break;
     default:
@@ -49,18 +49,17 @@ uint16_t numberOfDayInTheMonth(uint8_t Month, uint16_t Year){
     }
 }
 
-void dayOfWeek(uint8_t Day, uint8_t Month, uint16_t Year){
-    for (int i = 1; i < Year; i++)
+void dayOfWeek(uint8_t Day, uint8_t Month, uint16_t Year){          // Function calculates day of the week
+    for (int i = 1; i < Year; i++)                  // The loop counts the total number of days from year 1 to year you want to find
     {
-        sumDay += numberOfDayInYear(i);
+        sumDay += numberOfDayInYear(i);    
     }
-    for (int i = 1; i < Month; i++)
-    {
+    for (int i = 1; i < Month; i++){                 // The loop counts the total number of days from January to the month you want to find
         sumDay += numberOfDayInTheMonth(i, Year);
     }
-    sumDay += Day;
-    switch (sumDay % 7)
-    {
+    sumDay += Day;                  // Finally the total number of days = numberOfDayInYear + numberOfDayInTheMonth  + the day you want to find
+    switch (sumDay % 7)             // Check and print the day of the week corresponding to the day/month/year you want to find, sumDay divides the remainder by 7
+    {                                
     case 0:
         printf("Sunday");
         break;

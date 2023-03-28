@@ -1,3 +1,5 @@
+#include "stdio.h"
+#include <stdlib.h>
 /*
 Nhập vào từ bàn phím tối đa 7 chữ số, ví dụ: 1200019
 Đọc ra: Một triệu hai trăm mười chín
@@ -6,3 +8,8 @@ Nhập vào từ bàn phím tối đa 7 chữ số, ví dụ: 1200019
 Điều kiện, ví dụ: 1000090
 Đọc ra: Một triệu không trăm chín mươi
 */
+
+
+void readNumber(int num){
+    
+}
