@@ -29,9 +29,9 @@ char *nameJsonType[] = {
     "JSOM_OBJECT"
 };
 
-typedef struct 
+typedef struct      
 {
-  JsonType type;
+  JsonType type;        //Phân biêt Value là kiểu dữ liệu gì
   union
   {
     int boolean;
@@ -48,7 +48,7 @@ typedef struct
         JsonValue *values;
         size_t count;
     } object;
-  } value;
+  } value;              //Chọn kiểu dữ liệu của value
 } JsonValue;
 
 void skip_whitespace(const char **json){

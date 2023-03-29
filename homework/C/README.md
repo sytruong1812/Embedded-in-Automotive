@@ -242,7 +242,7 @@ volatile int PIN01;
 
 Cấu trúc của 1 con vdk như sau, hãy quan tâm tới 3 vị trí CPU, RAM và Register.
 
-![register](docs/register.png)
+![register](https://github.com/Achicken7301/C-C-Advanced/blob/main/docs/register.png)
 
 Khi tạo một biến bình thường.
 ```c
