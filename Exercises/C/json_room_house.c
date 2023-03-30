@@ -34,7 +34,7 @@ char *nameJsonType[] = {
 typedef struct JsonValue   
 {
   JsonType type;        //Phân biêt Value là kiểu dữ liệu gì
-  union                 //Chọn kiểu dữ liệu của value
+  union                 //Chọn kiểu dữ liệu của Value
   {
     int boolean;
     double number;
@@ -60,6 +60,42 @@ static void skip_whitespace(const char **json){
     }
 }
 
+static void check_numberOfObject(const char *json){
+    int object = 0;
+    int count = 0;
+    int i = 0;
+    while (json[i] != 0)
+    {
+        if(json[i] == '{') count++;
+        if(json[i] == '}') count--;
+        if(count == 0) object++;
+        i++;
+    }
+    printf("Count: %d, object: %d", count, object);
+    return object;
+}
+
+JsonValue *parse_json(const char **json){
+    skip_whitespace(json);
+
+    switch (**json)         
+    {
+    case 'n':
+        return parse_null(json);
+    case 'f':           //False
+    case 't':           //True
+        return parse_boolean(json);
+    case '\"':
+        return parse_string(json);
+    case '[':
+        return parse_array(json);
+    case '{':
+        return parse_object(json);
+    default:
+        return parse_number(json);
+    } 
+}
+
 JsonValue *parse_null(const char **json){
 
 }
@@ -73,7 +109,16 @@ JsonValue *parse_number(const char **json){
 }
 
 JsonValue *parse_string(const char **json){
+    skip_whitespace(json);
+    if(**json == '\"'){         //Check end array -> break
+        (*json)++;              //Pointer address shift
+        const char *start = *json;
+        while (**json == '\"' && **json == '\0'){
+            (*json)++;
 
+        }
+        
+    }
 }
 
 JsonValue *parse_array(const char **json){
@@ -83,58 +128,26 @@ JsonValue *parse_array(const char **json){
 JsonValue *parse_object(const char **json){
     skip_whitespace(json);
     if(**json == '{'){
-        (*json)++;              //pointer address shift
+        (*json)++;              //Pointer address shift
         skip_whitespace(json);
     }
     
-    JsonValue *object_value = (JsonValue *)malloc(sizeof(JsonValue));
+    JsonValue *object_value = (JsonValue *)malloc(sizeof(JsonValue));       //Allocate memory for object_value
     object_value->type = JSON_OBJECT;
     object_value->value.object.keys = NULL;
     object_value->value.object.values = NULL;
     object_value->value.object.count = 0;
 
-}
-
-
-JsonValue *parse_json(const char **json){
-    skip_whitespace(json);
-
-    switch (**json)         
-    {
-    case 'n':
-        return parse_null(json);
-    case 'f':
-    case 't':
-        return parse_boolean(json);
-    case '\"':
-        return parse_string(json);
-    case '[':
-        return parse_array(json);
-    case '{':
-        return parse_object(json);
-    default:
-        return parse_number(json);
-    } 
-}
-
-void check_object(const char *json){
-    int object = 0;
-    int count = 0;
-    int i = 0;
-    while (json[i] != 0)
-    {
-        if(json[i] == '{') count++;
-        if(json[i] == '}') count--;
-        if(count == 0) object++;
-        i++;
+    while(object_value != '{' && object_value != '\0'){
+        JsonValue *key = parse_json(json);
     }
-    printf("Count: %d, object: %d", count, object);
 }
+
 
 int main(int argc, char const *argv[])
 {    
     const char* json_str = "{\"Nguoi1\":{\"Ten\":\"Nguyen Van A\",\"Tuoi\":\"20\",\"Gioitinh\":\"Nam\",\"Diachi\":{\"Phuong\":\"Phuong 3\",\"Quan\":\"Go Vap\",\"Thanhpho\":\"Ho Chi Minh\"},\"SDT\":[{\"Loai\":\"So di thoai ca nhan\",\"SDT\":\"0938348442\"},{\"Loai\":\"So dien thoai co quan\",\"SDT\":\"0799124108\"}],\"TrangThaiHonNhan\":False}}";
-    check_object(json_str);
+    check_numberOfObject(json_str);
     return 0;
 }
 
