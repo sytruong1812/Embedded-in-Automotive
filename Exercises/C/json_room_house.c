@@ -72,28 +72,27 @@ static void check_numberOfObject(const char *json){
         i++;
     }
     printf("Count: %d, object: %d", count, object);
-    return object;
 }
 
 JsonValue *parse_json(const char **json){
-    skip_whitespace(json);
+    // skip_whitespace(json);
 
-    switch (**json)         
-    {
-    case 'n':
-        return parse_null(json);
-    case 'f':           //False
-    case 't':           //True
-        return parse_boolean(json);
-    case '\"':
-        return parse_string(json);
-    case '[':
-        return parse_array(json);
-    case '{':
-        return parse_object(json);
-    default:
-        return parse_number(json);
-    } 
+    // switch (**json)         
+    // {
+    // case 'n':           //Null
+    //     return parse_null(json);
+    // case 'f':           //False
+    // case 't':           //True
+    //     return parse_boolean(json);
+    // case '\"':          //String
+    //     return parse_string(json);
+    // case '[':           //Array
+    //     return parse_array(json);
+    // case '{':           //Object
+    //     return parse_object(json);
+    // default:            
+    //     return parse_number(json);
+    // } 
 }
 
 JsonValue *parse_null(const char **json){
@@ -109,16 +108,14 @@ JsonValue *parse_number(const char **json){
 }
 
 JsonValue *parse_string(const char **json){
-    skip_whitespace(json);
-    if(**json == '\"'){         //Check end array -> break
-        (*json)++;              //Pointer address shift
-        const char *start = *json;
-        while (**json == '\"' && **json == '\0'){
-            (*json)++;
-
-        }
-        
-    }
+    // skip_whitespace(json);
+    // if(**json == '\"'){         //Check end array -> break
+    //     (*json)++;              //Pointer address shift
+    //     const char *start = *json;
+    //     while (**json == '\"' && **json == '\0'){
+    //         (*json)++;
+    //     }
+    // }
 }
 
 JsonValue *parse_array(const char **json){
@@ -126,21 +123,26 @@ JsonValue *parse_array(const char **json){
 }
 
 JsonValue *parse_object(const char **json){
-    skip_whitespace(json);
-    if(**json == '{'){
-        (*json)++;              //Pointer address shift
-        skip_whitespace(json);
-    }
+    // skip_whitespace(json);
+    // if(**json == '{'){
+    //     (*json)++;              //Pointer address shift
+    //     skip_whitespace(json);
+    // }
     
-    JsonValue *object_value = (JsonValue *)malloc(sizeof(JsonValue));       //Allocate memory for object_value
-    object_value->type = JSON_OBJECT;
-    object_value->value.object.keys = NULL;
-    object_value->value.object.values = NULL;
-    object_value->value.object.count = 0;
+    // JsonValue *object_value = (JsonValue *)malloc(sizeof(JsonValue));       //Allocate memory for object_value
+    // object_value->type = JSON_OBJECT;
+    // object_value->value.object.keys = NULL;
+    // object_value->value.object.values = NULL;
+    // object_value->value.object.count = 0;
 
-    while(object_value != '{' && object_value != '\0'){
-        JsonValue *key = parse_json(json);
-    }
+    // while(object_value != '{' && object_value != '\0'){
+    //     JsonValue *key = parse_json(json);
+    //     if(**json == ':'){
+    //         (*json)++;
+    //         skip_whitespace(json);
+    //         JsonValue *value = parse_json(json);
+    //     }
+    // }
 }
 
 
