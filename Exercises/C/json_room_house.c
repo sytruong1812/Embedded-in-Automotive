@@ -53,6 +53,7 @@ typedef struct JsonValue
   } value;              
 } JsonValue;
 
+
 static void skip_whitespace(const char **json){
     while (isspace(**json))
     {
@@ -141,16 +142,18 @@ JsonValue *parse_object(const char **json){
     //         (*json)++;
     //         skip_whitespace(json);
     //         JsonValue *value = parse_json(json);
+    //         if(value){
+    //             object_value->value.object.count++;
+    //             object_value->value.object.keys = (char **)malloc(sizeof(*value));
+    //         }
     //     }
     // }
 }
-
 
 int main(int argc, char const *argv[])
 {    
     const char* json_str = "{\"Nguoi1\":{\"Ten\":\"Nguyen Van A\",\"Tuoi\":\"20\",\"Gioitinh\":\"Nam\",\"Diachi\":{\"Phuong\":\"Phuong 3\",\"Quan\":\"Go Vap\",\"Thanhpho\":\"Ho Chi Minh\"},\"SDT\":[{\"Loai\":\"So di thoai ca nhan\",\"SDT\":\"0938348442\"},{\"Loai\":\"So dien thoai co quan\",\"SDT\":\"0799124108\"}],\"TrangThaiHonNhan\":False}}";
     check_numberOfObject(json_str);
-    return 0;
 }
 
 
