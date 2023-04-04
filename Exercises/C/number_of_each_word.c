@@ -25,7 +25,7 @@ int wordCompare(const char *s1, const char *s2) {
     }
 }
 
-void numberOfEachWord(const char InArray[]){
+void numberOfEachWord(const char *InArray){
     char word[28][7];       
     int word_count = 0;     
     int word_index = 0;     
