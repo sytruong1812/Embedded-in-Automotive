@@ -1,6 +1,5 @@
 #include "stdio.h"
 #include "stdint.h"
-#include "string.h"
 
 /*
 Nhập vào chuỗi có nhiều kiểu dữ liệu (number, string, char, double)
@@ -9,14 +8,56 @@ nếu là kiểu string, char thì sắp xếp theo thứ tự ABC
 VD: Input: 1,2,3,"10",'A', "ABC", "Hello";
 Output: 16, A ABC Hello
 */
+#define LENG(arr) (sizeof(arr) / sizeof(arr[0]))
 
-// void *string = &Input; 
-// int number[] = {0};
-
-char input[] = {'1', '2', '3','9'};
-
+char input[] = {'1','2','3','9'};
 int number[100];
-char string[100];
+char strings[100];
+
+char *cacl[100] = {NULL};
+
+void inputKeys(){
+    int i;
+    uint8_t typeInt;
+    char typeChar[100];
+    char typeString[100];
+    double typeDouble;
+    do
+    {
+        int input;
+        scanf("%ld", &input);
+        switch (input)
+        {
+        case 1:
+            // uint8_t typeInt;
+            scanf("%d", &typeInt);
+            *(int *)cacl[i] = typeInt;
+            i++;
+            break;
+        case 2:
+            // char typeChar[100];
+            scanf("%c", &typeChar);
+            *(char *)cacl[i] = typeChar;
+            i++;
+            break;
+        case 3:
+            // char typeString[100];
+            scanf("%s", &typeString);
+            *(char *)cacl[i] = typeString;
+            i++;
+            break;
+        case 4:
+            // double typeDouble;
+            scanf("%f", &typeDouble);
+            *(double *)cacl[i] = typeDouble;
+            i++;
+            break;
+        default:
+            break;
+        }
+    } while (1);
+}
+
 
 void dataClassify(char *array){
     int sum = 0;
@@ -27,7 +68,7 @@ void dataClassify(char *array){
             sum += number[i] - '0';
         }
         if((array[i] > 65  && array[i] < 90) || (array[i] > 97 && array[i] < 122)){
-            array[i] = string[i];
+            array[i] = strings[i];
         }
         else{
             continue;
@@ -37,7 +78,7 @@ void dataClassify(char *array){
 }
 
 void sumNumber(){
-    char x[10] = {'1','2','3',"10"};
+    char x[10] = {'1','2','3'};
     int sum;
     for (int i = 0; x[i] != '\0'; i++)
     {
@@ -54,7 +95,8 @@ void sumNumber(){
 
 int main(int argc, char const *argv[])
 {
-    sumNumber();
+    // sumNumber();
     // dataClassify(input);
+    inputKeys();
     return 0;
 }
