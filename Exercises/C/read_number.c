@@ -1,5 +1,5 @@
 #include "stdio.h"
-#include <stdlib.h>
+#include "stdint.h"
 
 /*
 Nhập vào từ bàn phím tối đa 7 chữ số, ví dụ: 1200019
@@ -10,88 +10,50 @@ Nhập vào từ bàn phím tối đa 7 chữ số, ví dụ: 1200019
 Đọc ra: Một triệu không trăm chín mươi
 */
 
-void readNumber(int num);
+uint32_t inputNumber;
+uint8_t digitsArray[7];
+char *read[] = {" ","MUOI","TRAM","NGHIN","MUOI","TRAM","TRIEU"};
+char *readNum[] = {"KHONG","MOT","HAI","BA","BON","NAM","SAU","BAY","TAM","CHIN"};
 
-int main() {
-    int num;
-    printf("Nhap vao mot so nguyen duong toi da 7 chu so: ");
-    scanf("%d", &num);
 
-    if (num < 0 || num > 9999999) {
-        printf("So nhap vao khong hop le.\n");
-        return 0;
-    }
-
-    readNumber(num);
-    return 0;
+uint8_t countDigitsofNumber(const uint32_t inputNumber){
+    uint8_t countDigits = 0;
+    uint32_t tempNumber = inputNumber;
+    while (tempNumber >= 1)
+    {   
+        ++countDigits;
+        tempNumber = tempNumber / 10; 
+    };
+    return countDigits;
 }
 
-void readNumber(int num) {
-    char *ones[] = {"khong", "mot", "hai", "ba", "bon", "nam", "sau", "bay", "tam", "chin"};
-    char *tens[] = {"muoi", "hai muoi", "ba muoi", "bon muoi", "nam muoi", "sau muoi", "bay muoi", "tam muoi", "chin muoi"};
-    char *hundreds[] = {"mot tram", "hai tram", "ba tram", "bon tram", "nam tram", "sau tram", "bay tram", "tam tram", "chin tram"};
-    char *thousands[] = {"mot ngan", "hai ngan", "ba ngan", "bon ngan", "nam ngan", "sau ngan", "bay ngan", "tam ngan", "chin ngan"};
-    char *millions[] = {"mot trieu", "hai trieu", "ba trieu", "bon trieu", "nam trieu", "sau trieu", "bay trieu", "tam trieu", "chin trieu"};
-
-    int digit1 = num % 10;       // đơn vị
-    int digit10 = (num / 10) % 10;   // chục
-    int digit100 = (num / 100) % 10;   // hàng trăm
-    int digit1000 = (num / 1000) % 10;   // hàng nghìn
-    int digit10000 = (num / 10000) % 10;   // hàng chục nghìn
-    int digit100000 = (num / 100000) % 10;   // hàng trăm nghìn
-    int digit1000000 = (num / 1000000) % 10;   // hàng triệu
-
-    if (digit1000000 != 0) {
-        printf("%s trieu ", ones[digit1000000]);
+void separateDigits(const uint32_t inputNumber, uint8_t digitsArray[]){
+    uint32_t tempNumber = inputNumber;
+    for(int i = 0; i < countDigitsofNumber(inputNumber); i++){
+        digitsArray[i] = tempNumber % 10;
+        tempNumber = tempNumber / 10;
     }
+}
 
-    if (digit100000 != 0) {
-        printf("%s tram ", ones[digit100000]);
-    } else {
-        if (digit10000 != 0 || digit1000 != 0 || digit100 != 0 || digit10 != 0 || digit1 != 0) {
-            printf("khong tram ");
+void readNumber(const uint32_t inputNumber, uint8_t digitsArray[]){
+    for(int i = countDigitsofNumber(inputNumber) - 1; i >= 0; i--){
+        if(digitsArray[i] == 0){
+            continue;
+        }
+        else{
+            printf("%s %s ", readNum[digitsArray[i]], read[i]);
+            if(i > 5, digitsArray[i] == 1 && digitsArray[i+1] == 0){
+                printf("LINH ");
+            }
         }
     }
+}
 
-    if (digit10000 != 0) {
-        if (digit10000 == 1) {
-            printf("%s ", tens[digit10]);
-        } else {
-            printf("%s ", ones[digit10000]);
-            printf("%s ", tens[digit10]);
-        }
-    } else {
-        if (digit1000 != 0 || digit100 != 0 || digit10 != 0 || digit1 != 0) {
-            printf("nghin ");
-        }
-    }
-
-    if (digit1000 != 0) {
-        printf("%s ", hundreds[digit1000 - 1]);
-    }
-
-    if (digit100 != 0) {
-        printf("%s ", hundreds[digit100 - 1]);
-    } else {
-        if (digit10 != 0 || digit1 != 0) {
-            printf("khong tram ");
-        }
-    }
-
-    if (digit10 != 0 && digit10 != 1) {
-        printf("%s ", tens[digit10 - 1]);
-    }
-
-    if (digit10 == 1) {
-        printf("muoi ");
-    }
-
-    if (digit1 != 0) {
-        if (digit10 != 1) {
-            printf("%s ", ones[digit1]);
-        } else {
-            printf("mot ");
-        }
-    }
-    printf("dong.");
+int main(int argc, char const *argv[])
+{   
+    printf("Enter a number: ");
+    scanf("%d", &inputNumber);
+    separateDigits(inputNumber,digitsArray);
+    readNumber(inputNumber, digitsArray);
+    return 0;
 }
