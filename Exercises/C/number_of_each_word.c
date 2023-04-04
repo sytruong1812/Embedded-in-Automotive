@@ -7,8 +7,7 @@
 
 #define LENG(arr) (sizeof(arr)/sizeof(arr[0]))
 
-char array[] = "Binh thuong moi ngay toi deu lam viec, lam viec vat va de kiem tiem, kiem tiem de co the song, song mot cuoc song vui ve.";
-//Đoạn văn có 27 từ, size của từ lớn nhất là 6
+const char array[] = "Binh thuong moi ngay toi deu lam viec, lam viec vat va de kiem tiem, kiem tiem de co the song, song mot cuoc song vui ve.";
 
 // Function so sánh 2 chuỗi bằng nhau không?
 int wordCompare(const char *s1, const char *s2) {
