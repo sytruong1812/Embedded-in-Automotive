@@ -56,7 +56,7 @@ void numberOfEachWord(const char InArray[]){
                     counts[i]++;
                     counts[j] = -1;     // Đánh dẫu đã xét
                 }
-            }
+            } 
             // printf("%d ", counts[i]);
         }
     }
