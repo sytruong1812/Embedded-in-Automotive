@@ -9,7 +9,6 @@
 
 char array[] = "Binh thuong moi ngay toi deu lam viec, lam viec vat va de kiem tiem, kiem tiem de co the song, song mot cuoc song vui ve.";
 //Đoạn văn có 27 từ, size của từ lớn nhất là 6
-int len = LENG(array);
 
 // Function so sánh 2 chuỗi bằng nhau không?
 int wordCompare(const char *s1, const char *s2) {
@@ -58,6 +57,7 @@ void numberOfEachWord(const char InArray[]){
                     counts[j] = -1;     // Đánh dẫu đã xét
                 }
             }
+            printf("%d ", counts[i]);
         }
     }
     //In ra các từ giống nhau và số lần xuất hiện 
