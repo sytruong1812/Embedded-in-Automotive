@@ -44,7 +44,7 @@ void numberOfEachWord(const char InArray[]){
             word_index++;
         }
     }
-    printf("Number of words in sentence: %d\n", word_count);
+    // printf("Number of words in sentence: %d\n", word_count);
 
     // Đếm số lần xuất hiện của từ trong đoạn văn
     for (int i = 0; i < word_count ; i++){
@@ -57,7 +57,7 @@ void numberOfEachWord(const char InArray[]){
                     counts[j] = -1;     // Đánh dẫu đã xét
                 }
             }
-            printf("%d ", counts[i]);
+            // printf("%d ", counts[i]);
         }
     }
     //In ra các từ giống nhau và số lần xuất hiện 
