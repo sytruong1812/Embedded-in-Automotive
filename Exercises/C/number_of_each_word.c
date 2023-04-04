@@ -26,7 +26,7 @@ int wordCompare(const char *s1, const char *s2) {
     }
 }
 
-void numberOfWordByWord(const char InArray[]){
+void numberOfEachWord(const char InArray[]){
     char word[28][7];       
     int word_count = 0;     
     int word_index = 0;     
@@ -45,7 +45,7 @@ void numberOfWordByWord(const char InArray[]){
             word_index++;
         }
     }
-    printf("Number of words: %d\n", word_count);
+    printf("Number of words in sentence: %d\n", word_count);
 
     // Đếm số lần xuất hiện của từ trong đoạn văn
     for (int i = 0; i < word_count ; i++){
@@ -70,6 +70,6 @@ void numberOfWordByWord(const char InArray[]){
 
 int main(int argc, char const *argv[])
 {
-    numberOfWordByWord(array);
+    numberOfEachWord(array);
 }
 
