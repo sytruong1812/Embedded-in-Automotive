@@ -25,7 +25,7 @@ int wordCompare(const char *s1, const char *s2) {
 }
 
 void numberOfEachWord(const char *InArray){
-    char word[28][7];       
+    char word[28][8];       
     int word_count = 0;     
     int word_index = 0;     
     int counts[28] = {0};   //Lưu số lần xuất hiện của từ trong đoạn văn
