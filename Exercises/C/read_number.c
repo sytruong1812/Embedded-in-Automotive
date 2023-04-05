@@ -18,37 +18,45 @@ char *readNum[] = {"KHONG","MOT","HAI","BA","BON","NAM","SAU","BAY","TAM","CHIN"
 
 uint8_t countDigitsofNumber(const uint32_t inputNumber){
     uint8_t countDigits = 0;
-    uint32_t tempNumber = inputNumber;
-    while (tempNumber >= 1)
+    uint32_t tempNumber = inputNumber;      //Biến tạm
+    while (tempNumber >= 1)     //1234567
     {   
-        ++countDigits;
-        tempNumber = tempNumber / 10; 
+        ++countDigits;          //1
+        tempNumber /= 10;       //1234567/10 = 123456
+                                //123456/10 = 12345
+                                //12345/10 = 1234
+                                //1234/10 = 123
+                                //123/10 = 12
+                                //12/10 = 1
+                                //1/10 = 0
     };
-    return countDigits;
+    return countDigits;         //countDigits = 8
 }
 
 void separateDigits(const uint32_t inputNumber, uint8_t digitsArray[]){
-    uint32_t tempNumber = inputNumber;
-    for(int i = 0; i < countDigitsofNumber(inputNumber); i++){
-        digitsArray[i] = tempNumber % 10;
-        tempNumber = tempNumber / 10;
+    uint32_t tempNumber = inputNumber;      //Biến tạm
+    for(int i = 0; i < countDigitsofNumber(inputNumber); i++){          
+        digitsArray[i] = tempNumber % 10;       //1234567 % 10 = 7
+    //  digitsArray[] = {7,6,5,4,3,2,1}
+        tempNumber = tempNumber / 10;           //1234567 / 10 = 123456
     }
 }
 
 void readNumber(const uint32_t inputNumber, uint8_t digitsArray[]){
-    for(int i = countDigitsofNumber(inputNumber) - 1; i >= 0; i--){
-        if(digitsArray[i] == 0){
+    for(int i = countDigitsofNumber(inputNumber) - 1; i >= 0; i--){         //Duyệt ngược chuỗi
+        //  i = 8 - 1 = 7
+        if(digitsArray[i] == 0){            //  digitsArray[] = {7,6,5,4,3,2,1}
+            if(digitsArray[i] == 0 && digitsArray[i-1] == 1 && digitsArray[i+1] == 1){       //1000101 ~ 1010001
+                printf("LINH ");
+            }
             continue;
         }
         else{
             printf("%s %s ", readNum[digitsArray[i]], read[i]);
-            if(i > 5, digitsArray[i] == 1 && digitsArray[i+1] == 0){
-                printf("LINH ");
-            }
+                        //   readNum[7]             , read[7]
         }
     }
 }
-
 int main(int argc, char const *argv[])
 {   
     printf("Enter a number: ");
