@@ -12,6 +12,8 @@ typedef enum{
     BAG            = 1 << 7    //0b10000000
 }PersonalBelongings;
 
+char *item[] = {"SHIRT", "PANT", "SKIRT", "DRESS", "RING", "BRACELET", "SHOES", "BAG"}; 
+
 void Add_Cart(uint8_t *cart, PersonalBelongings item_name ){
     *cart |= item_name; 
 }
@@ -28,67 +30,11 @@ void Check_Item(uint8_t cart, PersonalBelongings item_name)
     {
         if((cart & (1 << i)) != 0)             //0b00000101 & 0b00000010 = 0b00000010  
         {
-            switch(i)                                  
-            {
-                case 0:
-                    printf("Shirt already exists in cart!\n");
-                    break;
-                case 1:                                            
-                    printf("Pant already exists in cart!\n");
-                    break;
-                case 2:
-                    printf("Skirt already exists in cart!\n");
-                    break;
-                case 3:
-                    printf("Dress already exists in cart!\n");
-                    break;
-                case 4:
-                    printf("Ring already exists in cart!\n");
-                    break;
-                case 5:
-                    printf("Bracelet already exists in cart!\n");
-                    break;
-                case 6:
-                    printf("Shoes already exists in cart!\n");
-                    break;
-                case 7:
-                    printf("Bag already exists in cart!\n");
-                    break;
-                default:
-                    break;
-            }
+            printf("%s already exists in cart!\n", item[i]);
         }                                       
         if(~(cart | ~(1 << i)) == (item_name & (1 << i)))           //0b00000010 == 0b00000010
         {
-            switch(i)
-            {
-                case 0:
-                    printf("Shirt do not exist in the cart!\n");
-                    break;
-                case 1:
-                    printf("Pant do not exist in the cart!\n");
-                    break;
-                case 2:
-                    printf("Skirt do not exist in the cart!\n");
-                    break;
-                case 3:
-                    printf("Dress do not exist in the cart!\n");
-                    break;
-                case 4:
-                    printf("Ring do not exist in the cart!\n");
-                    break;
-                case 5:
-                    printf("Bracelet do not exist in the cart!\n");
-                    break;
-                case 6:
-                    printf("Shoes do not exist in the cart!\n");
-                    break;
-                case 7:
-                    printf("Bag do not exist in the cart!\n");
-                    break;
-                default:
-                    break;
-            }
+            printf("%s do not exists in cart!\n", item[i]);
         }
     }   
 }
@@ -98,34 +44,7 @@ void Show_Cart(uint8_t cart){
     printf("STT\t NAME\n");
     for(int i=0; i<8; i++){
         if((cart & (1 << i)) != 0){
-            switch(i){
-                case 0:
-                    printf(" 1\t Shirt\n");
-                    break;
-                case 1:
-                    printf(" 2\t Pant\n");
-                    break;
-                case 2:
-                    printf(" 3\t Skirt\n");
-                    break;
-                case 3:
-                    printf(" 4\t Dress\n");
-                    break;
-                case 4:
-                    printf(" 5\t Ring\n");
-                    break;
-                case 5:
-                    printf(" 6\t Bracelet\n");
-                    break;
-                case 6:
-                    printf(" 7\t Shoes\n");
-                    break;
-                case 7:
-                    printf(" 8\t Bag");
-                    break;
-                default:
-                    break;
-            }
+            printf(" 1\t %s\n", item[i]);
         }
     }
 }
