@@ -1,5 +1,6 @@
-#include "stdio.h"
-#include "stdint.h"
+#include <stdio.h>
+#include <stdint.h>
+#include <stdlib.h>
 
 /*
 Nhập vào chuỗi có nhiều kiểu dữ liệu (number, string, char, double)
@@ -8,56 +9,71 @@ nếu là kiểu string, char thì sắp xếp theo thứ tự ABC
 VD: Input: 1,2,3,"10",'A', "ABC", "Hello";
 Output: 16, A ABC Hello
 */
+
 #define LENG(arr) (sizeof(arr) / sizeof(arr[0]))
 
 char input[] = {'1','2','3','9'};
 int number[100];
 char strings[100];
-
 char *cacl[100] = {NULL};
 
 void inputKeys(){
-    int i;
-    uint8_t typeInt;
-    char typeChar[100];
-    char typeString[100];
+    int i = 0;
+
+    int typeInt;
     double typeDouble;
-    do
+    char typeChar;
+    char typeString[100];
+
+    // int size = 5;
+    // char *cacl = malloc(size * sizeof(char*));
+    while (1)
     {
         int input;
-        scanf("%ld", &input);
+        printf("Input: ");
+        scanf("%d", &input);
         switch (input)
         {
         case 1:
             // uint8_t typeInt;
+            printf("Input_Int: ");
             scanf("%d", &typeInt);
-            *(int *)cacl[i] = typeInt;
+            cacl[i] = &typeInt;     //Con trỏ cacl[i] lưu địa chỉ biến typeInt
             i++;
             break;
         case 2:
-            // char typeChar[100];
-            scanf("%c", &typeChar);
-            *(char *)cacl[i] = typeChar;
+            // double typeDouble;
+            printf("Input_Double: ");
+            scanf("%f", &typeDouble);       //Con trỏ cacl[i] lưu địa chỉ biến typeDouble
+            cacl[i] = &typeDouble;
             i++;
             break;
         case 3:
-            // char typeString[100];
-            scanf("%s", &typeString);
-            *(char *)cacl[i] = typeString;
+            // char typeChar[100];
+            printf("Input_Char: ");
+            scanf("%s", &typeChar);
+            cacl[i] = &typeChar;            
             i++;
             break;
         case 4:
-            // double typeDouble;
-            scanf("%f", &typeDouble);
-            *(double *)cacl[i] = typeDouble;
+            // char typeString[100];
+            printf("Input_String: ");
+            scanf("%s", &typeString);
+            cacl[i] = &typeString;
+            cacl[i+1] = '\0';
             i++;
+            break;
+        case 5: 
+            for (int j = 0; j < 100; j++)
+            {
+                printf("%s ", *cacl[j]);
+            }
             break;
         default:
             break;
         }
-    } while (1);
+    }
 }
-
 
 void dataClassify(char *array){
     int sum = 0;
@@ -98,5 +114,10 @@ int main(int argc, char const *argv[])
     // sumNumber();
     // dataClassify(input);
     inputKeys();
+
+    // char typeString[100];
+    // printf("Input_String: ");
+    // scanf("%s", &typeString);
+    // printf("%s", typeString);
     return 0;
 }
