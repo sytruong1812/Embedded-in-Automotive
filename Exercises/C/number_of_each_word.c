@@ -5,7 +5,7 @@
     2 mảng bằng nhau cần: kích thước bằng nhau, giá trị mỗi kỹ tự bằng nhau
 */
 
-#define LENG(arr) (sizeof(arr)/sizeof(arr[0]))
+#define LENG(arr) (int)(sizeof(arr)/sizeof(arr[0]))
 
 const char array[] = "Binh thuong moi ngay toi deu lam viec, lam viec vat va de kiem tiem, kiem tiem de co the song, song mot cuoc song vui ve.";
 

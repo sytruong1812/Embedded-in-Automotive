@@ -5,7 +5,7 @@ void tim_nguoi(int ma){
         "Ma sai",               //ds[0]
         "Nguyen Thi Anh",       //ds[1]
         "Nguyen Van Toan",      //ds[2]
-        "Pham Van Tri",         //ds[3]
+        "Phan Van Tri",         //ds[3]
         "Do Hung Dung",         //ds[4]
         "Le Van Vu"             //ds[5]
     };

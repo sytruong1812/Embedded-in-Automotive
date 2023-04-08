@@ -1,7 +1,7 @@
 #include "stdio.h"
 #include "string.h"
 
-#define LENG_ARRAY(arr)  (sizeof(arr)/sizeof(arr[0]))
+#define LENG_ARRAY(arr)  (int)(sizeof(arr)/sizeof(arr[0]))
 
 //Đảo ngược chuỗi thành: Party Congress the or Gandhi Rahul.....
 

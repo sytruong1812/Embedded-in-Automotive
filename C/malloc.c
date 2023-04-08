@@ -16,7 +16,5 @@ int main(int argc, char const *argv[])
     {
         printf("i = %d\n", data[i]);
     }
-
-
     return 0;
 }

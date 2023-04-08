@@ -1,0 +1,10 @@
+Start Flag/ Command/ Payload Size/ Payload Data/ Checksum
+Start Flag (hay còn gọi là Header) là một byte đánh dấu sự bắt đầu của một gói tin dữ liệu được gửi đi hoặc nhận về trên một giao thức truyền thông nào đó. Start Flag thường được sử dụng để đồng bộ hóa truyền nhận dữ liệu, giúp cho thiết bị nhận biết được nơi bắt đầu và kết thúc của mỗi gói tin.
+
+Command (hoặc hay còn gọi là Instruction) là một byte định nghĩa loại dữ liệu và hoạt động mà thiết bị đang yêu cầu. Command thông thường được sử dụng để yêu cầu việc đọc hoặc ghi dữ liệu.
+
+Payload Size là số byte của phần Payload Data (dữ liệu gói tin). Payload Size thường được sử dụng để thiết lập kích thước của phần dữ liệu, giúp cho thiết bị có thể biết được độ dài của dữ liệu cần nhận.
+
+Payload Data (hay còn gọi là Data Field) là phần dữ liệu chính của gói tin. Payload Data có thể chứa các thông tin liên quan đến hoạt động của thiết bị, ví dụ như giá trị đo từ một cảm biến hoặc dữ liệu truyền đi từ một thiết bị.
+
+Checksum (hoặc hay còn gọi là CRC) là một byte kiểm tra tính toàn vẹn của dữ liệu gói tin. Checksum được tính toán dựa trên dữ liệu trong Payload Data, giúp cho thiết bị có thể kiểm tra xem gói tin có bị lỗi hay không. Nếu Checksum không khớp với dữ liệu trong Payload Data, thiết bị có thể sẽ yêu cầu gửi lại gói tin hoặc báo lỗi.

@@ -11,10 +11,10 @@ char c = 'a';
 char d[5] = "hello";
 double f = 15.0;
 
-void *ptr = &a;
+void *ptr = &d;
 
 int main(int argc, char const *argv[])
 {
-    printf("Gia tri cua ptr: %p", ptr);
+    printf("Gia tri cua ptr: %s", ptr);
     return 0;
 }
