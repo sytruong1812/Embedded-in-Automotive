@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "b1_class.h"
+#include "main.h"
 
 /*
     g++ .\b1_class.cpp -o b1_class
