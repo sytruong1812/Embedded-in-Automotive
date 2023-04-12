@@ -18,21 +18,21 @@ chương trình. Vì phạm vi sử dụng của hàm là toàn chương trình.
     + Có thể có đối hoặc không có đối.
     + Trong class có thể có nhiều constructor cùng tên, nhưng khác bộ đối.
 ### 4: Các từ khóa public, private, protected:
-#### public: Các thành viên công khai (public) có thể được truy cập từ bất kỳ đâu trong chương trình, bao gồm cả 
+- public: Các thành viên công khai (public) có thể được truy cập từ bất kỳ đâu trong chương trình, bao gồm cả 
 từ các lớp bên ngoài. Đây là phạm vi rộng nhất và cho phép tất cả các thành viên của lớp hoặc đối tượng được 
 truy cập một cách tự do.
 
-#### protected: Các thành viên được bảo vệ (protected) chỉ có thể được truy cập từ bên trong lớp định nghĩa chúng 
+- protected: Các thành viên được bảo vệ (protected) chỉ có thể được truy cập từ bên trong lớp định nghĩa chúng 
 hoặc từ các lớp dẫn xuất (kế thừa) của lớp đó. Các thành viên protected không thể được truy cập từ bên ngoài lớp 
 hoặc đối tượng.
 
-#### private: Các thành viên riêng tư (private) chỉ có thể được truy cập từ bên trong lớp định nghĩa chúng. 
+- private: Các thành viên riêng tư (private) chỉ có thể được truy cập từ bên trong lớp định nghĩa chúng. 
 Các thành viên private không thể được truy cập từ các lớp dẫn xuất (kế thừa) hoặc từ bên ngoài lớp hoặc đối tượng.
 
-#### Các đặc điểm chính của từ khóa protected, private, và public:
-    - public: Có phạm vi rộng nhất, cho phép truy cập từ mọi nơi.
-    - protected: Chỉ cho phép truy cập từ bên trong lớp định nghĩa chúng và các lớp dẫn xuất (kế thừa).
-    - private: Chỉ cho phép truy cập từ bên trong lớp định nghĩa chúng.
+- Các đặc điểm chính của từ khóa protected, private, và public:
+    + public: Có phạm vi rộng nhất, cho phép truy cập từ mọi nơi.
+    + protected: Chỉ cho phép truy cập từ bên trong lớp định nghĩa chúng và các lớp dẫn xuất (kế thừa).
+    + private: Chỉ cho phép truy cập từ bên trong lớp định nghĩa chúng.
     Sử dụng đúng từ khóa phù hợp là một phần quan trọng trong thiết kế lớp và quản lý độ an toàn của dữ liệu 
     trong lập trình hướng đối tượng.
 ### 5: Ví dụ:
@@ -61,7 +61,7 @@ className::className(int _a, int _b){
     className::b = _b;
 }
 ```
-## Các tính chất trong lập trình hướng đối tượng (OOP)
+## 6: Các tính chất trong lập trình hướng đối tượng (OOP)
 ### 1: Tính kế thừa
 ### 2: Tính trừu tượng
 ### 3: Tính đa hình
