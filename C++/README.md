@@ -9,14 +9,14 @@
     chương trình. Vì phạm vi sử dụng của hàm là toàn chương trình.
 ### 3: Hàm tạo (Constructor)
     - Constructor cũng là một methods của class dùng để tạo dựng một đối tượng mới từ đầu, và sẽ chạy đầu tiên.
-- 3 điểm khác biệt của Constructor so với các methods khác:
-    + Tên của constructor bắc buộc phải trùng với tên của Class
-    + Không khai báo kiểu cho constructor.
-    + Constructor không có kết quả trả về.
-- Ngoài 3 điểm khác trên thì constructor giống với các methods khác:
-    + Có thể được định nghĩa (xây dựng) bên trong hoặc ngoài class
-    + Có thể có đối hoặc không có đối.
-    + Trong class có thể có nhiều constructor cùng tên, nhưng khác bộ đối.
+    - 3 điểm khác biệt của Constructor so với các methods khác:
+        + Tên của constructor bắc buộc phải trùng với tên của Class
+        + Không khai báo kiểu cho constructor.
+        + Constructor không có kết quả trả về.
+    - Ngoài 3 điểm khác trên thì constructor giống với các methods khác:
+        + Có thể được định nghĩa (xây dựng) bên trong hoặc ngoài class
+        + Có thể có đối hoặc không có đối.
+        + Trong class có thể có nhiều constructor cùng tên, nhưng khác bộ đối.
 ### 4: Các từ khóa public, private, protected:
     - public: Các thành viên công khai (public) có thể được truy cập từ bất kỳ đâu trong chương trình, bao gồm cả 
     từ các lớp bên ngoài. Đây là phạm vi rộng nhất và cho phép tất cả các thành viên của lớp hoặc đối tượng được 
