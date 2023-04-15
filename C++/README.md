@@ -33,8 +33,8 @@
         + public: Có phạm vi rộng nhất, cho phép truy cập từ mọi nơi.
         + protected: Chỉ cho phép truy cập từ bên trong lớp định nghĩa chúng và các lớp dẫn xuất (kế thừa).
         + private: Chỉ cho phép truy cập từ bên trong lớp định nghĩa chúng.
-        Sử dụng đúng từ khóa phù hợp là một phần quan trọng trong thiết kế lớp và quản lý độ an toàn của dữ liệu 
-        trong lập trình hướng đối tượng.
+    Sử dụng đúng từ khóa phù hợp là một phần quan trọng trong thiết kế lớp và quản lý độ an toàn của dữ liệu 
+    trong lập trình hướng đối tượng.
 ### 5: Ví dụ:
 ```c
 class className{
@@ -63,6 +63,15 @@ className::className(int _a, int _b){
 ```
 ## 6: Các tính chất trong lập trình hướng đối tượng (OOP)
 ### 1: Tính kế thừa
+    - Nếu class con có dạng kế thừa là public, thì class cha kiểu gì qua class con giữ nguyên 
+    - Nếu class con có dạng kế thừa là private, thì nếu:
+        + Class cha kiểu plulic -> Class con kiểu private
+        + Class cha kiểu private -> Class con kiểu private
+        + Class cha kiểu protected - > Class con kiểu private
+    - Nếu class con có dạng kế thừa là protected, thì nếu:
+        + Class cha kiểu plulic -> Class con kiểu protected
+        + Class cha kiểu private -> Class con kiểu private
+        + Class cha kiểu protected - > Class con kiểu protected 
 ### 2: Tính trừu tượng
 ### 3: Tính đa hình
 ### 4: Tính đóng gói
