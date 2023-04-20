@@ -1,4 +1,5 @@
 ## I: CLASS
+    Class hoạt động như một bản blueprint. Nó không có giác trị hay địa chỉ gì cả, cho đến khi ta khai báo.
 ### 1: Khai báo các thuộc tính (Peroperties) 
     - Thuộc tính của lớp có thể là biến, mảng, con trỏ có kiểu chuẩn (int, char, float...),hoặc kiểu ngoài đã được 
     định nghĩa trước (struct, union, class...).
