@@ -2,6 +2,14 @@
 #include <stdint.h>
 #include <cmath>
 
+/*
+File: main.c
+Author: Sy Truong
+Date: 18/4/2023
+Description: Tạo một lớp điểm trong hệ tọa độ 2D và viết các phương thức để tính
+khoảng cách giữa hai điểm, tính diện tích của tam giác được tạo bởi ba điểm.
+*/
+
 class Diem{
     private:
         int8_t toaDoX;
