@@ -1,5 +1,5 @@
 ## I: CLASS
-    Class hoạt động như một bản blueprint. Nó không có giác trị hay địa chỉ gì cả, cho đến khi ta khai báo.
+    Class hoạt động như một blueprint. Nó không có giác trị hay địa chỉ gì cả, cho đến khi ta khai báo.
 ### 1: Khai báo các thuộc tính (Peroperties) 
     - Thuộc tính của lớp có thể là biến, mảng, con trỏ có kiểu chuẩn (int, char, float...),hoặc kiểu ngoài đã được 
     định nghĩa trước (struct, union, class...).
@@ -46,7 +46,7 @@ class className{
         className *ptr;       //Kiểu con trỏ của class đó
     protected:              //Các thành phần protected chỉ được sử dụng trong class hoặc các class kế thừa của class đó
     public:                 //Các thành phần public (công cộng) được phép sử dụng ở cả ngoài và trong class đó
-        void sum();         //methods: Hàm tính tổng
+        void sum();         //methods (phương thức): Hàm tính tổng
         className(int _a = 0, int _b = 0);       //Khai báo constructor className có 2 đối là _a và _b
 };
 
