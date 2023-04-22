@@ -83,15 +83,15 @@ double PhepToanOXY::dienTichTamGiac(){
     double disAB;
     double disBC;
     double disAC;
-    double P;
-    double acreage;
+    double chuvi;
+    double dientich;
     if (PhepToanOXY::checkPhepToan == DIEN_TICH){
         disAB = sqrt(((diemA.getToaDoX() - diemB.getToaDoX()) * (diemA.getToaDoX() - diemB.getToaDoX())) + ((diemA.getToaDoY() - diemB.getToaDoY()) * (diemA.getToaDoY() - diemB.getToaDoY())));
         disBC = sqrt(((diemB.getToaDoX() - diemC.getToaDoX()) * (diemB.getToaDoX() - diemC.getToaDoX())) + ((diemB.getToaDoY() - diemC.getToaDoY()) * (diemB.getToaDoY() - diemC.getToaDoY())));
         disAC = sqrt(((diemA.getToaDoX() - diemC.getToaDoX()) * (diemA.getToaDoX() - diemC.getToaDoX())) + ((diemA.getToaDoY() - diemC.getToaDoY()) * (diemA.getToaDoY() - diemC.getToaDoY())));
-        P = (disAB + disBC + disAC) / 2;
-        acreage = sqrt(P * (P - disAB) * (P - disBC) * (P - disAC));
-        return acreage; 
+        chuvi = (disAB + disBC + disAC) / 2;
+        dientich = sqrt(chuvi * (chuvi - disAB) * (chuvi - disBC) * (chuvi - disAC));
+        return dientich; 
     }
     else{
         printf("Khong phai chuong trinh checkPhepToan!");
