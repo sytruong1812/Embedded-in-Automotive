@@ -56,7 +56,6 @@ Students::Students(){
     static int _id = 1;
     this->id = _id;
     _id++;
-
 }
 
 void Students::setStudent(){
@@ -279,7 +278,7 @@ void Menu::sortStudentByName(){
 }
 
 void Menu::showListStudent(){
-    cout << "---------Show List Student---------";
+    cout << "---------Show List Student---------" << endl;
     for(Students item: database){
         item.getStudent();
     }
