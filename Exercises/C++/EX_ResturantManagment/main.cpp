@@ -13,20 +13,18 @@ Date: 1/5/2023
 Description: Quản lý nhà hàng
 */
 
-
 class FoodAndDrink{
     private:
-        uint8_t id;
+        int id;
         string name;
-        uint16_t cost;
+        int cost;
     public:
         FoodAndDrink();
-        void setID();
-        void setName();
-        void setCost();
-        uint8_t getID();
+        void setFoodAndDrink();
+        int getID();
         string getName();
-        uint16_t getCost();
+        int getCost();
+        void getFoodAndDrink();
 };
 
 FoodAndDrink::FoodAndDrink(){
@@ -34,27 +32,33 @@ FoodAndDrink::FoodAndDrink(){
     this->id = _id;
     _id++;
 }
-void FoodAndDrink::setID(){
+
+void FoodAndDrink::setFoodAndDrink(){
     cout << "Enter food or drink id: ";
     cin >> this->id;
-}
-void FoodAndDrink::setName(){
+
+    cin.ignore(100,'\n');
     cout << "Enter food or drink name: ";
-    cin.ignore(1000,'\n');
     getline(cin, this->name);
-}
-void FoodAndDrink::setCost(){
+
     cout << "Enter food or drink cost: ";
     cin >> this->cost;
 }
-uint8_t FoodAndDrink::getID(){
+
+int FoodAndDrink::getID(){
     return this->id;
 }
 string FoodAndDrink::getName(){
     return this->name;
 }
-uint16_t FoodAndDrink::getCost(){
+int FoodAndDrink::getCost(){
     return this->cost;
+}
+
+void FoodAndDrink::getFoodAndDrink(){
+    cout << "ID: " << this->id << endl;
+    cout << "Name: " << this->name << endl;
+    cout << "Cost: " << this->cost << endl;
 }
 
 typedef struct
@@ -63,7 +67,7 @@ typedef struct
     bool status;
 } Desk;
 
-class ManagmentMode: public FoodAndDrink{
+class ManagmentMode{
     private:
         vector<FoodAndDrink> database_fad;
         vector<Desk> desk_info;
@@ -78,6 +82,7 @@ class ManagmentMode: public FoodAndDrink{
 
 ManagmentMode::ManagmentMode(){
     bool continueProgram = true;
+    bool addMore = true;
     cout << "This is management mode!\n";
     int key = 0;
     do
@@ -93,7 +98,12 @@ ManagmentMode::ManagmentMode(){
         switch (key)
         {
         case 1:
-            addFAD();
+            while (addMore) {
+                addFAD();
+                cout << "Enter 1 to add more - 0 to break: ";
+                cin >> addMore;
+                cin.ignore(100, '\n'); // Dùng để xóa bỏ dấu enter thừa sau khi nhập giá trị cho next
+            }
             break;
         case 2: 
             editFAD();
@@ -111,29 +121,26 @@ ManagmentMode::ManagmentMode(){
             cout << "Invalid option, please try again.\n";
             break;
         }
-    if (continueProgram) {
-        cout << "Enter 1 to continue or 0 to exit: ";
-        cin >> continueProgram;
-    }
+        if (continueProgram) {
+            cout << "Please press 1 to continue the program or press 0 to end the program: ";
+            cin >> continueProgram;
+        }
     } while (continueProgram);
 }
 
 void ManagmentMode::addFAD(){
     FoodAndDrink item;
-    item.setName();
-    item.setCost();
+    item.setFoodAndDrink();
     database_fad.push_back(item);
 }
 
 void ManagmentMode::editFAD(){
-    static string name_edit;
-    cout << "Enter food name want edit: ";
-    cin.ignore(1000,'\n');
-    getline(cin, name_edit);
+    static int _id;
+    cout << "Enter food id you want to edit: ";
+    cin >> _id;
     for(int i = 0; i < database_fad.size(); i++){
-        if(database_fad[i].getName() == name_edit){
-            database_fad[i].setName();
-            database_fad[i].setCost();
+        if(database_fad[i].getID() == _id){
+            database_fad[i].setFoodAndDrink();
         }
         else{
             cout << "Error!\n";
@@ -142,36 +149,44 @@ void ManagmentMode::editFAD(){
 }
 
 void ManagmentMode::deleteFAD(){
-    static string name_delete;
-    cout << "Enter food name want delete: ";
+    static string _name;
     cin.ignore(1000,'\n');
-    getline(cin, name_delete);
+    cout << "Enter food name you want to delete: ";
+    getline(cin, _name);
     for(int i = 0; i < database_fad.size(); i++){
-        if(database_fad[i].getName() == name_delete){
+        if(database_fad[i].getName() == _name){
             database_fad.erase(database_fad.begin() + i);
-            cout << "Removed student whose name is " << name_delete << endl;
+            cout << "Removed student whose name is " << _name << endl;
         }
         else{
             cout << "Error!\n";
         }
     }
+    _name.clear();
 }
 
 void ManagmentMode::listFAD(){
     cout << "----------List Food and Drink----------" << endl;
     for(FoodAndDrink _item: database_fad){
-        _item.getName();
+        _item.getFoodAndDrink();
     }
 }
 
 void ManagmentMode::setNumberOfDesk(){
-
+    int scant;
+    cout << "Enter number of desk: ";
+    cin >> scant;
+    for(int i = 0; i < scant; i++){
+        Desk desk;
+        desk.stt = i;
+        desk.status = false;
+        desk_info.push_back(desk);
+    }
 }
 
-
-class EmployeeMode{
+class EmployeeMode: public ManagmentMode{
     private:
-        uint8_t desk;
+        uint8_t book_desk;
         uint8_t stt;
         vector<ManagmentMode> database_mm;
     public:
@@ -179,9 +194,17 @@ class EmployeeMode{
         void enterTheDesk();
 };
 
+EmployeeMode::EmployeeMode(){
+
+}
+
+void EmployeeMode::enterTheDesk(){
+
+}
 
 int main(int argc, char const *argv[])
 {
     ManagmentMode a;
+
     return 0;
 }
