@@ -205,6 +205,5 @@ void EmployeeMode::enterTheDesk(){
 int main(int argc, char const *argv[])
 {
     ManagmentMode a;
-
     return 0;
 }
