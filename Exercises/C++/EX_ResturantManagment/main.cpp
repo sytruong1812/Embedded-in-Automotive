@@ -27,7 +27,7 @@ class FoodAndDrink{
 };
 
 FoodAndDrink::FoodAndDrink(){
-    int _id = 1;
+    static int _id = 0;
     this->id = _id;
     _id++;
 }
@@ -173,20 +173,80 @@ void ManagmentMode::setNumberOfTable(){
     }
 }
 
+typedef struct{
+    int id;
+    string name;
+    int cost;
+    int count; 
+} Order;
+
 /*Khai báo vector toàn cục để chia sẻ dữ liệu giữa class ManagmentMode và EmployeeMode*/
 vector<FoodAndDrink> ManagmentMode::database_FoodAndDrink;
 vector<Table> ManagmentMode::database_TableInfo;
 
 class EmployeeMode: public ManagmentMode, public FoodAndDrink {
     private:
-
+        vector<Order> database_YourOrder; 
     public:
+        void Employee();
         void setTable();
         void orderDishes();
         void editDishes();
         void deleteDishes();
+        void showOrder();
 };
+void EmployeeMode::Employee(){
+    bool continueProgram = true;
+    bool addMore = true;
+    cout << "This is employee mode!\n";
+    int key = 0;
+    do
+    {
+        cout << "1. Set table\n";
+        cout << "2. Order dishes\n";
+        cout << "3. Edit dishes\n";
+        cout << "4. Delete dishes\n";
+        cout << "5. Show order\n";
+        cout << "Enter key: ";
+        cin >> key;
 
+        switch (key)
+        {
+        case 1:
+            while (addMore) {
+                setTable();
+                cout << "Enter 1 to add more - 0 to break: ";
+                cin >> addMore;
+            }
+            addMore = true;
+            break;
+        case 2: 
+            while (addMore) {
+                orderDishes();
+                cout << "Enter 1 to add more - 0 to break: ";
+                cin >> addMore;
+            }
+            addMore = true;
+            break;
+        case 3:
+            editDishes();
+            break;
+        case 4:
+            deleteDishes();
+            break;
+        case 5:
+            showOrder();
+            break;
+        default:
+            cout << "Invalid option, please try again.\n";
+            break;
+        }
+        if (continueProgram) {
+            cout << "Do you want to continue in employee mode?\n" << "Enter 1 to continue or 0 to end: ";
+            cin >> continueProgram;
+        }
+    } while (continueProgram);
+}
 void EmployeeMode::setTable(){
     cout << "---Number and status of current tables---" << endl;
     cout << "STT    Status" << endl;
@@ -194,31 +254,96 @@ void EmployeeMode::setTable(){
         cout << database_TableInfo[i].stt << "    ";
         if (database_TableInfo[i].status) {
             cout << "occupied" << endl;
-        } else {
+        } 
+        else {
             cout << "available" << endl;
         }
     }
+    //Set table
     int choose_table;
     cout << "Please choose a table" << endl;
     cin >> choose_table;
     for(int i = 0; i < database_TableInfo.size(); i++){
         if(database_TableInfo[i].stt == choose_table){
-            database_TableInfo[i].status = true;
+            if (database_TableInfo[i].status == false){
+                database_TableInfo[i].status = true;  
+            }
+            else{
+                cout << "This table is already occupied, please choose another table!" << endl;
+            }
         }
     }
+    choose_table = 0;
 }
 
 void EmployeeMode::orderDishes(){
     cout << "---This is the restaurant's menu---" << endl;
     ManagmentMode::listFAD();
-    //Order food or drink
-
+    Order tempOrder;
+    int temp_id;
+    cout << "what do you want order?\n" << "Enter dish id: ";
+    cin >> temp_id;
+    for(int i = 0; i < database_FoodAndDrink.size(); i++){
+        if(database_FoodAndDrink[i].getID() == temp_id){
+            tempOrder.id = database_FoodAndDrink[i].getID();
+            tempOrder.name = database_FoodAndDrink[i].getName();
+            tempOrder.cost = database_FoodAndDrink[i].getCost();
+        }
+    }
+    cout << "Number of dish: " ;
+    cin >> tempOrder.count;
+    database_YourOrder.push_back(tempOrder);
 }
 void EmployeeMode::editDishes(){
-
+    this->showOrder();
+    int _id_old;
+    int _id_new;
+    cout << "Enter old ID you want to edit: ";
+    cin >> _id_old;
+    cout << "Enter new ID to edit: ";
+    cin >> _id_new;
+    for(int i = 0; i < database_YourOrder.size(); i++){
+        if(database_YourOrder[i].id == _id_old){
+            database_YourOrder[i].id = _id_new;
+        }
+        if(database_YourOrder[i].id != _id_old){
+            continue;
+        }
+        else{
+            cout << "Error!\n";
+        }
+    }
+    _id_new = 0;
+    _id_old = 0;
 }
 void EmployeeMode::deleteDishes(){
-    
+    this->showOrder();
+    static int _id;
+    cout << "Enter ID of dishes you want to remove: ";
+    cin >> _id;
+    for(int i = 0; i < database_YourOrder.size(); i++){
+        if(database_YourOrder[i].id == _id){
+            database_YourOrder.erase(database_YourOrder.begin() + i);
+            cout << "Removed student whose id is " << _id << endl;
+        }
+        if(database_YourOrder[i].id != _id){
+            continue;
+        }
+        else{
+            cout << "Error!\n";
+        }
+    }
+    _id = 0;
+}
+void EmployeeMode::showOrder(){
+    cout << "The dishes you ordered" << endl;
+    for(Order item: database_YourOrder){
+        cout << "ID -- Name -- Cost -- Cout" << endl;
+        cout << item.id << "      " << 
+                item.name << "     " << 
+                item.cost << "     " << 
+                item.count << endl; 
+    }
 }
 
 int main(int argc, char const *argv[])
@@ -229,7 +354,9 @@ int main(int argc, char const *argv[])
     EmployeeMode b;
     do
     {
-        cout << "----Chose option----\n1: Managment Mode\n2: Employee Mode\n3: Exit!" << endl;
+        cout << "----------------------Chose option---------------------\n" << endl;
+        cout << "1: Managment Mode\t2: Employee Mode\t3: Exit!" << endl;
+        cout << "Mode: ";
         cin >> option;
     
         switch (option)
@@ -238,7 +365,7 @@ int main(int argc, char const *argv[])
             a.Managment();
             break;
         case 2: 
-            b.setTable();
+            b.Employee();
             break;
         case 3:
             loop = false;
