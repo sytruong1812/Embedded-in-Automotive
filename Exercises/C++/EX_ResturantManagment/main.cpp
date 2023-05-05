@@ -65,19 +65,19 @@ typedef struct
 {
     uint8_t stt;
     bool status;
-} Desk;
+} Table;
 
 class ManagmentMode{
-    private:
-        vector<FoodAndDrink> database_fad;
-        vector<Desk> desk_info;
+    protected:
+        vector<FoodAndDrink> database_FoodAndDrink;
+        vector<Table> database_TableInfo;
     public:
         ManagmentMode();
         void addFAD();
         void editFAD();
         void deleteFAD();
         void listFAD();
-        void setNumberOfDesk();
+        void setNumberOfTable();
 };
 
 ManagmentMode::ManagmentMode(){
@@ -91,7 +91,7 @@ ManagmentMode::ManagmentMode(){
         cout << "2. Edit food or drink from name\n";
         cout << "3. Delete food or drink from name\n";
         cout << "4. List food and drink\n";
-        cout << "5. Set number of desk\n";
+        cout << "5. Set number of table\n";
         cout << "Enter key: ";
         cin >> key;
 
@@ -102,7 +102,7 @@ ManagmentMode::ManagmentMode(){
                 addFAD();
                 cout << "Enter 1 to add more - 0 to break: ";
                 cin >> addMore;
-                cin.ignore(100, '\n'); // Dùng để xóa bỏ dấu enter thừa sau khi nhập giá trị cho next
+                cin.ignore(100, '\n'); 
             }
             break;
         case 2: 
@@ -115,7 +115,7 @@ ManagmentMode::ManagmentMode(){
             listFAD();
             break;
         case 5:
-            setNumberOfDesk();
+            setNumberOfTable();
             break;
         default:
             cout << "Invalid option, please try again.\n";
@@ -131,16 +131,16 @@ ManagmentMode::ManagmentMode(){
 void ManagmentMode::addFAD(){
     FoodAndDrink item;
     item.setFoodAndDrink();
-    database_fad.push_back(item);
+    database_FoodAndDrink.push_back(item);
 }
 
 void ManagmentMode::editFAD(){
     static int _id;
     cout << "Enter food id you want to edit: ";
     cin >> _id;
-    for(int i = 0; i < database_fad.size(); i++){
-        if(database_fad[i].getID() == _id){
-            database_fad[i].setFoodAndDrink();
+    for(int i = 0; i < database_FoodAndDrink.size(); i++){
+        if(database_FoodAndDrink[i].getID() == _id){
+            database_FoodAndDrink[i].setFoodAndDrink();
         }
         else{
             cout << "Error!\n";
@@ -153,9 +153,9 @@ void ManagmentMode::deleteFAD(){
     cin.ignore(1000,'\n');
     cout << "Enter food name you want to delete: ";
     getline(cin, _name);
-    for(int i = 0; i < database_fad.size(); i++){
-        if(database_fad[i].getName() == _name){
-            database_fad.erase(database_fad.begin() + i);
+    for(int i = 0; i < database_FoodAndDrink.size(); i++){
+        if(database_FoodAndDrink[i].getName() == _name){
+            database_FoodAndDrink.erase(database_FoodAndDrink.begin() + i);
             cout << "Removed student whose name is " << _name << endl;
         }
         else{
@@ -167,40 +167,60 @@ void ManagmentMode::deleteFAD(){
 
 void ManagmentMode::listFAD(){
     cout << "----------List Food and Drink----------" << endl;
-    for(FoodAndDrink _item: database_fad){
+    for(FoodAndDrink _item: database_FoodAndDrink){
         _item.getFoodAndDrink();
     }
 }
 
-void ManagmentMode::setNumberOfDesk(){
+void ManagmentMode::setNumberOfTable(){
     int scant;
-    cout << "Enter number of desk: ";
+    cout << "Enter number of table: ";
     cin >> scant;
     for(int i = 0; i < scant; i++){
-        Desk desk;
-        desk.stt = i;
-        desk.status = false;
-        desk_info.push_back(desk);
+        Table table;
+        table.stt = i;
+        table.status = false;
+        database_TableInfo.push_back(table);
     }
 }
 
-class EmployeeMode: public ManagmentMode{
+class EmployeeMode: public ManagmentMode, public FoodAndDrink{
     private:
-        uint8_t book_desk;
-        uint8_t stt;
-        vector<ManagmentMode> database_mm;
+        vector<ManagmentMode> database_Managment;
     public:
-        EmployeeMode();
-        void enterTheDesk();
+        EmployeeMode(vector<FoodAndDrink> _database_FoodAndDrink, vector<Table> _table_info);
+        void bookTable();
+        void orderFoodDrink();
 };
 
-EmployeeMode::EmployeeMode(){
+EmployeeMode::EmployeeMode(vector<FoodAndDrink> _database_FoodAndDrink, vector<Table> _table_info){
 
 }
 
-void EmployeeMode::enterTheDesk(){
-
+void EmployeeMode::bookTable(){
+    cout << "---This is the restaurant's menu---" << endl;
+    cout << "STT    Status" << endl;
+    for(int i = 0; i < database_TableInfo.size(); i++){
+        cout << database_TableInfo[i].stt << "    " <<
+                database_TableInfo[i].status << endl;
+    }
 }
+
+void EmployeeMode::orderFoodDrink(){
+    cout << "---This is the restaurant's menu---" << endl;
+    cout << "ID    Name    Cost" << endl;
+    for(int i = 0; i < database_FoodAndDrink.size(); i++){
+        cout << database_FoodAndDrink[i].getID() << "    " << 
+                database_FoodAndDrink[i].getName() << "    " <<
+                database_FoodAndDrink[i].getCost() << endl;
+    }
+}
+
+class APP{
+
+};
+
+
 
 int main(int argc, char const *argv[])
 {
