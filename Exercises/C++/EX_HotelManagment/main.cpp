@@ -1,5 +1,3 @@
-#include <stdio.h>
-#include <stdint.h>
 #include <string>
 #include <vector>
 #include <iostream>
@@ -22,27 +20,27 @@ typedef struct{
     int hour;
 } Room;
 
-class Service{
+class HotelRoom{
     private:
         Room room;
     public:
-        Service();
-        void setService();
+        HotelRoom();
+        void setHotelRoom();
         void rentByTheHour();
         void rentOvernight();
         int getHour();
 };
 
-Service::Service(){
+HotelRoom::HotelRoom(){
     static int _stt = 0;
     room.STT = _stt;
     _stt++;
 }
 
-void Service::setService(){
+void HotelRoom::setHotelRoom(){
     int option;
-    cout << "-------------Table Service-------------" << endl;
-    cout << "Enter 1: Room rental by the hour | " << "2: Rent overnight. ";
+    cout << "Enter 1: Room rental by the hour | " << "2: Rent overnight. " << endl;
+    cout << "Enter service number: ";
     cin >> option;
     if(option == 1){
         rentByTheHour();
@@ -59,16 +57,17 @@ void Service::setService(){
 }
 
 
-void Service::rentByTheHour(){
+void HotelRoom::rentByTheHour(){
     cout << "Enter the number of hour you want: ";
     cin >> this->room.hour;
 }
 
-void Service::rentOvernight(){
+void HotelRoom::rentOvernight(){
+    cout << "Overngiht is 12 hours!" << endl;
     this->room.hour = 12;
 }
 
-int Service::getHour(){
+int HotelRoom::getHour(){
     return this->room.hour;
 }
 /*-------------------------------------------------------------------------------------*/
@@ -111,10 +110,10 @@ int FoodAndDrink::getCost(){
 }
 
 /*-------------------------------------------------------------------------------------*/
-class ManagmentMode: public Service{
+class ManagmentMode{
     protected:
-        vector<FoodAndDrink> database_FoodAndDrink;
-        vector<Room> database_Room;
+        static vector<FoodAndDrink> database_FoodAndDrink;
+        static vector<Room> database_Room;
     public:
         void Managment();
         void addFAD();
@@ -129,8 +128,9 @@ class ManagmentMode: public Service{
 void ManagmentMode::Managment(){
     bool continueProgram = true;
     bool addMore = true;
-    cout << "This is management mode!\n";
-    int key = 0;
+    cout << "-------------------------" << endl;
+    cout << "This is management mode!" << endl;
+    cout << "-------------------------" << endl;
     do
     {
         cout << "1. Add food or drink" << endl;
@@ -141,6 +141,7 @@ void ManagmentMode::Managment(){
         cout << "6. Delete room" << endl;
         cout << "7. show room" << endl;
         cout << "Enter key: ";
+        int key = 0;
         cin >> key;
 
         switch (key)
@@ -230,9 +231,9 @@ void ManagmentMode::setRoom(){
     cout << "Enter number of room want set: ";
     cin >> scant;
     Room tempRoom;
-    for(int i = 1; i < scant; i++){
+    for(int i = 0; i < scant; i++){
         tempRoom.STT = i;
-        tempRoom.status = false;
+        tempRoom.status = true;
         tempRoom.hour = 0;
         database_Room.push_back(tempRoom);
     }
@@ -247,9 +248,6 @@ void ManagmentMode::deleteRoom(){
         if(database_Room[i].STT == _stt){
             database_Room.erase(database_Room.begin() + i);
             cout << "Removed room whose id is " << _stt << endl;
-        }
-        if(database_Room[i].STT != _stt){
-            continue;
         }
         else{
             cout << "Error!\n";
@@ -273,17 +271,235 @@ void ManagmentMode::showRoom(){
     }
 }
 
-/*-------------------------------------------------------------------------------------*/
-class Employee{
-    private:
+vector<FoodAndDrink> ManagmentMode::database_FoodAndDrink;
+vector<Room> ManagmentMode::database_Room; 
 
+typedef struct{
+    int room;
+    int id;
+    string name;
+    int cost;
+    int count; 
+} RoomOrder;
+
+/*-------------------------------------------------------------------------------------*/
+class EmployeeMode: public HotelRoom, public ManagmentMode{
+    protected:
+        vector<RoomOrder> database_roomOrder;
+        HotelRoom _room;
+        int tempRoom;
     public:
+        void Employee();
+        void choseRoom();
+        void choseService();
+        void choseDish();
+        void editDish();
+        void deleteDish();
+        void checkOutRoom();
+        void getMoneyRoom();
 };
 
+void EmployeeMode::Employee(){
+    bool continueProgram = true;
+    bool again = true;
+    cout << "-------------------------" << endl;
+    cout << "This is employee mode!" << endl;
+    cout << "-------------------------" << endl;
+    do
+    {
+        cout << "1. Chose Room" << endl;
+        cout << "2. Chose Service" << endl;
+        cout << "3. Check Out Room" << endl;
+        cout << "4. Get Money Room" << endl;
+        cout << "Enter key: ";
+        int key = 0;
+        cin >> key;
+        switch (key)
+        {
+        case 1:
+            while (again) {
+                choseRoom();
+                cout << "Enter 1 to choose more - 0 to break: ";
+                cin >> again;
+            }
+            again = true;
+            break;
+        case 2: 
+            choseService();
+            break;
+        case 3:
+            checkOutRoom();
+            break;
+        case 4:
+            getMoneyRoom();
+            break;
+        default:
+            cout << "Invalid option, please try again.\n";
+            break;
+        }
+        if (continueProgram) {
+            cout << "Do you want to continue in employee mode?\n" << "Enter 1 to continue or 0 to end: ";
+            cin >> continueProgram;
+        }
+    } while (continueProgram);  
+}
+
+void EmployeeMode::choseRoom(){
+    ManagmentMode::showRoom();
+    cout  << "Enter the room you want to chose: ";
+    cin >> this->tempRoom;
+    for(int i = 0; i < database_Room.size(); i++){
+        if(database_Room[i].STT == this->tempRoom){
+            database_Room[i].status = false;
+            cout << "------------------ROOM " << this->tempRoom <<"-------------------" << endl;
+            _room.setHotelRoom();
+            database_Room[i].hour = _room.getHour();
+        }
+    }
+    this->tempRoom = 0;
+}
+
+void EmployeeMode::choseDish(){
+    cout << "---This is the list menu---" << endl;
+    ManagmentMode::listFAD();
+    RoomOrder tempOrder;
+    int temp_id;
+    cout << "what do you want order?\n" << "Enter dish id: ";
+    cin >> temp_id;
+    for(int i = 0; i < database_FoodAndDrink.size(); i++){
+        if(database_FoodAndDrink[i].getID() == temp_id){
+            tempOrder.room = this->tempRoom;
+            tempOrder.id = database_FoodAndDrink[i].getID();
+            tempOrder.name = database_FoodAndDrink[i].getName();
+            tempOrder.cost = database_FoodAndDrink[i].getCost();
+        }
+    }
+    cout << "Number of dish: " ;
+    cin >> tempOrder.count;
+    database_roomOrder.push_back(tempOrder);
+}
+void EmployeeMode::editDish(){
+    int _id_old;
+    int _id_new;
+    cout << "Enter old ID you want to edit: ";
+    cin >> _id_old;
+    cout << "Enter new ID to edit: ";
+    cin >> _id_new;
+    for(int i = 0; i < database_roomOrder.size(); i++){
+        if(database_roomOrder[i].id == _id_old){
+            database_roomOrder[i].id = _id_new;
+        }
+        if(database_roomOrder[i].id != _id_old){
+            continue;
+        }
+        else{
+            cout << "Error!\n";
+        }
+    }
+    _id_new = 0;
+    _id_old = 0;
+
+}
+void EmployeeMode::deleteDish(){
+    int _id;
+    cout << "Enter ID of dishes you want to remove: ";
+    cin >> _id;
+    for(int i = 0; i < database_roomOrder.size(); i++){
+        if(database_roomOrder[i].id == _id){
+            database_roomOrder.erase(database_roomOrder.begin() + i);
+            cout << "Removed dishes whose id is " << _id << endl;
+        }
+        if(database_roomOrder[i].id != _id){
+            continue;
+        }
+        else{
+            cout << "Error!\n";
+        }
+    }
+    _id = 0;
+}
+
+void EmployeeMode::choseService(){
+    bool continueProgram = true;
+    ManagmentMode::showRoom();
+    cout  << "Enter the room you want order dish: ";
+    cin >> this->tempRoom;
+    for(int i = 0; i < database_Room.size(); i++){
+        if(database_Room[i].STT == this->tempRoom){
+            do
+            {
+                int option;
+                cout << "--------Chose Service-------" << endl;
+                cout << "1. Chose Dish\t2. Edit Dish\t3. Delete Dish" << endl;
+                cout << "Enter option: ";
+                cin >> option;
+                switch (option)
+                {
+                case 1:
+                    this->choseDish();
+                    break;
+                case 2:
+                    this->editDish();
+                    break;
+                case 3:
+                    this->deleteDish();
+                    break;
+                default:
+                    cout << "Invalid option, please try again.\n";
+                    break;
+                }
+                if (continueProgram) {
+                    cout << "Do you want to continue?\n" << "Enter 1 to continue or 0 to end: ";
+                    cin >> continueProgram;
+                }
+            } while (continueProgram);  
+        }
+    }
+    this->tempRoom = 0;  
+}
+
+void EmployeeMode::checkOutRoom(){
+
+}
+
+void EmployeeMode::getMoneyRoom(){
+
+}
 /*-------------------------------------------------------------------------------------*/
 int main(int argc, char const *argv[])
 {
+    bool loop = true;
+    int option;
     ManagmentMode a;
-    a.Managment();
+    EmployeeMode b;
+    do
+    {
+        cout << "-------------------------" << endl;
+        cout << "\tMain Menu"<<endl;
+        cout << "-------------------------" << endl;
+        cout << "1. ManagerMode" << endl;
+        cout << "2. EmployeeMode" << endl;
+        cout << "3. Exit!" << endl;
+        cout << "Enter: ";
+        cin >> option;
+    
+        switch (option)
+        {
+        case 1:
+            a.Managment();
+            break;
+        case 2: 
+            b.Employee();
+            break;
+        case 3:
+            loop = false;
+            cout << "See you again!" << endl;
+            break;
+        default:
+            cout << "Option false!" << endl;
+            break;
+        }
+    } while (loop);
+
     return 0;
 }
