@@ -5,9 +5,9 @@
         - Quyền truy cập là Read-only, chứa các lệnh để thực thi nên tránh sửa đổi 
           (Contains executable instructions)
         - Chứa khai báo hằng số trong chương trình (.rodata)
-        - Sharable
+        - Có thể chia sẻ (Sharable)
   #### 1.2. Data Segment
-        - Quyền truy cập Read-Wire
+        - Quyền truy cập Read-Write
         - Chứa các biến toàn cục (global variable) or biến static 
           với điều khiện là giá trị khởi tạo khác không.
         - Được giải phóng khi kết thúc chương trình.
