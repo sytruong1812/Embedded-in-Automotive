@@ -92,36 +92,43 @@
     - Khác nhau: 
       + Kích thước: Kích thước của 1 struct tối thiểu bằng kích thước các member cộng lại và còn phụ thuộc 
       vào bộ nhớ đệm (struct padding). Còn kích thước của Union bằng kích thước của thành phần lớn nhất. 
-      + Vùng nhớ: Dữ liệu của các member trong struct được lưu trữ ở những vùng nhớ khác nhau. Ngược lại các thành phần của các member 
-      của Union được cấp phát một vùng nhớ chung. Việc thay đổi nội dung của 1 thành viên sẽ dẫn đến thay đổi nội dung của các thành viên khác. Nói cách khác, việc gán giá trị cho các member của union trước, thì chỉ thành phần cuối cùng được 
-      gián giá trị được sử dụng, các thành phần trước đó sẽ bị ghi đè. Vì vậy union được sử dụng để tiếp kiệm bộ nhớ.
+      + Vùng nhớ: Dữ liệu của các member trong struct được lưu trữ ở những vùng nhớ khác nhau. 
+      Ngược lại các thành phần của các member của Union được cấp phát một vùng nhớ chung. Việc thay đổi nội dung 
+      của 1 thành viên sẽ dẫn đến thay đổi nội dung của các thành viên khác. Nói cách khác, việc gán giá trị cho các 
+      member của union trước, thì chỉ thành phần cuối cùng được gián giá trị được sử dụng, các thành phần trước 
+      đó sẽ bị ghi đè. Vì vậy union được sử dụng để tiếp kiệm bộ nhớ.
 ## V: Compiler
-    ### 1. Quá trình Compiler
-      - Quá trình Compiler là quá trình chuyển đổi từ ngôn ngữ bậc cao (C/C++, Python, Pascal...) sang ngôn ngữ máy.
-      - Ngôn ngữ lập trình C là một ngôn ngữ dạng biên dịch. Chương trình được viết bằng C muốn chạy được phải trải qua một quá trình biên dịch dùng để chuyển đổi từ dạng mã nguồn sang dạng mã thực thi. Quá trình này được chia là 4 giai đoạn chính
-      - Giai đoạn tiền xử lý
-      - Giai đoạn Compiler
-      - Giai đoạn dịch mã Assembly
-      - Giai đoạn liên kết (Linker)
-    ### 2. 4 Giai đoạn chính
-      - Giai đoạn tiền xử lý (Pre-processor)
-        + Nhận mã nguồn, sau đó xóa bỏ tất cả comments
-        + Chỉ thị tiền xử lý (#) cũng được xử lý ở giai đoạn này.
-      - Giai đoạn Compiler (Dịch NNBC sang hợp ngữ Assembly)
-        + Phân tích cú pháp của mã nguồn (NNBC) rồi chuyển chúng sang dạng ngôn ngữ bậc thấp hơn (Hợp ngữ - Assembly)
-      - Giai đoạn dịch mã Assembly sang ngôn ngữ máy
-        + Giai đoạn này chuyển mã Assembly sang ngôn ngữ máy (0 và 1)
-        + Cuối cùng một tệp mã máy (.obj) được tạo ra trong hệ thống.
-      - Giai đoạn liên kết (Linker)
-        + Giai đoạn cuối mã máy của chương trình dịch từ nhiều nguồn (file .c hoặc file .lib) sẽ được liên kết lại với nhau tạo thành chương trình duy nhất (file .exe hay excutable). Các mã máy của các lib được gọi trong chương trình chính được đưa vào trong giai đoạn này.
-        + Vì vậy trong giai đoạn này thì các lỗi liên quan đến việc gọi hàm hay sử dụng các biến mà không tồn tại sẽ bị phát hiện. Hoặc các lỗi về viết chương trình chính mà không có hàm main() cũng sẽ bị phát hiện và thông báo.
+  ### 1. Quá trình Compiler
+    - Quá trình Compiler là quá trình chuyển đổi từ ngôn ngữ bậc cao (C/C++, Python, Pascal...) sang ngôn ngữ máy.
+    - Ngôn ngữ lập trình C là một ngôn ngữ dạng biên dịch. Chương trình được viết bằng C muốn chạy được phải trải 
+      qua một quá trình biên dịch dùng để chuyển đổi từ dạng mã nguồn sang dạng mã thực thi. Quá trình này được chia là 4 giai đoạn chính
+    - Giai đoạn tiền xử lý
+    - Giai đoạn Compiler
+    - Giai đoạn dịch mã Assembly
+    - Giai đoạn liên kết (Linker)
+  ### 2. 4 Giai đoạn chính
+    - Giai đoạn tiền xử lý (Pre-processor)
+      + Nhận mã nguồn, sau đó xóa bỏ tất cả comments
+      + Chỉ thị tiền xử lý (#) cũng được xử lý ở giai đoạn này.
+    - Giai đoạn Compiler (Dịch NNBC sang hợp ngữ Assembly)
+      + Phân tích cú pháp của mã nguồn (NNBC) rồi chuyển chúng sang dạng ngôn ngữ bậc thấp hơn (Hợp ngữ - Assembly)
+    - Giai đoạn dịch mã Assembly sang ngôn ngữ máy
+      + Giai đoạn này chuyển mã Assembly sang ngôn ngữ máy (0 và 1)
+      + Cuối cùng một tệp mã máy (.obj) được tạo ra trong hệ thống.
+    - Giai đoạn liên kết (Linker)
+      + Giai đoạn cuối mã máy của chương trình dịch từ nhiều nguồn (file .c hoặc file .lib) sẽ được liên kết lại với nhau
+        tạo thành chương trình duy nhất (file .exe hay excutable). Các mã máy của các lib được gọi trong chương trình chính 
+        được đưa vào trong giai đoạn này.
+      + Vì vậy trong giai đoạn này thì các lỗi liên quan đến việc gọi hàm hay sử dụng các biến mà không tồn tại sẽ 
+        bị phát hiện. Hoặc các lỗi về viết chương trình chính mà không có hàm main() cũng sẽ bị phát hiện và thông báo.
 ## VI: Pointer
   ### 1. Bộ nhớ RAM
       - Đầu tiên khi nói về con trỏ thì nói qua về bộ nhớ RAM
       - Bộ nhớ RAM chứa rất nhiều ô nhớ, mỗi ô nhớ có kích thước 1 byte.
       - Mỗi ô nhớ có địa chỉ duy nhất được đánh số từ 0 trở đi
       - Tùy thuộc và các loại vi xử lý, nếu như vi xử lý 32bit thì có 2^32 địa chỉ có thể đánh số cho các ô nhớ trong RAM.
-      - Khi khởi tạo 1 biến thì compiler sẽ lấy một vùng nhớ để lưu giá trị của biến đó và gán địa chỉ của vùng nhớ đó cho tên biến. Khi gọi biến đó thì giá trị của biến đó sẽ được lấy ra
+      - Khi khởi tạo 1 biến thì compiler sẽ lấy một vùng nhớ để lưu giá trị của biến đó và gán địa chỉ của vùng nhớ đó  
+        cho tên biến. Khi gọi biến đó thì giá trị của biến đó sẽ được lấy ra
   ### 2. Pointer (kiểu *tên_con_trỏ;)
       - Con trỏ (Pointer) là những biến để lưu trữ địa chỉ của các biến khác. 
         Giá trị của 1 con trỏ là địa chỉ của 1 biến được gán cho nó.
@@ -129,8 +136,11 @@
         vi xử lý (16bit/8: 2byte; 32bit/8: 4byte; 64bit/8: 8byte)
       - Khi đã biết được địa chỉ của một biến thì ta chẳng những có thể sử dụng giá trị của nó mà còn có thể gán cho nó một giá trị mới.
       - Vì có nhiều loại địa chỉ nên cũng có nhiều kiểu con trỏ (int, float, double...)
-      - Con trỏ chỉ có thể lưu trữ địa chỉ của các biến có cùng kiểu dữ liệu trừ con trỏ void. Con trỏ void một con trỏ không kiểu nên nó có thể lưu được các địa chỉ của các biến có địa chỉ khác nhau.
-      - Khi khởi tạo 1 con trỏ mà không gán giá trị, thì con trỏ đó sẽ trỏ tới một vùng nhớ ô nhớ bất kỳ, con trỏ đó sẽ gây nhiễu, thực thi sai chương trình. Để tránh điều đó khi khai báo con trỏ mà mình chưa biết gán giá trị nào ta nên gán giá trị NULL cho con trỏ đó
+      - Con trỏ chỉ có thể lưu trữ địa chỉ của các biến có cùng kiểu dữ liệu trừ con trỏ void. Con trỏ void một con trỏ
+        không kiểu nên nó có thể lưu được các địa chỉ của các biến có địa chỉ khác nhau.
+      - Khi khởi tạo 1 con trỏ mà không gán giá trị, thì con trỏ đó sẽ trỏ tới một vùng nhớ ô nhớ bất kỳ, con trỏ đó sẽ 
+        gây nhiễu, thực thi sai chương trình. Để tránh điều đó khi khai báo con trỏ mà mình chưa biết gán giá trị nào 
+        ta nên gán giá trị NULL cho con trỏ đó
       - Con trỏ NULL là con trỏ không trỏ tới địa chỉ nào cả, con trỏ NULL là con trỏ lưu địa chỉ 0x00000000 (Tức địa chỉ bộ nhớ 0)
       - Khi sử dụng xong 1 con trỏ ta nên gán lại giá trị cho con trỏ đó là NULL để tránh lỗi rò rỉ bộ nhớ.
   ### 3. Con trỏ hàm (kiểu (*ptr)(kiểu, kiểu))
