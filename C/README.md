@@ -103,10 +103,10 @@
     - Ngôn ngữ lập trình C là một ngôn ngữ dạng biên dịch. Chương trình được viết bằng C muốn chạy được phải trải 
       qua một quá trình biên dịch dùng để chuyển đổi từ dạng mã nguồn sang dạng mã thực thi. 
       Quá trình này được chia là 4 giai đoạn chính
-    - Giai đoạn tiền xử lý
-    - Giai đoạn Compiler
-    - Giai đoạn dịch mã Assembly
-    - Giai đoạn liên kết (Linker)
+      + Giai đoạn tiền xử lý
+      + Giai đoạn Compiler
+      + Giai đoạn dịch mã Assembly
+      + Giai đoạn liên kết (Linker)
   ### 2. Giai đoạn (4 giai đoạn chính)
     - Giai đoạn tiền xử lý (Pre-processor)
       + Nhận mã nguồn, sau đó xóa bỏ tất cả comments
