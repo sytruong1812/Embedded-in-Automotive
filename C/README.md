@@ -129,7 +129,7 @@
       - Khi khởi tạo 1 biến thì compiler sẽ lấy ra một vùng nhớ để lưu giá trị của biến đó và gán địa chỉ của vùng nhớ đó  
         cho tên biến. Khi gọi biến đó thì giá trị của biến đó sẽ được lấy ra
   ### 2. Pointer (kiểu *tên_con_trỏ;)
-  ![alt]( https://nguyenvanhieu.vn/wp-content/uploads/2019/09/con-tr%E1%BB%8F-trong-c.jpg)
+![alt]( https://nguyenvanhieu.vn/wp-content/uploads/2019/09/con-tr%E1%BB%8F-trong-c.jpg)
       - Con trỏ (Pointer) là những biến để lưu trữ địa chỉ của các biến khác. 
         Giá trị của 1 con trỏ là địa chỉ của 1 biến được gán cho nó.
       - Con trỏ chỉ lưu địa chỉ nên kích thước của các con trỏ như nhau, kích thước này phụ thuộc kiến trúc của 
