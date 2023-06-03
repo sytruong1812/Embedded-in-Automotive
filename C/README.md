@@ -58,6 +58,7 @@
       + Giai đoạn Compiler
       + Giai đoạn dịch mã Assembly
       + Giai đoạn liên kết (Linker)
+  ![alt]( https://tapit.vn/wp-content/uploads/2020/03/Preprocessor.png)  
   ### 2. Giai đoạn (4 giai đoạn chính)
     - Giai đoạn tiền xử lý (Pre-processor)
       + Nhận mã nguồn, sau đó xóa bỏ tất cả comments
