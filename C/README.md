@@ -79,6 +79,7 @@
       - Được xử lý ở quá trình tiền xử lý - Preprocessor (trước quá trình biên dịch của compiler)
       - Ứng dụng của Macro dùng để định nghĩa các hằng số, tạo ra các hàm viết tắt và tối ưu hóa mã lệnh.
       - Khi được xử lý trình biên dịch sẽ thay thế đoạn code đã được khai báo macro vào các vị trí mà macro đó được sử dụng.
+      - VD: #define MY_NAME "Alex"
   ### 2. Function
       - Được xử lý bởi Compiler.
       - Trước khi 1 Function được gọi, compiler sẽ lưu con trỏ PC (Program counter) hiện tại vào stack pointer 
