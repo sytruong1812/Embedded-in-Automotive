@@ -193,4 +193,4 @@
           int a = 10;
           int *ptr = &a;
           int **p_ptr = &ptr; 
-    
+![alt]( https://qph.cf2.quoracdn.net/main-qimg-95a55bb04f7e48019f9f606dacdd9756)
