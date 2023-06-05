@@ -82,3 +82,23 @@ className::className(int _a, int _b){
     - Tính đóng gói có ý nghĩa không cho phép người sử dụng cái object có thể thay đổi các trạng thái nội 
     tại của đối tượng, mà chỉ có thể thay đổi thông qua method
     - Khi thay đổi thông qua method, chúng ta có thể kiểm soát giá trị thay đổi 
+
+## 7: Namespace
+## 8: Template
+    - Template (khuôn mẫu) là một từ khóa trong C++, và là một kiểu dữ liệu trừu tượng tổng quát hóa cho 
+      các kiểu dữ liệu int, float, double, bool...
+    - Template trong C++ có 2 loại đó là function template & class template.
+    - Template giúp người lập trình định nghĩa tổng quát cho hàm và lớp thay vì phải nạp chồng (overloading) 
+      cho từng hàm hay phương thức với những kiểu dữ liệu khác nhau.
+    - VD: 
+```Cpp
+template <typename T>   //1 hàm template tính tổng của hai giá trị
+T sum(T a, T b) {
+    return a + b;
+}
+//Sau đó, hàm sum có thể được sử dụng cho nhiều kiểu dữ liệu khác nhau như int, float, double,...
+main(){
+    int result1 = sum(10, 5);       // result1 = 15
+    float result2 = sum(3.14, 2.71); // result2 = 5.85
+}
+```
