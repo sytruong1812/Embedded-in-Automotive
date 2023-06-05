@@ -84,15 +84,34 @@ className::className(int _a, int _b){
     - Khi thay đổi thông qua method, chúng ta có thể kiểm soát giá trị thay đổi 
 
 ## 7: Namespace
+    - Namespace trong C++ là một cơ chế cho phép nhóm các tên (biến, hàm, lớp, v.v.) vào một tên duy nhất. 
+    - Nó giúp ngăn chặn xung đột tên và hỗ trợ việc tổ chức và quản lý mã nguồn trong dự án lớn. 
+    - Bằng cách đặt các thành phần vào các namespace khác nhau, chúng ta có thể xác định rõ ngữ cảnh của 
+```Cpp
+#include <iostream>
+// Định nghĩa namespace MyMath
+namespace MyMath {
+    int add(int a, int b) {
+        return a + b;
+    }
+}
+int main() {
+    // Sử dụng hàm add() trong namespace MyMath
+    int result = MyMath::add(5, 3);
+    std::cout << "Result: " << result << std::endl;
+    return 0;
+}
+```
+      các tên và tránh xung đột giữa các tên trong phạm vi rộng hơn.
 ## 8: Template
     - Template (khuôn mẫu) là một từ khóa trong C++, và là một kiểu dữ liệu trừu tượng tổng quát hóa cho 
       các kiểu dữ liệu int, float, double, bool...
     - Template trong C++ có 2 loại đó là function template & class template.
     - Template giúp người lập trình định nghĩa tổng quát cho hàm và lớp thay vì phải nạp chồng (overloading) 
       cho từng hàm hay phương thức với những kiểu dữ liệu khác nhau.
-    - VD: 
+    - VD: Viết 1 hàm template tính tổng của hai giá trị
 ```Cpp
-template <typename T>   //1 hàm template tính tổng của hai giá trị
+template <typename T>   
 T sum(T a, T b) {
     return a + b;
 }
@@ -100,5 +119,48 @@ T sum(T a, T b) {
 main(){
     int result1 = sum(10, 5);       // result1 = 15
     float result2 = sum(3.14, 2.71); // result2 = 5.85
+}
+```
+## 9: virtual function (Hàm ảo)
+    - Hàm ảo (virtual function) là một hàm thành viên trong lớp cơ sở mà lớp dẫn xuất khi kế thừa cần phải định nghĩa lại.
+    - Hàm ảo được sử dụng trong lớp cơ sở khi cần đảm bảo hàm ảo đó sẽ được định nghĩa lại trong lớp dẫn xuất. 
+      Việc này rất cần thiết trong trường hợp con trỏ có kiểu là lớp cơ sở trỏ đến đối tượng của lớp dẫn xuất.
+    - Hàm ảo là một phần không thể thiếu để thể hiện tính đa hình trong kế thừa được hỗ trợ bởi nguồn ngữ C++.
+    - Lưu ý: Con trỏ của lớp cơ sở có thể chứa địa chỉ của đối tượng thuộc lớp dẫn xuất, nhưng ngược lại thì không được.
+    - Hàm ảo chỉ khác hàm thành phần thông thường khi được gọi từ một con trỏ. Sử dụng hàm ảo khi muốn con trỏ đang trỏ 
+      tới đối tượng của lớp nào thì hàm thành phần của lớp đó sẽ được gọi mà không xem xét đến kiểu của con trỏ.
+```Cpp
+#include <iostream>
+class Animal {
+public:
+    virtual void makeSound() {
+        std::cout << "Animal makes a sound." << std::endl;
+    }
+};
+class Dog : public Animal {
+public:
+    void makeSound() override {
+        std::cout << "Dog barks." << std::endl;
+    }
+};
+class Cat : public Animal {
+public:
+    void makeSound() override {
+        std::cout << "Cat meows." << std::endl;
+    }
+};
+//Hai lớp con Dog và Cat kế thừa từ lớp Animal và ghi đè hàm makeSound() để cung cấp triển khai riêng.
+int main() {
+// Tạo hai đối tượng thông qua con trỏ của lớp cơ sở Animal, nhưng khi gọi phương thức makeSound(), 
+// hành vi được xác định bởi loại đối tượng thực tế mà con trỏ đang trỏ tới.
+    Animal* animal1 = new Dog();
+    Animal* animal2 = new Cat();
+
+    animal1->makeSound(); // Kết quả: "Dog barks."
+    animal2->makeSound(); // Kết quả: "Cat meows."
+// Cùng một phương thức được gọi, nhưng cho ra kết quả khác nhau dựa trên loại đối tượng thực tế.
+    delete animal1;
+    delete animal2;
+    return 0;
 }
 ```
