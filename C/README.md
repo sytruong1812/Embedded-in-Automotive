@@ -62,8 +62,7 @@
   ### 2. Giai đoạn (4 giai đoạn chính)
     - Giai đoạn tiền xử lý (Pre-processor)
       + Nhận mã nguồn, sau đó xóa bỏ tất cả comments
-      + Các chỉ thị tiền xử lý #define (Macro), #include (file), biên dịch có điều kiện (#ifdef,..)
-        cũng được xử lý ở giai đoạn này.
+      + Các chỉ thị tiền xử lý #define (Macro), #include (file), biên dịch có điều kiện (#ifdef,..) cũng được xử lý ở giai đoạn này.
     - Giai đoạn Compiler (Dịch NNBC sang hợp ngữ Assembly)
       + Phân tích cú pháp của mã nguồn (NNBC) rồi chuyển chúng sang dạng ngôn ngữ bậc thấp hơn (Hợp ngữ - Assembly)
     - Giai đoạn dịch mã Assembly sang ngôn ngữ máy
