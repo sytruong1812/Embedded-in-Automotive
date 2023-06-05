@@ -63,7 +63,7 @@ className::className(int _a, int _b){
 }
 ```
 ## 6: Các tính chất trong lập trình hướng đối tượng (OOP)
-### 1: Tính kế thừa (Inheritance)
+#### 6.1: Tính kế thừa (Inheritance)
     - Nếu class con có dạng kế thừa là public, thì class cha kiểu gì qua class con giữ nguyên 
     - Nếu class con có dạng kế thừa là private, thì nếu:
         + Class cha kiểu plulic -> Class con kiểu private
@@ -73,12 +73,12 @@ className::className(int _a, int _b){
         + Class cha kiểu plulic -> Class con kiểu protected
         + Class cha kiểu private -> Class con kiểu private
         + Class cha kiểu protected - > Class con kiểu protected 
-### 2: Tính trừu tượng (Abstraction)
+#### 6.2: Tính trừu tượng (Abstraction)
     - Tính chất này giúp bỏ qua sự phức tạp bên trong method mà chỉ quan tâm đến kết quả đạt được.
-### 3: Tính đa hình (Polymorphism)
+#### 6.3: Tính đa hình (Polymorphism)
     - Tính đa hình cho phép trong cùng 1 class có thể đưa ra nhiều method có cùng tên nhưng khác nhau về các input
     parameter hoặc kiểu dữ liệu trả về
-### 4: Tính đóng gói (Encapsulation)
+#### 6.4: Tính đóng gói (Encapsulation)
     - Tính đóng gói có ý nghĩa không cho phép người sử dụng cái object có thể thay đổi các trạng thái nội 
     tại của đối tượng, mà chỉ có thể thay đổi thông qua method
     - Khi thay đổi thông qua method, chúng ta có thể kiểm soát giá trị thay đổi 
