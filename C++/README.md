@@ -121,7 +121,7 @@ main(){
     float result2 = sum(3.14, 2.71); // result2 = 5.85
 }
 ```
-## 9: virtual function (Hàm ảo)
+## 9: Virtual Function (Hàm ảo)
     - Hàm ảo (virtual function) là một hàm thành viên trong lớp cơ sở mà lớp dẫn xuất khi kế thừa cần phải định nghĩa lại.
     - Hàm ảo được sử dụng trong lớp cơ sở khi cần đảm bảo hàm ảo đó sẽ được định nghĩa lại trong lớp dẫn xuất. 
       Việc này rất cần thiết trong trường hợp con trỏ có kiểu là lớp cơ sở trỏ đến đối tượng của lớp dẫn xuất.
