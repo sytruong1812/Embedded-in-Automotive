@@ -117,9 +117,10 @@ inline return_type function_name(param){
         Trình biên dịch thay thế các macro bằng nội dung tương ứng trong mã nguồn trước khi biên dịch.
 ## IV: Static
   ### 1. Biến Static
-      - Biến static là một biến có phạm vi truy cập chỉ trong một file, nghĩa là nó không thể được 
-        truy cập từ các file khác. Từ khóa static dùng để khai báo các biến tĩnh trong (cục bộ) 
-        và biến tĩnh ngoài (toàn bộ).
+      - Biến static có mức độ truy cập và phạm vi khác so với biến thông thường. 
+      - Khi một biến được khai báo là static, nghĩa là biến đó chỉ được khởi tạo một lần duy nhất trong
+        quá trình chạy chương trình và giá trị của nó được duy trì qua các lần gọi hàm.
+      - Có 2 loại là biến tĩnh trong (cục bộ) và biến tĩnh ngoài (toàn bộ).
   ### 2. Biến static cục bộ (biến tĩnh trong)
       - Khi biến cục bộ được khai báo với từ khóa static. Biến sẽ chỉ được khởi tạo 1 lần duy nhất 
         và tồn tại suốt thời gian chạy chương trình.
