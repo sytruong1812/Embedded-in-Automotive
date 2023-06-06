@@ -111,7 +111,7 @@ void className::sum(){
 #### 1. Tính kế thừa: 
     - Một class có thể sử dụng các *thuộc tính* và *phương thức* đặt trong phạm vi *public* hoặc *protected* 
       của *class* khác mà không cần phải viết lại từ đầu.
-    - Ví dụ: *class B* muốn có các *thuộc tính* và *phương thức* giống *class A* mà không phải viết lại từ đầu, 
+    - Ví dụ: *class B* muốn sử dụng các *thuộc tính* và *phương thức* giống *class A* mà không phải viết lại từ đầu, 
       khi đó *class B* sẽ *kế thừa* từ *class A*. Sử dụng toán tử `:`
 ```Cpp
 class ClassA:ClassB { 
@@ -120,12 +120,12 @@ class ClassA:ClassB {
 ```
     - Ngoài ra, *class B* cũng có thể ghi đè/implement lại *phương thức* kế thừa từ *class A*.
 #### 2. Tính trừu tượng: 
-    - Người dùng chỉ cần tập trung vào đầu vào và đầu ra của dữ liệu cần xử lý, không cần
-      biết dữ liệu đầu vào được xử lý ra làm sao để có được đầu ra.Tức là người dùng chỉ cần gọi các *phương thức* 
-      ra sử dụng, sau đó nhận kết quả chứ không cần quan tâm phần implement của phương thức đó.
+    - Người dùng chỉ cần tập trung vào đầu vào và đầu ra của dữ liệu cần xử lý, không cần biết dữ liệu đầu vào 
+      được xử lý ra làm sao để có được đầu ra.Tức là người dùng chỉ cần gọi các *phương thức* ra sử dụng, sau đó 
+      nhận kết quả chứ không cần quan tâm phần implement của phương thức đó.
 #### 3. Tính đa hình: 
-    - Các *phương thức* trong *class* có thể có cùng tên nhưng lại có thể cho ra các kết quả 
-      khác nhau, phụ thuộc vào kiểu trả về của *phương thức*, kiểu dữ liệu *input parameter* và thứ tự của chúng.
+    - Các *phương thức* trong *class* có thể có cùng tên nhưng lại có thể cho ra các kết quả khác nhau, phụ thuộc 
+      vào kiểu trả về của *phương thức*, kiểu dữ liệu *input parameter* và thứ tự của chúng.
 ```Cpp
 class TinhTong {
     public:
