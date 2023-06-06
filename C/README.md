@@ -80,25 +80,41 @@
       - Ứng dụng của Macro dùng để định nghĩa các hằng số, tạo ra các hàm viết tắt và tối ưu hóa mã lệnh.
       - Khi được xử lý trình biên dịch sẽ thay thế đoạn code đã được khai báo macro vào các vị trí mà macro đó được sử dụng.
       - VD: #define MY_NAME "Alex"
-  ### 2. Function
+  ### 3. Inline Function
+      - Được xử lý bởi compiler
+      -	Được khai báo với từ khóa inline
+      - Khi compiler thấy bất kỳ chỗ nào xuất hiện inline function, trình biên dịch thực hiện thay thế vị trí gọi hàm 
+        bằng nội dung hàm inline.
+```C
+inline return_type function_name(param){
+...
+}
+  ```
+  ### 4. Function
       - Được xử lý bởi Compiler.
       - Trước khi 1 Function được gọi, compiler sẽ lưu con trỏ PC (Program counter) hiện tại vào stack pointer 
         (lưu những địa chỉ của con trỏ PC), sau đó nhảy tới địa chỉ lưu function được gọi, thực hiện Function đó, 
         thực hiện xong sẽ lấy kết quả trả về, sau đó quay lại stack pointer lấy địa chỉ trước đó được lưu
         và tiếp tục thực hiện tiếp chương trình từ địa chỉ đó. 
-  ### 3. So sánh
+  ### 5. So sánh Macro vs Function
       - Macro đơn giản chỉ thay thế đoạn code đã được define vào chỗ được gọi trước khi biên dịch.
       - Function phải tạo một function call, lưu địa chỉ trước khi gọi hàm vào stack pointer sau 
         đó mới thực hiện hàm, sau cùng quay trở về địa chỉ trên stack pointer trước khi gọi hàm 
         và thực hiện tiếp chương trình.
       - Macro khiến code dài hơn rất nhiều, nhưng quá trình chạy lại nhanh hơn 
-        (được xử lý trước khi mã chương trình được biên dịch)
+        (được xử lý ở giai đoạn tiền xử lý trước khi mã chương trình được biên dịch)
       - Function phải gọi function call nên tốn thời gian hơn 
         (được xử lý khi chương trình đang chạy), nhưng code ngắn gọn hơn.
-      - Macro thường hay dính lỗi đánh máy, trùng tên và không thể debug tìm 
-        lỗi trong thời gian thực thi. Function dễ debug hơn.
+      - Macro thường hay dính lỗi đánh máy, trùng tên và không thể debug tìm lỗi trong thời gian thực thi. 
+        Ngược lại Function dễ debug hơn...
       - Macro không cần định nghĩa kiểu dữ liệu của tham số, function phải định nghĩa kiểu dữ liệu 
         của tham số và trả về kiểu dữ liệu nào.
+  ### 6. So sánh Inline Function vs Macro
+      - Inline function là một hàm thực sự, trong khi macro là một thay thế văn bản.
+      - Inline function được khai báo và định nghĩa như một hàm thông thường, được biên dịch và thực thi 
+        như một phần của chương trình.
+      - Macro là một thay thế văn bản được xử lý bởi trình biên dịch trước khi mã nguồn được biên dịch. 
+        Trình biên dịch thay thế các macro bằng nội dung tương ứng trong mã nguồn trước khi biên dịch.
 ## IV: Static
   ### 1. Biến Static
       - Biến static là một biến có phạm vi truy cập chỉ trong một file, nghĩa là nó không thể được 
