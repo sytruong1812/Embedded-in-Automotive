@@ -10,19 +10,19 @@
       định nghĩa trước (struct, union, class...)
     - Thuộc tính của Class không thể có kiểu của chính lớp đó, nhưng có thể là kiểu con trỏ của lớp đó.
 ```Cpp
-class MyClass {
-public:
-    int num;
-    float values[10];
-    OtherClass* ptr;
-    struct InnerStruct {
+    class MyClass {
+    public:
+        int num;
+        float values[10];
+        OtherClass* ptr;
+        struct InnerStruct {
+            //...
+        };
+        union InnerUnion {
+            //...
+        };
         //...
     };
-    union InnerUnion {
-        //...
-    };
-    //...
-};
 ```
 #### 2: Khai báo các phương thức (Methods)
     - Phương thức cũng giống như một hàm bình thường thể hiện hành động của đối tượng.
@@ -32,30 +32,30 @@ public:
     - Phạm vi sử dụng của một Methods trong Class là toàn chương trình, vì vậy nó có thể được gọi và sử dụng từ 
       bất kỳ nơi nào trong chương trình, miễn là có quyền truy cập đến lớp đó.
 ```Cpp
-class MyClass {
-public:
-    int num;
-    void myMethod() {
-        // Sử dụng thuộc tính của lớp
-        num = 10;
-        // Gọi phương thức của lớp
-        anotherMethod();
-        // Gọi hàm tự lập trong chương trình
-        externalFunction();
-    }
-    void anotherMethod() {
+    class MyClass {
+    public:
+        int num;
+        void myMethod() {
+            // Sử dụng thuộc tính của lớp
+            num = 10;
+            // Gọi phương thức của lớp
+            anotherMethod();
+            // Gọi hàm tự lập trong chương trình
+            externalFunction();
+        }
+        void anotherMethod() {
+            //...
+        }
+    };
+    // Hàm tự lập trong chương trình
+    void externalFunction() {
         //...
     }
-};
-// Hàm tự lập trong chương trình
-void externalFunction() {
-    //...
-}
-int main() {
-    MyClass obj;
-    obj.myMethod();
-    return 0;
-}
+    int main() {
+        MyClass obj;
+        obj.myMethod();
+        return 0;
+    }
 ```
 #### 3: Các phạm vi truy cập các thuộc tính và phương thức trong Class: Public, Private, Protected:
     - Public: Các thành viên ở chế độ Public có thể được truy cập từ bất kỳ đâu trong chương trình, 
@@ -83,29 +83,29 @@ int main() {
         + Trong class có thể có nhiều constructor cùng tên, nhưng khác input parameter.
 ### 5: Ví dụ:
 ```c
-class className{
-    private:                //Các thành phần private (riêng) chỉ được sử dụng trong class đó
-        //Khai báo các thuộc tính
-        int a, b;           //Variable
-        char arr[];         //Array
-        int *ptr;           //Pointer
-        className *ptr;       //Kiểu con trỏ của class đó
-    protected:              //Các thành phần protected chỉ được sử dụng trong class hoặc các class kế thừa của class đó
-    public:                 //Các thành phần public (công cộng) được phép sử dụng ở cả ngoài và trong class đó
-        className(int _a = 0, int _b = 0);       //Khai báo constructor className có 2 đối là _a và _b
-        void sum();         //Khai báo methods (phương thức): Hàm tính tổng
-};
-//Định nghĩa (xây dựng) các constructor bên ngoài class
-className::className(int _a, int _b){
-    className::a = _a;
-    className::b = _b;
-}
-//Định nghĩa (xây dựng) các phương thức bên ngoài class
-void className::sum(){
-    int sum;
-    sum = a + b;
-    printf("Sum %d + %d = %d", a, b, sum);
-}
+    class className{
+        private:                //Các thành phần private (riêng) chỉ được sử dụng trong class đó
+            //Khai báo các thuộc tính
+            int a, b;           //Variable
+            char arr[];         //Array
+            int *ptr;           //Pointer
+            className *ptr;       //Kiểu con trỏ của class đó
+        protected:              //Các thành phần protected chỉ được sử dụng trong class hoặc các class kế thừa của class đó
+        public:                 //Các thành phần public (công cộng) được phép sử dụng ở cả ngoài và trong class đó
+            className(int _a = 0, int _b = 0);       //Khai báo constructor className có 2 đối là _a và _b
+            void sum();         //Khai báo methods (phương thức): Hàm tính tổng
+    };
+    //Định nghĩa (xây dựng) các constructor bên ngoài class
+    className::className(int _a, int _b){
+        className::a = _a;
+        className::b = _b;
+    }
+    //Định nghĩa (xây dựng) các phương thức bên ngoài class
+    void className::sum(){
+        int sum;
+        sum = a + b;
+        printf("Sum %d + %d = %d", a, b, sum);
+    }
 ```
 ## II: Các tính chất trong lập trình hướng đối tượng (OOP): *Kế thừa*, *Trừu tượng*, *Đa hình*, *Đóng gói*.
 #### 1. Tính kế thừa: 
@@ -113,10 +113,11 @@ void className::sum(){
       của *class* khác mà không cần phải viết lại từ đầu.
     - Ví dụ: *class B* muốn có các *thuộc tính* và *phương thức* giống *class A* mà không phải viết lại từ đầu, 
       khi đó *class B* sẽ *kế thừa* từ *class A*. Sử dụng toán tử `:`
-            
-        class ClassA:ClassB { 
-            ...
-        }
+```Cpp
+    class ClassA:ClassB { 
+        ...
+    }
+```
     - Ngoài ra, *class B* cũng có thể ghi đè/implement lại *phương thức* kế thừa từ *class A*.
 #### 2. Tính trừu tượng: 
     - Người dùng chỉ cần tập trung vào đầu vào và đầu ra của dữ liệu cần xử lý, không cần
@@ -125,48 +126,50 @@ void className::sum(){
 #### 3. Tính đa hình: 
     - Các *phương thức* trong *class* có thể có cùng tên nhưng lại có thể cho ra các kết quả 
       khác nhau, phụ thuộc vào kiểu trả về của *phương thức*, kiểu dữ liệu *input parameter* và thứ tự của chúng.
-
-        class TinhTong {
-            public:
-                void tong(int, int);
-                int tong(int, int);
-                float tong(float, float);
-        };
-        ...
-        int main() {
-            TinhTong sum;
-            sum.tong(1, 1);
-            printf("%d", sum.tong(1, 1));
-            printf("%f", sum.tong(1.1, 1.2));
-        
-            return 0;
-        }
+```Cpp
+    class TinhTong {
+        public:
+            void tong(int, int);
+            int tong(int, int);
+            float tong(float, float);
+    };
+    ...
+    int main() {
+        TinhTong sum;
+        sum.tong(1, 1);
+        printf("%d", sum.tong(1, 1));
+        printf("%f", sum.tong(1.1, 1.2));
+    
+        return 0;
+    }
+```
 #### 4. Tính đóng gói:
     - Chỉ để lộ ra các dữ liệu mà người dùng cần, che dấu đi các dữ liệu cần thiết. 
     - Người dùng không thể tác động vào các dữ liệu bị che dấu mà chỉ bên trong đối tượng đó mới có thể tác động. 
       Do đó, đảm bảo được tính an toàn của đối tượng. 
     - Ví dụ:
-
-        class Person {
-            private:
-                string _ten;
-                int _tuoi;
-                string _queQuan;
-                int _sdt;
-            public:
-                Person(string, int, string, int);
-                void hienThiThongTin();
-                void suaThongTin(string, int, string, int);
-        };
-        ...
-        int main() {
-            Person A("Ngoc", 25, "Bac Ninh", 0987654321);
-            A.hienThiThongTin();
-            A.suaThongTin();
-            A._ten;         //lỗi, không được phép
-        
-            return 0;
-        }
+```Cpp
+    class Person {
+        private:
+            string _ten;
+            int _tuoi;
+            string _queQuan;
+            int _sdt;
+        public:
+            Person(string, int, string, int);
+            void hienThiThongTin();
+            void suaThongTin(string, int, string, int);
+    };
+    ...
+    int main() {
+        Person A("Ngoc", 25, "Bac Ninh", 0987654321);
+        A.hienThiThongTin();
+        A.suaThongTin();
+        A._ten;         //lỗi, không được phép
+    
+        return 0;
+    }
+```
     - Trong ví dụ trên, ta không thể truy cập trực tiếp vào các *thuộc tính* của *class Person* vì nó thuộc 
       *private* mà phải thông qua các *phương thức* được *public*.
     - Do đó, các *thuộc tính* đã bị *đóng gói* không thể được truy xuất bằng cách thông thường `A._ten` mà phải 
@@ -177,19 +180,19 @@ void className::sum(){
     - Nó giúp ngăn chặn xung đột tên và hỗ trợ việc tổ chức và quản lý mã nguồn trong dự án lớn. 
     - Bằng cách đặt các thành phần vào các namespace khác nhau, chúng ta có thể xác định rõ ngữ cảnh của 
 ```Cpp
-#include <iostream>
-// Định nghĩa namespace MyMath
-namespace MyMath {
-    int add(int a, int b) {
-        return a + b;
+    #include <iostream>
+    // Định nghĩa namespace MyMath
+    namespace MyMath {
+        int add(int a, int b) {
+            return a + b;
+        }
     }
-}
-int main() {
-    // Sử dụng hàm add() trong namespace MyMath
-    int result = MyMath::add(5, 3);
-    std::cout << "Result: " << result << std::endl;
-    return 0;
-}
+    int main() {
+        // Sử dụng hàm add() trong namespace MyMath
+        int result = MyMath::add(5, 3);
+        std::cout << "Result: " << result << std::endl;
+        return 0;
+    }
 ```
 ## IV: Typedef
     - Trong C++, typedef được sử dụng để định danh (alias) một kiểu dữ liệu có sẵn (int, float, long, double...) 
@@ -197,11 +200,11 @@ int main() {
       hơn và cung cấp tính linh hoạt trong việc thay đổi kiểu dữ liệu.
     - VD: Khai báo Typedef
 ```Cpp
-typedef int myInt;     //myInt được định danh (alias) cho kiểu dữ liệu int.
-myInt x = 5;           //Có thể sử dụng myInt như một kiểu dữ liệu tương tự như int:
+    typedef int myInt;     //myInt được định danh (alias) cho kiểu dữ liệu int.
+    myInt x = 5;           //Có thể sử dụng myInt như một kiểu dữ liệu tương tự như int:
 
-typedef int MyArray[10];       //MyArray là một định danh (alias) cho kiểu mảng int[10].
-MyArray arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};      //Có thể sử dụng MyArray để định nghĩa một mảng int có độ dài 10:
+    typedef int MyArray[10];       //MyArray là một định danh (alias) cho kiểu mảng int[10].
+    MyArray arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};      //Có thể sử dụng MyArray để định nghĩa một mảng int có độ dài 10:
 ```
 ## V: Template
     - Template (khuôn mẫu) là một từ khóa trong C++, và là một kiểu dữ liệu trừu tượng tổng quát hóa cho 
@@ -211,15 +214,15 @@ MyArray arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};      //Có thể sử dụng MyAr
       cho từng hàm hay phương thức với những kiểu dữ liệu khác nhau.
     - VD: Viết 1 hàm template tính tổng của hai giá trị
 ```Cpp
-template <typename T>   
-T sum(T a, T b) {
-    return a + b;
-}
-//Sau đó, hàm sum có thể được sử dụng cho nhiều kiểu dữ liệu khác nhau như int, float, double,...
-main(){
-    int result1 = sum(10, 5);       // result1 = 15
-    float result2 = sum(3.14, 2.71); // result2 = 5.85
-}
+    template <typename T>   
+    T sum(T a, T b) {
+        return a + b;
+    }
+    //Sau đó, hàm sum có thể được sử dụng cho nhiều kiểu dữ liệu khác nhau như int, float, double,...
+    main(){
+        int result1 = sum(10, 5);       // result1 = 15
+        float result2 = sum(3.14, 2.71); // result2 = 5.85
+    }
 ```
 ## VI: Virtual Function (Hàm ảo)
     - Hàm ảo (virtual function) là một hàm thành viên trong lớp cơ sở mà lớp dẫn xuất khi kế thừa cần phải định nghĩa lại.
@@ -230,37 +233,37 @@ main(){
     - Hàm ảo chỉ khác hàm thành phần thông thường khi được gọi từ một con trỏ. Sử dụng hàm ảo khi muốn con trỏ đang trỏ 
       tới đối tượng của lớp nào thì hàm thành phần của lớp đó sẽ được gọi mà không xem xét đến kiểu của con trỏ.
 ```Cpp
-#include <iostream>
-class Animal {
-public:
-    virtual void makeSound() {
-        std::cout << "Animal makes a sound." << std::endl;
-    }
-};
-class Dog : public Animal {
-public:
-    void makeSound() override {
-        std::cout << "Dog barks." << std::endl;
-    }
-};
-class Cat : public Animal {
-public:
-    void makeSound() override {
-        std::cout << "Cat meows." << std::endl;
-    }
-};
-//Hai lớp con Dog và Cat kế thừa từ lớp Animal và ghi đè hàm makeSound() để cung cấp triển khai riêng.
-int main() {
-// Tạo hai đối tượng thông qua con trỏ của lớp cơ sở Animal, nhưng khi gọi phương thức makeSound(), 
-// hành vi được xác định bởi loại đối tượng thực tế mà con trỏ đang trỏ tới.
-    Animal* animal1 = new Dog();
-    Animal* animal2 = new Cat();
+    #include <iostream>
+    class Animal {
+    public:
+        virtual void makeSound() {
+            std::cout << "Animal makes a sound." << std::endl;
+        }
+    };
+    class Dog : public Animal {
+    public:
+        void makeSound() override {
+            std::cout << "Dog barks." << std::endl;
+        }
+    };
+    class Cat : public Animal {
+    public:
+        void makeSound() override {
+            std::cout << "Cat meows." << std::endl;
+        }
+    };
+    //Hai lớp con Dog và Cat kế thừa từ lớp Animal và ghi đè hàm makeSound() để cung cấp triển khai riêng.
+    int main() {
+    // Tạo hai đối tượng thông qua con trỏ của lớp cơ sở Animal, nhưng khi gọi phương thức makeSound(), 
+    // hành vi được xác định bởi loại đối tượng thực tế mà con trỏ đang trỏ tới.
+        Animal* animal1 = new Dog();
+        Animal* animal2 = new Cat();
 
-    animal1->makeSound(); // Kết quả: "Dog barks."
-    animal2->makeSound(); // Kết quả: "Cat meows."
-// Cùng một phương thức được gọi, nhưng cho ra kết quả khác nhau dựa trên loại đối tượng thực tế.
-    delete animal1;
-    delete animal2;
-    return 0;
-}
+        animal1->makeSound(); // Kết quả: "Dog barks."
+        animal2->makeSound(); // Kết quả: "Cat meows."
+    // Cùng một phương thức được gọi, nhưng cho ra kết quả khác nhau dựa trên loại đối tượng thực tế.
+        delete animal1;
+        delete animal2;
+        return 0;
+    }
 ```
