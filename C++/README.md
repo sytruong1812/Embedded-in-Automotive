@@ -57,7 +57,7 @@ int main() {
     return 0;
 }
 ```
-#### 3: Các phạm vi truy cập các thuộc tính và phương thức trong Class: Public, Private, Protected:
+#### 3: Các phạm vi truy cập các thuộc tính và phương thức trong Class: Public, Private, Protected
     - Public: Các thành viên ở chế độ Public có thể được truy cập từ bất kỳ đâu trong chương trình, 
       bao gồm cả từ các Class bên ngoài.
     - Private: Các thành viên ở chế độ Private chỉ có thể được truy cập từ bên trong Class định nghĩa chúng. 
@@ -107,7 +107,7 @@ void className::sum(){
     printf("Sum %d + %d = %d", a, b, sum);
 }
 ```
-## II: Các tính chất trong lập trình hướng đối tượng (OOP): *Kế thừa*, *Trừu tượng*, *Đa hình*, *Đóng gói*.
+## II: Các tính chất trong lập trình hướng đối tượng (OOP): Kế thừa, Trừu tượng, Đa hình, Đóng gói.
 #### 1. Tính kế thừa: 
     - Một class có thể sử dụng các *thuộc tính* và *phương thức* đặt trong phạm vi *public* hoặc *protected* 
       của *class* khác mà không cần phải viết lại từ đầu.
