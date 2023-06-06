@@ -2,71 +2,113 @@
     - Class (lớp) là một mô tả hoặc một bản thiết kế cho một đối tượng cụ thể. Dùng để định nghĩa các thuộc tính (đặc điểm) 
       và phương thức (hành vi) mà đối tượng có thể có.
     - Class thực chất là một kiểu dữ liệu do người lập trình định nghĩa.
-    - Một class bao gồm các thành phần dữ liệu (thuộc tính hay property) và các phương thức (hàm thành phần hay method)
+    - Một class bao gồm các thành phần dữ liệu (thuộc tính hay Property) và các phương thức (hàm thành phần hay method)
     - Class gần giống với struct. Khác ở chỗ các member trong struct là các biến còn trong class được gọi là các property.
-### 1: Khai báo các thuộc tính (Peroperties) 
-    - Thuộc tính của lớp có thể là biến, mảng, con trỏ có kiểu chuẩn (int, char, float...),hoặc kiểu ngoài đã được 
+    - Phân vùng nhớ của Class phụ thuộc vào đối tượng được của Class được khai báo ở đâu và như thế nào.
+#### 1: Khai báo các thuộc tính (Property) 
+    - Thuộc tính của Class có thể là biến, mảng, con trỏ có kiểu chuẩn (int, char, float...),hoặc kiểu ngoài đã được 
       định nghĩa trước (struct, union, class...)
-    - Thuộc tính của lớp không thể có kiểu của chính lớp đó, nhưng có thể là kiểu con trỏ của lớp đó.
-### 2: Khai báo các phương thức (methods)
-    - Các phương thức thường để publis để chúng có thể gọi tới (sử dụng) từ các hàm khác trong chương trình. 
-    - Trong thân phương thức của lớp có thể sử dụng các thuộc tính, phương thức của lớp đó, các hàm tự lập trong chương trình. 
-      Vì phạm vi sử dụng của hàm là toàn chương trình.
-### 3: Constructor (Hàm tạo)
+    - Thuộc tính của Class không thể có kiểu của chính lớp đó, nhưng có thể là kiểu con trỏ của lớp đó.
+```Cpp
+class MyClass {
+public:
+    int num;
+    float values[10];
+    OtherClass* ptr;
+    struct InnerStruct {
+        //...
+    };
+    union InnerUnion {
+        //...
+    };
+    //...
+};
+```
+#### 2: Khai báo các phương thức (Methods)
+    - Phương thức cũng giống như một hàm bình thường.
+    - Các phương thức thường để chế độ Public để chúng có thể gọi tới (sử dụng) từ các hàm khác trong chương trình. 
+    - Trong thân các Methods của Class có thể sử dụng các thuộc tính và Methods của lớp đó và cả các hàm tự tạo 
+      trong chương trình (hàm không thuộc Class) vì phạm vi của hàm là toàn chương trình.
+    - Phạm vi sử dụng của một Methods trong Class là toàn chương trình, vì vậy nó có thể được gọi và sử dụng từ 
+      bất kỳ nơi nào trong chương trình, miễn là có quyền truy cập đến lớp đó.
+```Cpp
+class MyClass {
+public:
+    int num;
+    void myMethod() {
+        // Sử dụng thuộc tính của lớp
+        num = 10;
+        // Gọi phương thức của lớp
+        anotherMethod();
+        // Gọi hàm tự lập trong chương trình
+        externalFunction();
+    }
+    void anotherMethod() {
+        //...
+    }
+};
+// Hàm tự lập trong chương trình
+void externalFunction() {
+    //...
+}
+int main() {
+    MyClass obj;
+    obj.myMethod();
+    return 0;
+}
+```
+#### 3: Các phạm vi truy cập của Class: Public, Private, Protected:
+    - Public: Các thành viên ở chế độ Public có thể được truy cập từ bất kỳ đâu trong chương trình, 
+      bao gồm cả từ các Class bên ngoài.
+    - Private: Các thành viên ở chế độ Private chỉ có thể được truy cập từ bên trong Class định nghĩa chúng. 
+      Các thành viên Private không thể được truy cập từ các Class kế thừa hoặc từ bên ngoài Class hoặc đối tượng.
+    - Protected: Các thành viên ở chế độ protected chỉ có thể được truy cập từ bên trong Class định nghĩa chúng 
+      hoặc từ các Class kế thừa của Class đó. Các thành viên protected không thể được truy cập từ bên ngoài Class hoặc đối tượng.
+
+    - Các đặc điểm chính của từ khóa Protected, Private, và Public:
+        + Public: Có phạm vi rộng nhất, cho phép truy cập từ mọi nơi trong chương trình.
+        + Private: Chỉ cho phép truy cập từ bên trong Class định nghĩa chúng.
+        + Protected: Chỉ cho phép truy cập từ bên trong Class định nghĩa chúng và các Class kế thừa (dẫn xuất).
+    - Sử dụng đúng từ khóa phù hợp là một phần quan trọng trong thiết kế Class và quản lý độ an toàn của dữ liệu trong OOP.
+#### 4: Constructor (Hàm tạo)
     - Constructor cũng là một methods của class dùng để tạo dựng một đối tượng mới từ đầu, và sẽ chạy đầu tiên.
-    - 3 điểm khác biệt của Constructor so với các methods khác:
+    - Nếu không khai báo constructor thì class sẽ tự động tạo ra constructor mặc định (constructor không có tham số).
+    - Có 3 điểm khác biệt của Constructor so với các methods khác:
         + Tên của constructor bắc buộc phải trùng với tên của Class
         + Không khai báo kiểu cho constructor.
         + Constructor không có kết quả trả về.
     - Ngoài 3 điểm khác trên thì constructor giống với các methods khác:
         + Có thể được định nghĩa (xây dựng) bên trong hoặc ngoài class
-        + Có thể có đối hoặc không có đối.
-        + Trong class có thể có nhiều constructor cùng tên, nhưng khác bộ đối.
-### 4: Các từ khóa Public, Private, Protected:
-    - Public: Các thành viên công khai (public) có thể được truy cập từ bất kỳ đâu trong chương trình, bao gồm cả 
-      từ các lớp bên ngoài. Đây là phạm vi rộng nhất và cho phép tất cả các thành viên của lớp hoặc đối tượng được 
-      truy cập một cách tự do.
-
-    - Private: Các thành viên riêng tư (private) chỉ có thể được truy cập từ bên trong lớp định nghĩa chúng. 
-      Các thành viên private không thể được truy cập từ các lớp dẫn xuất (kế thừa) hoặc từ bên ngoài lớp hoặc đối tượng.
-
-    - Protected: Các thành viên được bảo vệ (protected) chỉ có thể được truy cập từ bên trong lớp định nghĩa chúng 
-      hoặc từ các lớp dẫn xuất (kế thừa) của lớp đó. Các thành viên protected không thể được truy cập từ bên ngoài lớp hoặc đối tượng.
-
-    - Các đặc điểm chính của từ khóa Protected, Private, và Public:
-        + Public: Có phạm vi rộng nhất, cho phép truy cập từ mọi nơi.
-        + Protected: Chỉ cho phép truy cập từ bên trong lớp định nghĩa chúng và các lớp dẫn xuất (kế thừa).
-        + Private: Chỉ cho phép truy cập từ bên trong lớp định nghĩa chúng.
-    - Sử dụng đúng từ khóa phù hợp là một phần quan trọng trong thiết kế lớp và quản lý độ an toàn của dữ liệu 
-      trong lập trình hướng đối tượng.
+        + Có thể input parameter hoặc không  input parameter (Có đối số / Không có đối số)
+        + Trong class có thể có nhiều constructor cùng tên, nhưng khác input parameter.
 ### 5: Ví dụ:
 ```c
 class className{
     private:                //Các thành phần private (riêng) chỉ được sử dụng trong class đó
+        //Khai báo các thuộc tính
         int a, b;           //Variable
         char arr[];         //Array
         int *ptr;           //Pointer
         className *ptr;       //Kiểu con trỏ của class đó
     protected:              //Các thành phần protected chỉ được sử dụng trong class hoặc các class kế thừa của class đó
     public:                 //Các thành phần public (công cộng) được phép sử dụng ở cả ngoài và trong class đó
-        void sum();         //methods (phương thức): Hàm tính tổng
         className(int _a = 0, int _b = 0);       //Khai báo constructor className có 2 đối là _a và _b
+        void sum();         //Khai báo methods (phương thức): Hàm tính tổng
 };
-
+//Định nghĩa (xây dựng) các constructor bên ngoài class
+className::className(int _a, int _b){
+    className::a = _a;
+    className::b = _b;
+}
 //Định nghĩa (xây dựng) các phương thức bên ngoài class
 void className::sum(){
     int sum;
     sum = a + b;
     printf("Sum %d + %d = %d", a, b, sum);
 }
-//Định nghĩa (xây dựng) các constructor bên ngoài class
-className::className(int _a, int _b){
-    className::a = _a;
-    className::b = _b;
-}
 ```
 ## II: Các tính chất trong lập trình hướng đối tượng (OOP)
-#### 6.1: Tính kế thừa (Inheritance)
+#### 1: Tính kế thừa (Inheritance)
     - Nếu class con có dạng kế thừa là public, thì class cha kiểu gì qua class con giữ nguyên 
     - Nếu class con có dạng kế thừa là private, thì nếu:
         + Class cha kiểu plulic -> Class con kiểu private
@@ -76,14 +118,14 @@ className::className(int _a, int _b){
         + Class cha kiểu plulic -> Class con kiểu protected
         + Class cha kiểu private -> Class con kiểu private
         + Class cha kiểu protected - > Class con kiểu protected 
-#### 6.2: Tính trừu tượng (Abstraction)
+#### 2: Tính trừu tượng (Abstraction)
     - Tính chất này giúp bỏ qua sự phức tạp bên trong method mà chỉ quan tâm đến kết quả đạt được.
-#### 6.3: Tính đa hình (Polymorphism)
+#### 3: Tính đa hình (Polymorphism)
     - Tính đa hình cho phép trong cùng 1 class có thể đưa ra nhiều method có cùng tên nhưng khác nhau về các input
-    parameter hoặc kiểu dữ liệu trả về
-#### 6.4: Tính đóng gói (Encapsulation)
+      parameter hoặc kiểu dữ liệu trả về
+#### 4: Tính đóng gói (Encapsulation)
     - Tính đóng gói có ý nghĩa không cho phép người sử dụng cái object có thể thay đổi các trạng thái nội 
-    tại của đối tượng, mà chỉ có thể thay đổi thông qua method
+      tại của đối tượng, mà chỉ có thể thay đổi thông qua method thuộc tính của nó.
     - Khi thay đổi thông qua method, chúng ta có thể kiểm soát giá trị thay đổi 
 
 ## III: Namespace
