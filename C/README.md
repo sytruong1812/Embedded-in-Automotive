@@ -97,7 +97,8 @@ inline return_type function_name(param){
         thực hiện xong sẽ lấy kết quả trả về, sau đó quay lại stack pointer lấy địa chỉ trước đó được lưu
         và tiếp tục thực hiện tiếp chương trình từ địa chỉ đó. 
   ### 5. So sánh Macro vs Function
-      - Macro đơn giản chỉ thay thế đoạn code đã được define vào chỗ được gọi trước khi biên dịch.
+      - Function được xử lý ở quá trình Compiler còn Macro được xử lý ở quá trình tiền xử lý (Trước quá trình Compiler)
+      - Macro đơn giản chỉ thay thế đoạn code đã được #define vào chỗ được gọi trước khi biên dịch.
       - Function phải tạo một function call, lưu địa chỉ trước khi gọi hàm vào stack pointer sau 
         đó mới thực hiện hàm, sau cùng quay trở về địa chỉ trên stack pointer trước khi gọi hàm 
         và thực hiện tiếp chương trình.
@@ -110,6 +111,7 @@ inline return_type function_name(param){
       - Macro không cần định nghĩa kiểu dữ liệu của tham số, function phải định nghĩa kiểu dữ liệu 
         của tham số và trả về kiểu dữ liệu nào.
   ### 6. So sánh Inline Function vs Macro
+      - Inline Function được xử lý ở quá trình Compiler còn Macro được xử lý ở quá trình tiền xử lý (Trước quá trình Compiler)
       - Inline function là một hàm thực sự, trong khi macro là một thay thế văn bản.
       - Inline function được khai báo và định nghĩa như một hàm thông thường, được biên dịch và thực thi 
         như một phần của chương trình.
