@@ -57,7 +57,7 @@ int main() {
     return 0;
 }
 ```
-#### 3: Các phạm vi truy cập của Class: Public, Private, Protected:
+#### 3: Các phạm vi truy cập: Public, Private, Protected:
     - Public: Các thành viên ở chế độ Public có thể được truy cập từ bất kỳ đâu trong chương trình, 
       bao gồm cả từ các Class bên ngoài.
     - Private: Các thành viên ở chế độ Private chỉ có thể được truy cập từ bên trong Class định nghĩa chúng. 
