@@ -33,21 +33,22 @@
           giá trị khác không còn với phân vùng nhớ BSS thì ngược lại, các biến toàn cục 
           và static được khởi tạo với giá trị bằng không or không cần khởi tạo.
   ### 3. So sánh Heap và Stack
-  #### 3.1 Giống nhau
+  #### 3.1. Giống nhau
         - Bộ nhớ Heap và bộ nhớ Stack bản chất đều cùng là vùng nhớ được tạo ra 
           và lưu trữ trong RAM khi chương trình được thực thi.
-  #### 3.2 Khác nhau
+  #### 3.2. Khác nhau
         - Bộ nhớ Stack được dùng để lưu trữ các biến cục bộ trong hàm, tham số truyền vào.. 
           Truy cập vào bộ nhớ này rất nhanh và được thực thi khi chương trình được biên dịch.
         - Bộ nhớ Heap được dùng để lưu trữ vùng nhớ cho các biến con trỏ được cấp phát động 
           bởi các hàm malloc - calloc - realloc/new.
         - Kích thước:
           Bộ nhớ Stack là cố định, tùy thuộc vào từng hệ điều hành (VD: Win: 1MB, Linux: 8MB, tùy thuộc vào kiến trúc hệ điều hành)
-          Ngược lại kích thước của bộ nhớ Heap là không cố định, có thể tăng giảm do đó đáp ứng được nhu cầu lưu trữ dữ liệu của chương trình.
-        - Vùng nhớ Stack được quản lý bởi hệ điều hành, dữ liệu sẽ tự động bị hủy khi 
-          hàm thực hiện xong công việc. Vùng nhớ Heap được quản lý bởi lập trình viên, dữ liệu 
-          sẽ không tự động bị hủy mà phải tự tay hủy vùng nhớ bằng câu lệnh free/delete.
+          Ngược lại kích thước bộ nhớ Heap là không cố định, có thể tăng giảm nên phù hợp để lưu trữ dữ liệu của chương trình.
+        - Vùng nhớ Stack được quản lý bởi hệ điều hành, dữ liệu sẽ tự động bị hủy khi (được giải phóng)
+          hàm thực hiện xong công việc. Vùng nhớ Heap được quản lý bởi lập trình viên, dữ liệu sẽ không tự động bị 
+          hủy mà phải tự tay hủy vùng nhớ bằng câu lệnh free/delete.
         - Nếu liên tục cấp phát vùng nhớ mà không giải phóng thì sẽ bị lỗi tràn vùng nhớ Heap (Heap Overflow).
+        - Vùng nhớ Stack được xử lý ở quá trình Compiler còn vùng nhớ Heap được xử lý ở quá trình chạy chương trình.
 ## II: Compiler
   ### 1. Quá trình Compiler
     - Quá trình Compiler là quá trình chuyển đổi từ ngôn ngữ bậc cao (C/C++, Python, Pascal...) sang ngôn ngữ máy.
@@ -119,6 +120,7 @@ inline return_type function_name(param){
         Trình biên dịch thay thế các macro bằng nội dung tương ứng trong mã nguồn trước khi biên dịch.
 ## IV: Static
   ### 1. Biến Static
+      - Cũng giống như 1 biến bình thường (local, global)
       - Biến static có mức độ truy cập và phạm vi khác so với biến thông thường. 
       - Khi một biến được khai báo là static, nghĩa là biến đó chỉ được khởi tạo một lần duy nhất trong
         quá trình chạy chương trình và giá trị của nó được duy trì qua các lần gọi hàm.
