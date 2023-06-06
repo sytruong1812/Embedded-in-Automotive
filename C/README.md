@@ -82,7 +82,7 @@
       - VD: #define MY_NAME "Alex"
   ### 3. Inline Function
       - Được xử lý bởi compiler
-      -	Được khai báo với từ khóa inline
+      - Được khai báo với từ khóa inline
       - Khi compiler thấy bất kỳ chỗ nào xuất hiện inline function, trình biên dịch thực hiện thay thế vị trí gọi hàm 
         bằng nội dung hàm inline.
 ```C
