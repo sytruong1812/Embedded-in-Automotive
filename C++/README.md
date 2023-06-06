@@ -25,7 +25,7 @@ public:
 };
 ```
 #### 2: Khai báo các phương thức (Methods)
-    - Phương thức cũng giống như một hàm bình thường.
+    - Phương thức cũng giống như một hàm bình thường thể hiện hành động của đối tượng.
     - Các phương thức thường để chế độ Public để chúng có thể gọi tới (sử dụng) từ các hàm khác trong chương trình. 
     - Trong thân các Methods của Class có thể sử dụng các thuộc tính và Methods của lớp đó và cả các hàm tự tạo 
       trong chương trình (hàm không thuộc Class) vì phạm vi của hàm là toàn chương trình.
@@ -57,7 +57,7 @@ int main() {
     return 0;
 }
 ```
-#### 3: Các phạm vi truy cập: Public, Private, Protected:
+#### 3: Các phạm vi truy cập các thuộc tính và phương thức trong Class: Public, Private, Protected:
     - Public: Các thành viên ở chế độ Public có thể được truy cập từ bất kỳ đâu trong chương trình, 
       bao gồm cả từ các Class bên ngoài.
     - Private: Các thành viên ở chế độ Private chỉ có thể được truy cập từ bên trong Class định nghĩa chúng. 
@@ -108,25 +108,60 @@ void className::sum(){
 }
 ```
 ## II: Các tính chất trong lập trình hướng đối tượng (OOP)
-#### 1: Tính kế thừa (Inheritance)
-    - Nếu class con có dạng kế thừa là public, thì class cha kiểu gì qua class con giữ nguyên 
-    - Nếu class con có dạng kế thừa là private, thì nếu:
-        + Class cha kiểu plulic -> Class con kiểu private
-        + Class cha kiểu private -> Class con kiểu private
-        + Class cha kiểu protected - > Class con kiểu private
-    - Nếu class con có dạng kế thừa là protected, thì nếu:
-        + Class cha kiểu plulic -> Class con kiểu protected
-        + Class cha kiểu private -> Class con kiểu private
-        + Class cha kiểu protected - > Class con kiểu protected 
-#### 2: Tính trừu tượng (Abstraction)
-    - Tính chất này giúp bỏ qua sự phức tạp bên trong method mà chỉ quan tâm đến kết quả đạt được.
-#### 3: Tính đa hình (Polymorphism)
-    - Tính đa hình cho phép trong cùng 1 class có thể đưa ra nhiều method có cùng tên nhưng khác nhau về các input
-      parameter hoặc kiểu dữ liệu trả về
-#### 4: Tính đóng gói (Encapsulation)
-    - Tính đóng gói có ý nghĩa không cho phép người sử dụng cái object có thể thay đổi các trạng thái nội 
-      tại của đối tượng, mà chỉ có thể thay đổi thông qua method thuộc tính của nó.
-    - Khi thay đổi thông qua method, chúng ta có thể kiểm soát giá trị thay đổi 
+    Có 4 đặc tính: *Kế thừa*, *Trừu tượng*, *Đa hình*, *Đóng gói*.
+    - **_Tính kế thừa_**: Một class có thể sử dụng các *thuộc tính* và *phương thức* đặt trong phạm vi *public* hoặc *protected* của *class* khác mà không cần phải viết lại từ đầu.
+    Ví dụ: *class B* muốn có các *thuộc tính* và *phương thức* giống *class A* mà không phải viết lại từ đầu, khi đó *class B* sẽ *kế thừa* từ *class A*. Sử dụng 
+    toán tử `:`
+            
+        class ClassA:ClassB { 
+            ...
+        }
+    Ngoài ra, *class B* cũng có thể ghi đè/implement lại *phương thức* kế thừa từ *class A*.
+    - **_Tính trừu tượng_**: người dùng chỉ cần tập trung vào đầu vào và đầu ra của dữ liệu cần xử lý, không cần biết dữ liệu đầu vào được xử lý ra làm sao để có được đầu ra.
+    Tức là người dùng chỉ cần gọi các *phương thức* ra sử dụng, sau đó nhận kết quả chứ không cần quan tâm phần implement của phương thức đó.
+    - **_Tính đa hình_**: các *phương thức* trong *class* có thể có cùng tên nhưng lại có thể cho ra các kết quả khác nhau, phụ thuộc vào kiểu trả về của *phương thức*, 
+    kiểu dữ liệu *input parameter* và thứ tự của chúng.
+
+        class TinhTong {
+            public:
+                void tong(int, int);
+                int tong(int, int);
+                float tong(float, float);
+        };
+        ...
+        int main() {
+            TinhTong sum;
+            sum.tong(1, 1);
+            printf("%d", sum.tong(1, 1));
+            printf("%f", sum.tong(1.1, 1.2));
+        
+            return 0;
+        }
+    - **_Tính đóng gói_**: chỉ để lộ ra các dữ liệu mà người dùng cần, che dấu đi các dữ liệu cần thiết. Người dùng không thể tác động vào các dữ liệu bị che dấu mà chỉ bên
+    trong đối tượng đó mới có thể tác động. Do đó, đảm bảo được tính an toàn của đối tượng. Ví dụ:
+
+        class Person {
+            private:
+                string _ten;
+                int _tuoi;
+                string _queQuan;
+                int _sdt;
+            public:
+                Person(string, int, string, int);
+                void hienThiThongTin();
+                void suaThongTin(string, int, string, int);
+        };
+        ...
+        int main() {
+            Person A("Ngoc", 25, "Bac Ninh", 0987654321);
+            A.hienThiThongTin();
+            A.suaThongTin();
+            A._ten;         //lỗi, không được phép
+        
+            return 0;
+        }
+    Trong ví dụ trên, ta không thể truy cập trực tiếp vào các *thuộc tính* của *class Person* vì nó thuộc *private* mà phải thông qua các *phương thức* được *public*.
+    Do đó, các *thuộc tính* đã bị *đóng gói* không thể được truy xuất bằng cách thông thường `A._ten` mà phải thông qua *phương thức* được *public* thuộc *class Person*.
 
 ## III: Namespace
     - Namespace trong C++ là một cơ chế cho phép nhóm các tên (biến, hàm, lớp, v.v.) vào một tên duy nhất. 
