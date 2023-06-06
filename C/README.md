@@ -139,10 +139,10 @@ inline return_type function_name(param){
       + Kích thước: Kích thước của 1 STRUCT tối thiểu bằng kích thước các member cộng lại và còn phụ thuộc 
       vào bộ nhớ đệm (struct padding). Còn kích thước của UNION bằng kích thước của thành phần lớn nhất. 
       + Vùng nhớ: Dữ liệu của các member trong STRUCT được lưu trữ ở những vùng nhớ khác nhau. 
-      Ngược lại trong UNION các member được cấp phát một vùng nhớ chung. Việc thay đổi nội dung 
-      của 1 thành viên sẽ dẫn đến thay đổi nội dung của các thành viên khác. Nói cách khác, việc gán giá trị cho các 
-      member của UNION trước, thì chỉ thành phần cuối cùng được gián giá trị được sử dụng, các thành phần trước 
-      đó sẽ bị ghi đè. Vì vậy UNION được sử dụng để tiếp kiệm bộ nhớ.
+      Ngược lại trong UNION các member được cấp phát một vùng nhớ chung. Việc thay đổi nội dung của 1 thành viên trong UNION 
+      sẽ dẫn đến thay đổi nội dung của các thành viên khác. Nói cách khác, việc gán giá trị cho các member của UNION trước, 
+      thì chỉ thành phần cuối cùng được gián giá trị được sử dụng, các thành phần trước đó sẽ bị ghi đè. 
+      Vì vậy UNION được sử dụng để tiếp kiệm bộ nhớ.
 ## VI: Pointer
   ### 1. Bộ nhớ RAM
       - Đầu tiên khi nói về con trỏ thì nói qua về bộ nhớ RAM
