@@ -107,20 +107,21 @@ void className::sum(){
     printf("Sum %d + %d = %d", a, b, sum);
 }
 ```
-## II: Các tính chất trong lập trình hướng đối tượng (OOP)
-#### Có 4 đặc tính: *Kế thừa*, *Trừu tượng*, *Đa hình*, *Đóng gói*.
-    - **_Tính kế thừa_**: Một class có thể sử dụng các *thuộc tính* và *phương thức* đặt trong phạm vi *public* hoặc *protected* của *class* khác mà không cần phải viết lại từ đầu.
-    Ví dụ: *class B* muốn có các *thuộc tính* và *phương thức* giống *class A* mà không phải viết lại từ đầu, khi đó *class B* sẽ *kế thừa* từ *class A*. Sử dụng 
-    toán tử `:`
+## II: Các tính chất trong lập trình hướng đối tượng (OOP): *Kế thừa*, *Trừu tượng*, *Đa hình*, *Đóng gói*.
+#### **_Tính kế thừa_**: Một class có thể sử dụng các *thuộc tính* và *phương thức* đặt trong phạm vi *public* 
+    hoặc *protected* của *class* khác mà không cần phải viết lại từ đầu.
+    Ví dụ: *class B* muốn có các *thuộc tính* và *phương thức* giống *class A* mà không phải viết lại từ đầu, 
+    khi đó *class B* sẽ *kế thừa* từ *class A*. Sử dụng toán tử `:`
             
         class ClassA:ClassB { 
             ...
         }
     Ngoài ra, *class B* cũng có thể ghi đè/implement lại *phương thức* kế thừa từ *class A*.
-    - **_Tính trừu tượng_**: người dùng chỉ cần tập trung vào đầu vào và đầu ra của dữ liệu cần xử lý, không cần biết dữ liệu đầu vào được xử lý ra làm sao để có được đầu ra.
-    Tức là người dùng chỉ cần gọi các *phương thức* ra sử dụng, sau đó nhận kết quả chứ không cần quan tâm phần implement của phương thức đó.
-    - **_Tính đa hình_**: các *phương thức* trong *class* có thể có cùng tên nhưng lại có thể cho ra các kết quả khác nhau, phụ thuộc vào kiểu trả về của *phương thức*, 
-    kiểu dữ liệu *input parameter* và thứ tự của chúng.
+#### **_Tính trừu tượng_**: người dùng chỉ cần tập trung vào đầu vào và đầu ra của dữ liệu cần xử lý, không cần
+    biết dữ liệu đầu vào được xử lý ra làm sao để có được đầu ra.Tức là người dùng chỉ cần gọi các *phương thức* 
+    ra sử dụng, sau đó nhận kết quả chứ không cần quan tâm phần implement của phương thức đó.
+#### **_Tính đa hình_**: các *phương thức* trong *class* có thể có cùng tên nhưng lại có thể cho ra các kết quả 
+    khác nhau, phụ thuộc vào kiểu trả về của *phương thức*, kiểu dữ liệu *input parameter* và thứ tự của chúng.
 
         class TinhTong {
             public:
@@ -137,8 +138,10 @@ void className::sum(){
         
             return 0;
         }
-    - **_Tính đóng gói_**: chỉ để lộ ra các dữ liệu mà người dùng cần, che dấu đi các dữ liệu cần thiết. Người dùng không thể tác động vào các dữ liệu bị che dấu mà chỉ bên
-    trong đối tượng đó mới có thể tác động. Do đó, đảm bảo được tính an toàn của đối tượng. Ví dụ:
+#### **_Tính đóng gói_**: chỉ để lộ ra các dữ liệu mà người dùng cần, che dấu đi các dữ liệu cần thiết. 
+    Người dùng không thể tác động vào các dữ liệu bị che dấu mà chỉ bên trong đối tượng đó mới có thể 
+    tác động. Do đó, đảm bảo được tính an toàn của đối tượng. 
+    Ví dụ:
 
         class Person {
             private:
@@ -160,8 +163,10 @@ void className::sum(){
         
             return 0;
         }
-    Trong ví dụ trên, ta không thể truy cập trực tiếp vào các *thuộc tính* của *class Person* vì nó thuộc *private* mà phải thông qua các *phương thức* được *public*.
-    Do đó, các *thuộc tính* đã bị *đóng gói* không thể được truy xuất bằng cách thông thường `A._ten` mà phải thông qua *phương thức* được *public* thuộc *class Person*.
+    Trong ví dụ trên, ta không thể truy cập trực tiếp vào các *thuộc tính* của *class Person* vì nó thuộc 
+    *private* mà phải thông qua các *phương thức* được *public*.
+    Do đó, các *thuộc tính* đã bị *đóng gói* không thể được truy xuất bằng cách thông thường `A._ten` mà phải 
+    thông qua *phương thức* được *public* thuộc *class Person*.
 
 ## III: Namespace
     - Namespace trong C++ là một cơ chế cho phép nhóm các tên (biến, hàm, lớp, v.v.) vào một tên duy nhất. 
