@@ -108,7 +108,7 @@ void className::sum(){
 }
 ```
 ## II: Các tính chất trong lập trình hướng đối tượng (OOP)
-    Có 4 đặc tính: *Kế thừa*, *Trừu tượng*, *Đa hình*, *Đóng gói*.
+#### Có 4 đặc tính: *Kế thừa*, *Trừu tượng*, *Đa hình*, *Đóng gói*.
     - **_Tính kế thừa_**: Một class có thể sử dụng các *thuộc tính* và *phương thức* đặt trong phạm vi *public* hoặc *protected* của *class* khác mà không cần phải viết lại từ đầu.
     Ví dụ: *class B* muốn có các *thuộc tính* và *phương thức* giống *class A* mà không phải viết lại từ đầu, khi đó *class B* sẽ *kế thừa* từ *class A*. Sử dụng 
     toán tử `:`
