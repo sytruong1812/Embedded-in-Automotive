@@ -184,13 +184,16 @@ int main() {
 #include <iostream>
 // Định nghĩa namespace MyMath
 namespace MyMath {
-    int add(int a, int b) {
+    int sum(int a, int b) {
         return a + b;
+    }
+    int abc(int a, int b){
+        return a - b
     }
 }
 int main() {
-    // Sử dụng hàm add() trong namespace MyMath
-    int result = MyMath::add(5, 3);
+    // Sử dụng hàm sum() trong namespace MyMath
+    int result = MyMath::sum(5, 3);
     std::cout << "Result: " << result << std::endl;
     return 0;
 }
