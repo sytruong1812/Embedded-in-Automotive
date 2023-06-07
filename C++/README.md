@@ -72,6 +72,7 @@ int main() {
 #### 4: Constructor (Hàm tạo)
     - Constructor cũng là một methods của class dùng để tạo dựng một đối tượng mới từ đầu, và sẽ chạy đầu tiên.
     - Nếu không khai báo constructor thì class sẽ tự động tạo ra constructor mặc định (constructor không có tham số).
+      Và constructor này sẽ không làm gì cả.
     - Có 3 điểm khác biệt của Constructor so với các methods khác:
         + Tên của constructor bắc buộc phải trùng với tên của Class
         + Không khai báo kiểu cho constructor.
