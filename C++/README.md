@@ -122,7 +122,8 @@ class ClassA:ClassB {
 #### 2. Tính trừu tượng: 
     - Người dùng chỉ cần tập trung vào đầu vào và đầu ra của dữ liệu cần xử lý, không cần biết dữ liệu đầu vào 
       được xử lý ra làm sao để có được đầu ra.Tức là người dùng chỉ cần gọi các *phương thức* ra sử dụng, sau đó 
-      nhận kết quả chứ không cần quan tâm phần implement của phương thức đó.
+      nhận kết quả chứ không cần quan tâm phần implement của phương thức đó. Có thể hiểu là chương trình bỏ qua sự phức tạp 
+      bằng cách tập trung vào cốt lõi của thông tin cần xử lý.
 #### 3. Tính đa hình: 
     - Các *phương thức* trong *class* có thể có cùng tên nhưng lại có thể cho ra các kết quả khác nhau, phụ thuộc 
       vào kiểu trả về của *phương thức*, kiểu dữ liệu *input parameter* và thứ tự của chúng.
@@ -214,7 +215,7 @@ MyArray arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};      //Có thể sử dụng MyAr
       cho từng hàm hay phương thức với những kiểu dữ liệu khác nhau.
     - VD: Viết 1 hàm template tính tổng của hai giá trị
 ```Cpp
-template <typename T>   
+template <typename T>   //khai báo một template với một tham số kiểu T.
 T sum(T a, T b) {
     return a + b;
 }
