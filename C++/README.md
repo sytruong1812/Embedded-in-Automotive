@@ -58,8 +58,7 @@ int main() {
 }
 ```
 #### 3: Các phạm vi truy cập các thuộc tính và phương thức trong Class: Public, Private, Protected
-    - Public: Các thành viên ở chế độ Public có thể được truy cập từ bất kỳ đâu trong chương trình, 
-      bao gồm cả từ các Class bên ngoài.
+    - Public: Các thành viên ở chế độ Public có thể được truy cập từ bất kỳ đâu trong chương trình, bao gồm cả từ các Class bên ngoài.
     - Private: Các thành viên ở chế độ Private chỉ có thể được truy cập từ bên trong Class định nghĩa chúng. 
       Các thành viên Private không thể được truy cập từ các Class kế thừa hoặc từ bên ngoài Class hoặc đối tượng.
     - Protected: Các thành viên ở chế độ protected chỉ có thể được truy cập từ bên trong Class định nghĩa chúng 
