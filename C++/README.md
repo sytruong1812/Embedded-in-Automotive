@@ -113,12 +113,15 @@ void className::sum(){
       của *class* khác mà không cần phải viết lại từ đầu.
     - Ví dụ: *class B* muốn sử dụng các *thuộc tính* và *phương thức* giống *class A* mà không phải viết lại từ đầu, 
       khi đó *class B* sẽ *kế thừa* từ *class A*. Sử dụng toán tử `:`
+    - Ngoài ra, *class B* cũng có thể ghi đè/implement lại *phương thức* kế thừa từ *class A*.
 ```Cpp
-class ClassA:ClassB { 
+class ClassA: public ClassB { 
     ...
 }
 ```
-    - Ngoài ra, *class B* cũng có thể ghi đè/implement lại *phương thức* kế thừa từ *class A*.
+    - Phạm vi truy cấp của các thuộc tính và phương thức được kế thừa
+![alt](https://codelearn.io/Media/Default/Users/TuanLQ7/Cpp_OOP/MicrosoftTeams-image.jpg)
+
 #### 2. Tính trừu tượng: 
     - Người dùng chỉ cần tập trung vào đầu vào và đầu ra của dữ liệu cần xử lý, không cần biết dữ liệu đầu vào 
       được xử lý ra làm sao để có được đầu ra.Tức là người dùng chỉ cần gọi các *phương thức* ra sử dụng, sau đó 
