@@ -8,8 +8,8 @@ using namespace std;
 int main(int argc, char const *argv[])
 {
     string name = "Nguyen Van A";
-
-    vector<int>arr;
+   
+    vector<int>arr;         //vector<kiểu dữ liệu> tên vector;
     arr.push_back(1);       //Thêm 1 phần tử vào mảng arr
     arr.push_back(2);
     arr.push_back(3);
