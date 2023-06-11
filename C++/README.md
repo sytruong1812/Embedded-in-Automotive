@@ -149,7 +149,8 @@ class TinhTong {
         int tong(int, int);
         float tong(float, float);
 };
-``` - Đa hình với ghi đè phương thức: 
+``` 
+    - Đa hình với ghi đè phương thức: 
 ```Cpp
 class Employee{
     private:
