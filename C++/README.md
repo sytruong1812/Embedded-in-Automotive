@@ -113,10 +113,21 @@ void className::sum(){
       của *class* khác mà không cần phải viết lại từ đầu.
     - Ví dụ: *class B* muốn sử dụng các *thuộc tính* và *phương thức* giống *class A* mà không phải viết lại từ đầu, 
       khi đó *class B* sẽ *kế thừa* từ *class A*. Sử dụng toán tử `:`
-    - Ngoài ra, *class B* cũng có thể ghi đè/implement lại *phương thức* kế thừa từ *class A*.
+    - Ngoài ra, *class B* cũng có thể ghi đè/implement lại *phương thức* kế thừa từ *class A* bằng cách khai báo phương
+      thước có tên trùng với phương thức ở *class A*.
 ```Cpp
-class ClassA: public ClassB { 
+class ClassA{
+    public: 
+        void display(){                 // Bị ghi đè ở class B nếu class B được gọi
+            cout << "Hello !" << endl;
+        }
     ...
+}
+class ClassB : public ClassA {          // class B kế thừ class A
+    public: 
+        void display(){                 //Khai báo phương thức display ở class B trùng tên vs class A 
+            cout << "Xin chào!" << endl;
+        }
 }
 ```
     - Phạm vi truy cấp của các thuộc tính và phương thức được kế thừa
@@ -127,9 +138,10 @@ class ClassA: public ClassB {
       được xử lý ra làm sao để có được đầu ra.Tức là người dùng chỉ cần gọi các *phương thức* ra sử dụng, sau đó 
       nhận kết quả chứ không cần quan tâm phần implement của phương thức đó. Có thể hiểu là chương trình bỏ qua sự phức tạp 
       bằng cách tập trung vào cốt lõi của thông tin cần xử lý.
-#### 3. Tính đa hình: 
-    - Các *phương thức* trong *class* có thể có cùng tên nhưng lại có thể cho ra các kết quả khác nhau, phụ thuộc 
-      vào kiểu trả về của *phương thức*, kiểu dữ liệu *input parameter* và thứ tự của chúng.
+#### 3. Tính đa hình:
+    - Đa hình với nạp chồng phương thức (one thing in many form): Các *phương thức* trong *class* có thể có cùng tên nhưng 
+      lại có thể cho ra các kết quả khác nhau, phụ thuộc vào kiểu trả về của *phương thức*, kiểu dữ liệu *input parameter* 
+      và thứ tự của chúng.
 ```Cpp
 class TinhTong {
     public:
@@ -137,16 +149,35 @@ class TinhTong {
         int tong(int, int);
         float tong(float, float);
 };
-...
-int main() {
-    TinhTong sum;
-    sum.tong(1, 1);
-    printf("%d", sum.tong(1, 1));
-    printf("%f", sum.tong(1.1, 1.2));
-
-    return 0;
+``` - Đa hình với ghi đè phương thức: 
+```Cpp
+class Employee{
+    private:
+        string name;
+        int salary;
+    public:
+        Employee(string name, int salary){
+            this->name = name
+            this->salary = salary;
+        }
+        int getSalary(){
+            return salary;
+        }
+};
+class Manage : Employee{
+    private: 
+        int bonus;
+    public:
+        Manage(string name, int salary, int bonus) : Employee(name, salary){
+            this->bonus = bonus;
+        }
+        int getSalary(){        //Đều là tính lương nhưng ở mỗi đối tượng lại có cách tính khác nhau
+            return Employee::getSalary() + bonus;
+        }
 }
 ```
+    - Đa hình thông qua các đối tượng đa hình (Polymorphic object): Biến của Class cha có thể tham chiếu tới
+      đối tượng của các Class con, vậy biến của class cha cũng có nhiều hình thức "form" nên đây cũng là tính đa hình.
 #### 4. Tính đóng gói:
     - Chỉ để lộ ra các dữ liệu mà người dùng cần, che dấu đi các dữ liệu cần thiết. 
     - Người dùng không thể tác động vào các dữ liệu bị che dấu mà chỉ bên trong đối tượng đó mới có thể tác động. 
@@ -169,7 +200,7 @@ int main() {
     Person A("Ngoc", 25, "Bac Ninh", 0987654321);
     A.hienThiThongTin();
     A.suaThongTin();
-    A._ten;         //lỗi, không được phép
+    A._ten;         //Lỗi, không được phép
 
     return 0;
 }
