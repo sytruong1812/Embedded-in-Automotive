@@ -19,6 +19,5 @@ uint8_t I2C_Read_Byte(unsigned char ack);
 uint8_t I2C_Wait_Ack(void); 				
 void I2C_Ack(void);					
 void I2C_NAck(void);
-
 #endif
 

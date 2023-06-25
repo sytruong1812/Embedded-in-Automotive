@@ -21,13 +21,14 @@ int main() {
     lst.push_back(2);
     lst.push_back(3);
 
+
     std::cout << "List: ";
     for (int i : lst) {
         std::cout << i << " ";
     }
     std::cout << std::endl;
 
-    // Chèn phần tử vào vị trí bất kỳ
+    // Chèn phần tử vào vị trí bất kỳ trong Vector
     vec.insert(vec.begin() + 1, 4); // Chèn số 4 vào vị trí thứ 2 trong Vector
 
     std::cout << "Updated Vector: ";
@@ -35,7 +36,8 @@ int main() {
         std::cout << i << " ";
     }
     std::cout << std::endl;
-
+    
+    // Chèn phần tử vào vị trí bất kỳ trong List
     lst.insert(++lst.begin(), 4); // Chèn số 4 vào vị trí thứ 2 trong List
 
     std::cout << "Updated List: ";

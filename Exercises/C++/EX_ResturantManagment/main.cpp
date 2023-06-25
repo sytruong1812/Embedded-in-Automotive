@@ -1,6 +1,4 @@
 #include <iostream>
-#include <stdio.h>
-#include <stdint.h>
 #include <string>
 #include <vector>
 
@@ -318,13 +316,13 @@ void EmployeeMode::editDishes(){
 }
 void EmployeeMode::deleteDishes(){
     this->showOrder();
-    static int _id;
+    int _id;
     cout << "Enter ID of dishes you want to remove: ";
     cin >> _id;
     for(int i = 0; i < database_YourOrder.size(); i++){
         if(database_YourOrder[i].id == _id){
             database_YourOrder.erase(database_YourOrder.begin() + i);
-            cout << "Removed student whose id is " << _id << endl;
+            cout << "Removed dishes whose id is " << _id << endl;
         }
         if(database_YourOrder[i].id != _id){
             continue;

@@ -1,7 +1,7 @@
 #include <iostream>
 
 /*
-Trong ví dụ trên, lớp Singleton có một phương thức tĩnh getInstance() để truy xuất đối 
+Trong ví dụ, lớp Singleton có một phương thức tĩnh getInstance() để truy xuất đối 
 tượng Singleton. Phương thức này kiểm tra xem nếu biến instance chưa được khởi tạo (giá trị ban đầu là nullptr), 
 nó sẽ tạo một thể hiện mới của Singleton thông qua toán tử new. Nếu instance đã tồn tại, nó sẽ trả về thể hiện hiện tại. 
 Do đó, chỉ có một đối tượng Singleton duy nhất được tạo ra và các lời gọi getInstance() sau đó sẽ trả về thể hiện này.

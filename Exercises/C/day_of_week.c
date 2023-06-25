@@ -21,16 +21,16 @@
     Phần dư cộng với thứ của 1-1-2000 -> thứ 25-3-2023
 */
 
-#define LEAP_YEAR(year) (year % 4 == 0) && (year % 100 !=0) || (year % 400 == 0)        // Declare a macro to calculate leap years
+#define LEAP_YEAR(year) (year % 4 == 0) && (year % 100 !=0) || (year % 400 == 0)        // Khai báo macro để tính năm nhuận
 
-uint32_t sumDay;        // Declare a variable to store the total number of days
+uint32_t sumDay;        // Khai báo một biến lưu tổng số ngày
 
-uint16_t numberOfDayInYear(uint16_t Year){          // The function checks for a leap year and returns the total number of days in that year
+uint16_t numberOfDayInYear(uint16_t Year){          // Hàm kiểm tra năm nhuận và trả về tổng số ngày trong năm đó
     if(LEAP_YEAR(Year)) return 366;
     return 365;
 }
 
-uint16_t numberOfDayInTheMonth(uint8_t Month, uint16_t Year){           // Function to check the number of days in a month and returns the total number of days in that month
+uint16_t numberOfDayInTheMonth(uint8_t Month, uint16_t Year){           // Hàm kiểm tra số ngày trong tháng và trả về tổng số ngày trong tháng đó
     switch (Month)
     {
     case 4:
@@ -40,7 +40,7 @@ uint16_t numberOfDayInTheMonth(uint8_t Month, uint16_t Year){           // Funct
         return 30;
         break;
     case 2:
-        if (LEAP_YEAR(Year)) return 29;                     // Check leap year and return the number of days in the corresponding month
+        if (LEAP_YEAR(Year)) return 29;         // Kiểm tra năm nhuận và trả về số ngày của tháng tương ứng
         return 28;
         break;
     default:
@@ -49,16 +49,16 @@ uint16_t numberOfDayInTheMonth(uint8_t Month, uint16_t Year){           // Funct
     }
 }
 
-void dayOfWeek(uint8_t Day, uint8_t Month, uint16_t Year){          // Function calculates day of the week
-    for (int i = 1; i < Year; i++)                  // The loop counts the total number of days from year 1 to year you want to find
+void dayOfWeek(uint8_t Day, uint8_t Month, uint16_t Year){         //Hàm tính ngày trong tuần
+    for (int i = 1; i < Year; i++)       // Vòng lặp đếm tổng số ngày từ năm 1 đến năm muốn tìm
     {
         sumDay += numberOfDayInYear(i);    
     }
-    for (int i = 1; i < Month; i++){                 // The loop counts the total number of days from January to the month you want to find
+    for (int i = 1; i < Month; i++){                 // Vòng lặp đếm tổng số ngày từ tháng 1 đến tháng muốn tìm
         sumDay += numberOfDayInTheMonth(i, Year);
     }
-    sumDay += Day;                  // Finally the total number of days = numberOfDayInYear + numberOfDayInTheMonth  + the day you want to find
-    switch (sumDay % 7)             // Check and print the day of the week corresponding to the day/month/year you want to find, sumDay divides the remainder by 7
+    sumDay += Day;                  // Cuối cùng tổng số ngày = numberOfDayInYear + numberOfDayInTheMonth + ngày bạn muốn tìm
+    switch (sumDay % 7)             // Kiểm tra và in ra ngày trong tuần tương ứng với ngày/tháng/năm muốn tìm, sumDay chia dư cho 7
     {                                
     case 0:
         printf("Sunday");

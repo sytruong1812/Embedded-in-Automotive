@@ -9,8 +9,7 @@ File: main.c
 Author: Sy Truong
 Date: 18/4/2023
 Description: Tạo một lớp tài khoản ngân hàng với các thuộc tính số tài khoản, tên tài
-khoản và số dư, và các phương thức để rút, nộp tiền và kiểm tra số dư
-trong tài khoản.
+khoản và số dư, và các phương thức để rút, nộp tiền và kiểm tra số dư trong tài khoản.
 */
 
 class Bank{

@@ -5,8 +5,10 @@
 #define LENG_ARRAY(arr) (sizeof(arr)/sizeof(arr[0]))
 
 uint8_t array[] = {0,1,2,3,4,6,5,5,3,2,5,5,1,4,1,0};
+
 //Sắp xếp mảng từ lớn đến bé
 //Liệt kê các phần tử xuất hiện bao nhiêu lần
+
 int len = LENG_ARRAY(array);
 
 void Sort_Array_And_Count_Occurrences(){

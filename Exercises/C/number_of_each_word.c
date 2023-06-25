@@ -1,4 +1,5 @@
 #include "stdio.h"
+
 /*
     Bài tập: Kiểm tra các từ trong câu lặp lại mấy lần
     Tách các từ ra, rồi so sánh

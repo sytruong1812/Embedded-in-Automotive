@@ -2,6 +2,22 @@
 #include <map>
 #include <string>
 
+/*
+- Map là một loại associative container. Mỗi phần tử của map là sự kết hợp của khóa (key value) 
+  và ánh xạ của nó (mapped value). Cũng giống như set, trong map không chứa các khóa mang giá trị giống nhau.
+
+- Trong map, các khóa được sử dụng để xác định giá trị các phần tử. Kiểu của khóa và ánh xạ có thể khác nhau.
+
+- Và cũng giống như set, các phần tử trong map được sắp xếp theo một trình tự nào đó theo cách so sánh.
+
+- Map được cài đặt bằng red-black tree (cây đỏ đen) – một loại cây tìm kiếm nhị phân tự cân bằng. Mỗi phần tử 
+  của map lại được cài đặt theo kiểu pair (xem thêm ở thư viện utility).
+
+    map <kiểu_dữ_liệu_1,kiểu_dữ_liệu_2>
+    // kiểu dữ liệu 1 là khóa, kiểu dữ liệu 2 là giá trị của khóa. 
+*/
+
+
 int main(int argc, char const *argv[])
 {
     std::map<int, std::string> studentMap;

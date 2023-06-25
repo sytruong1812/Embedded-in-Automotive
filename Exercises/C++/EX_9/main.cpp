@@ -8,9 +8,8 @@ using namespace std;
 File: main.c
 Author: Sy Truong
 Date: 18/4/2023
-Description: Tạo một lớp xe hơi với các thuộc tính màu sắc, kiểu động cơ và số km
-đã đi, và các phương thức để tính toán chi phí bảo trì, kiểm tra số km
-đã đi và in thông tin về xe.
+Description: Tạo một lớp xe hơi với các thuộc tính màu sắc, kiểu động cơ và số km đã đi, 
+và các phương thức để tính toán chi phí bảo trì, kiểm tra số km đã đi và in thông tin về xe.
 */
 
 typedef enum{
