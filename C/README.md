@@ -148,7 +148,7 @@ inline return_type function_name(param){
     - VD: Khai báo một struct data
 ```c
 struct data{
-                        //Kiểu = byte  | Quét  
+                        //Kiểu = byte  | Quét size lớn nhất: 4byte  
   char data[1];         //char = 1byte | 1*4 = 4byte 
   int cmd[3];           //int  = 4byte | 3*4 = 12byte 
   char checksum[1];     //char = 1byte | 1*4 = 4byte
