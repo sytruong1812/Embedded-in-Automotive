@@ -143,6 +143,18 @@ inline return_type function_name(param){
       sẽ dẫn đến thay đổi nội dung của các thành viên khác. Nói cách khác, việc gán giá trị cho các member của UNION trước, 
       thì chỉ thành phần cuối cùng được gián giá trị được sử dụng, các thành phần trước đó sẽ bị ghi đè. 
       Vì vậy UNION được sử dụng để tiếp kiệm bộ nhớ.
+    - Bộ nhớ đệm - Struct Padding: Mỗi lần quét sẽ căn cứ vào size của member lớn nhất, số byte đúng thì phải là bội (chia hết)
+      của byte lớn nhất. 
+    - VD: Khai báo một struct data
+```c
+struct data{
+                        //Kiểu = byte  | Quét  
+  char data[1];         //char = 1byte | 1*4 = 4byte 
+  int cmd[3];           //int  = 4byte | 3*4 = 12byte 
+  char checksum[1];     //char = 1byte | 1*4 = 4byte
+                        //Size data() = 20byte
+}
+```
 ## VI: Pointer
   ### 1. Bộ nhớ RAM
       - Đầu tiên khi nói về con trỏ thì nói qua về bộ nhớ RAM
