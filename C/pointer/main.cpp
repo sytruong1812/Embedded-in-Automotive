@@ -64,3 +64,5 @@ int main(int argc, char const *argv[])
     sortAndSumNumberInArray();
     return 0;
 }
+
+/*https://docs.google.com/document/d/1YLSyipMK4Hi4jqU1G_o91vm-yARyViFc-UwEwuJGjmM/edit*/
