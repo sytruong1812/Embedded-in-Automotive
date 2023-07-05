@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-
+#include <vector>
 using namespace std;
 
 /*
@@ -14,6 +14,7 @@ using namespace std;
 *Output: None
 */
 
+
 void searchPattern1(const string path, const string pattern) {
 	ifstream file(path, ios::in | ios::binary);
 	if (!file.is_open()) {
@@ -21,16 +22,15 @@ void searchPattern1(const string path, const string pattern) {
 	}
 	string line;
 	int lineNumber = 0;
-	/* A loop to check each line in the file and save it to a line variable */
+	//A loop to check each line in the file and save it to a line variable
 	while (getline(file, line)) {
 		lineNumber++;
 		size_t patternLength = pattern.length();
 		size_t lineLength = line.length();
-		/* Nested loop to compare each character in two string and pattern */
+		// Nested loop to compare each character in two string and pattern
 		for (size_t i = 0; i <= lineLength - patternLength; i++) {
-			/* Variable bool to check the results of comparing each
-			   character, conditions to print the result
-			 */
+			// Variable bool to check the results of comparing each
+			//character, conditions to print the result
 			bool found = true;
 			for (size_t j = 0; j < patternLength; j++) {
 				if (line[i + j] != pattern[j]) {
@@ -43,91 +43,117 @@ void searchPattern1(const string path, const string pattern) {
 			}
 		}
 	}
-	if (file.is_open() && lineNumber == 0) {
+	if (lineNumber == 0) {
 		cout << "No line found in file, file is empty!" << endl;
 	}
 	file.close();
 }
 
-void searchPattern2(const string &path, const string &pattern) {
+
+void searchPattern2(const string& path, const string& pattern) {
 	ifstream file(path, ios::in | ios::binary);
 	if (!file.is_open()) {
-		cout << "Error path!" << endl;
-	}
-	string work;
-	int lineNumber = 1;
-	int count = 0;
-
-	while (file >> work) {
-		//cout << work << endl;
-		if (work.length() == pattern.length()) {
-			for (size_t i = 0; i < work.length(); i++) {	
-				bool found = true;
-				count++;
-				for (size_t j = 0; j < pattern.length(); j++) {
-					if (work[i+j] != pattern[j]) {
-						found = false;
-						break;
-					}
-				}
-				if (work[i] == '\n') {
-					lineNumber++;
-					count = 0;
-				}
-				if (found == true) {
-					cout << "Line " << lineNumber << ", character at " << count << endl;
-				}
-			}
-		}
-		count = count + work.length();
-	}
-	file.close();
-}
-
-void searchPattern3(const string &path, const string &pattern) {
-	ifstream file(path, ios::in | ios::binary);
-	if (!file.is_open()) {
-		cout << "Error path!" << endl;
+		cout << "Failed to open this file! Check the path again." << endl;
 		return;
 	}
-	char character;
-	int lineNumber = 1;
-	int characterCount = 1;
-	int patternIndex = 0;
+	else {
+		cout << "Opened file" << endl;
+	}
 
+	char character;
+	int lineNumber = 0;
+	int characterCount = 0;
+	int patternIndex = 0;
+	size_t lengthPattern = pattern.length();
+	/* A loop to check each character in the file and save it to a charater variable */
 	while (file.get(character)) {
+		characterCount++;
+		/*Check the newline character to increment the line counter and reset the word counter*/
 		if (character == '\n') {
 			lineNumber++;
 			characterCount = 0;
 		}
 		if (character == pattern[patternIndex]) {
 			patternIndex++;
-			if (patternIndex == pattern.length()) {
-				cout << "Line " << lineNumber << ", character at " << (characterCount - pattern.length() + 1) << endl;
+			if (patternIndex == lengthPattern) {
+				cout << "Line " << lineNumber + 1 << ", character at " << (characterCount - lengthPattern + 1) << endl;
 				patternIndex = 0;
 			}
 		}
 		else {
 			patternIndex = 0;
 		}
-		characterCount++;
+	}
+	if (lineNumber == 0) {
+		cout << "No line found in file, file is empty!" << endl;
+	}
+	file.close();
+}
+
+void searchPattern3(const string& path, const string& pattern) {
+	ifstream file(path, ios::in | ios::binary);
+	if (!file.is_open()) {
+		cout << "Failed to open this file! Check the path again." << endl;
+		return;
+	}
+	else {
+		cout << "Opened file" << endl;
+	}
+
+	file.seekg(0, ios::end); // Đặt con trỏ đọc tới cuối file để lấy kích thước
+	unsigned long long fileSize = file.tellg();		//8byte = 2^(8*8) 
+	file.seekg(0, ios::beg); // Đặt con trỏ đọc lại về đầu file
+	cout << "Size of file: " << fileSize << endl;
+
+	// Cấp phát động buffer:
+	vector<char> buffer(fileSize);
+
+	unsigned long long lineNumber = 0; // Bắt đầu từ dòng đầu tiên
+	unsigned long long characterCount = 0;
+	unsigned long long patternIndex = 0;
+
+	/* A loop to check each character in the file and save it to a buffer */
+	while (file.read(buffer.data(), fileSize)) {
+		for (unsigned long long i = 0; i < fileSize; i++) {
+			characterCount++;
+			/*Check the newline character to increment the line counter and reset the word counter*/
+			if (buffer[i] == '\n') {
+				lineNumber++;
+				characterCount = 0;
+			}
+			if (buffer[i] == pattern[patternIndex]) {
+				patternIndex++;
+				if (patternIndex == pattern.length()) {
+					cout << "Line " << lineNumber + 1 << ", character at " << (characterCount - pattern.length() + 1) << endl;
+					patternIndex = 0;
+				}
+			}
+			else {
+				patternIndex = 0;
+			}
+		}
+	}
+	if (lineNumber == 0 && fileSize == 0) {
+		cout << "No line found in file, file is empty!" << endl;
 	}
 	file.close();
 }
 
 
+
 int main(int argc, char* argv[])
 {
-	/*searchPattern3("input.txt", "Hello");*/
+	searchPattern3("input.txt", "789");
 
-	if (argc != 3) {
-		cout << "Syntax Error!" << endl;
-		cout << "<program> <path> <pattern>" << endl;
-		return 0;
-	}
-	else {
-		cout << "*-----Program Command Line-----*" << endl;
-		searchPattern1(argv[1], argv[2]);
-	}
+	//if (argc != 3) {
+	//	cout << "Syntax Error!" << endl;
+	//	cout << "<program> <path> <pattern>" << endl;
+	//	return 0;
+	//}
+	//else {
+	//	cout << "*-----Program Command Line-----*" << endl;
+	//	searchPattern2(argv[1], argv[2]);
+	//}
 	return 0;
 }
+
