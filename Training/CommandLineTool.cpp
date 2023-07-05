@@ -105,16 +105,19 @@ void searchPattern3(const string& path, const string& pattern) {
 	file.seekg(0, ios::beg); // Đặt con trỏ đọc lại về đầu file
 	cout << "Size of file: " << fileSize << endl;
 
-	// Cấp phát động buffer:
-	vector<char> buffer(fileSize);
+	unsigned long long sizeBuffer = 50;		//Chỉ định size kích thước mỗi lần đọc là 50B
 
-	unsigned long long lineNumber = 0; // Bắt đầu từ dòng đầu tiên
-	unsigned long long characterCount = 0;
+	// Cấp phát động buffer:
+	vector<char> buffer(sizeBuffer);
+
+	unsigned long long lineNumber = 0;
+	unsigned long long characterCount = 0;	
 	unsigned long long patternIndex = 0;
 
-	/* A loop to check each character in the file and save it to a buffer */
-	while (file.read(buffer.data(), fileSize)) {
-		for (unsigned long long i = 0; i < fileSize; i++) {
+	while (file) {	//Kiểm tra trạng thái đọc file: true/false
+		file.read(buffer.data(), sizeBuffer);		//Đọc size (byte) dữ liệu từ file và lưu vào buffer
+		unsigned long long bytesRead = file.gcount(); // Số lượng byte thực sự đã đọc được
+		for (unsigned long long i = 0; i < bytesRead; i++) {
 			characterCount++;
 			/*Check the newline character to increment the line counter and reset the word counter*/
 			if (buffer[i] == '\n') {
