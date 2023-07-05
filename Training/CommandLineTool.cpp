@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <chrono>
 using namespace std;
 
 /*
@@ -13,7 +14,6 @@ using namespace std;
 *   pattern: string to look for in file
 *Output: None
 */
-
 
 void searchPattern1(const string path, const string pattern) {
 	ifstream file(path, ios::in | ios::binary);
@@ -49,7 +49,6 @@ void searchPattern1(const string path, const string pattern) {
 	file.close();
 }
 
-
 void searchPattern2(const string& path, const string& pattern) {
 	ifstream file(path, ios::in | ios::binary);
 	if (!file.is_open()) {
@@ -59,6 +58,11 @@ void searchPattern2(const string& path, const string& pattern) {
 	else {
 		cout << "Opened file" << endl;
 	}
+
+	file.seekg(0, ios::end); // Đặt con trỏ đọc tới cuối file để lấy kích thước
+	unsigned long long fileSize = file.tellg();		//8byte = 2^(8*8) 
+	file.seekg(0, ios::beg); // Đặt con trỏ đọc lại về đầu file
+	cout << "Size of file: " << fileSize << endl;
 
 	char character;
 	int lineNumber = 0;
@@ -84,7 +88,7 @@ void searchPattern2(const string& path, const string& pattern) {
 			patternIndex = 0;
 		}
 	}
-	if (lineNumber == 0) {
+	if (lineNumber == 0 && fileSize == 0) {
 		cout << "No line found in file, file is empty!" << endl;
 	}
 	file.close();
@@ -105,7 +109,14 @@ void searchPattern3(const string& path, const string& pattern) {
 	file.seekg(0, ios::beg); // Đặt con trỏ đọc lại về đầu file
 	cout << "Size of file: " << fileSize << endl;
 
-	unsigned long long sizeBuffer = 50;		//Chỉ định size kích thước mỗi lần đọc là 50B
+	unsigned long long sizeBuffer;		//Chỉ định size kích thước mỗi lần đọc ? Byte
+
+	if (fileSize % 1000) {
+		sizeBuffer = 1000;
+	}
+	else {
+		sizeBuffer = 500;
+	}
 
 	// Cấp phát động buffer:
 	vector<char> buffer(sizeBuffer);
@@ -143,10 +154,12 @@ void searchPattern3(const string& path, const string& pattern) {
 }
 
 
-
 int main(int argc, char* argv[])
 {
-	searchPattern3("input.txt", "789");
+	// Lưu thời điểm bắt đầu chương trình
+	auto start = std::chrono::high_resolution_clock::now();
+
+	searchPattern2("C:\\Users\\SY TRUONG\\Documents\\MicronSoftware\\Input\\1GB_file.txt", "Hello");
 
 	//if (argc != 3) {
 	//	cout << "Syntax Error!" << endl;
@@ -157,6 +170,18 @@ int main(int argc, char* argv[])
 	//	cout << "*-----Program Command Line-----*" << endl;
 	//	searchPattern2(argv[1], argv[2]);
 	//}
+
+	 // Lưu thời điểm kết thúc chương trình
+	auto end = std::chrono::high_resolution_clock::now();
+
+	// Tính thời gian thực thi (tính bằng nanosecond)
+	std::chrono::duration<double> duration = end - start;
+
+	// Chuyển đổi đơn vị thời gian sang giây
+	double durationInSeconds = duration.count();
+
+	std::cout << "Thoi gian thuc thi: " << durationInSeconds << " giay" << std::endl;
+
 	return 0;
 }
 
