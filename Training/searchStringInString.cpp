@@ -4,7 +4,7 @@
 
 using namespace std;
 
-int stringLengthSearch(const char* ptr) {
+int stringLength(const char* ptr) {
 	int countWord = 0;
 	while (*ptr != '\0') {
 		countWord++;
@@ -14,12 +14,17 @@ int stringLengthSearch(const char* ptr) {
 }
 
 bool isStringEmpty(const char* str) {
-	int length = stringLengthSearch(str);
+	int length = stringLength(str);
 
 	if (length == 0) {
 		return true;
 	}
 	for (int i = 0; i < length; i++) {
+		if (str[i] != ' ' && str[i] != '\t') {
+			return false;
+		}
+	}
+	for (int i = length - 1; i >= 0; i--) {
 		if (str[i] != ' ' && str[i] != '\t') {
 			return false;
 		}
@@ -53,14 +58,14 @@ int main() {
 	char* array2 = new char[LENGTH_CMD];
 	int len1, len2;
 	bool again = false;
-	while(!again){
+	while(again == false){
 		cout << "Enter string one: ";
 		cin.getline(array1, LENGTH_CMD);
-		len1 = stringLengthSearch(array1);
+		len1 = stringLength(array1);
 
 		cout << "Enter string two: ";
 		cin.getline(array2, LENGTH_CMD);
-		len2 = stringLengthSearch(array2);
+		len2 = stringLength(array2);
 
 		if (isStringEmpty(array1) && isStringEmpty(array2)) {
 			cout << "Both strings are empty! Cannot perform search." << endl;
