@@ -68,15 +68,15 @@ int main() {
 		len2 = stringLength(array2);
 
 		if (isStringEmpty(array1) && isStringEmpty(array2)) {
-			cout << "Both strings are empty! Cannot perform search." << endl;
+			cout << "Both strings are empty! Cannot perform search, enter again." << endl;
 			again = false;
 		}
 		else if (isStringEmpty(array1)) {
-			cout << "String 1 is empty! Cannot perform search." << endl;
+			cout << "String 1 is empty! Cannot perform search, enter again." << endl;
 			again = false;
 		}
 		else if (isStringEmpty(array2)) {
-			cout << "String 2 is empty! Cannot perform search." << endl;
+			cout << "String 2 is empty! Cannot perform search, enter again." << endl;
 			again = false;
 		}
 		else if (len1 < len2) {
