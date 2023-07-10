@@ -24,11 +24,11 @@ bool isStringEmpty(const char* str) {
 			return false;
 		}
 	}
-	for (int i = length - 1; i >= 0; i--) {
-		if (str[i] != ' ' && str[i] != '\t') {
-			return false;
-		}
-	}
+	// for (int i = length - 1; i >= 0; i--) {
+	// 	if (str[i] != ' ' && str[i] != '\t') {
+	// 		return false;
+	// 	}
+	// }
 	return true;
 }
 
