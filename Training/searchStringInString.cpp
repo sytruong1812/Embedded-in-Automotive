@@ -27,7 +27,8 @@ bool isStringEmpty(const char* str) {
 	return true;
 }
 
-void searchString(const char* array1, const int& len1, const char* array2, const int& len2) {
+void searchString(const char* array1, const int &len1, const char* array2, const int &len2) {
+	int count = 0;
 	for (int i = 0; i <= len1 - len2; i++) {
 		bool found = true;
 		for (int j = 0; j < len2; j++) {
@@ -37,10 +38,13 @@ void searchString(const char* array1, const int& len1, const char* array2, const
 			}
 		}
 		if (found == true) {
-			cout << "Characters found at: " << i << endl;
+			cout << "Characters found at: " << i + 1 << endl;
+			count++;
 		}
 	}
-	cout << "Position not found!" << endl;
+	if (count == 0) {
+		cout << "Position not found!" << endl;
+	}
 }
 
 int main() {
@@ -58,19 +62,25 @@ int main() {
 		cin.getline(array2, LENGTH_CMD);
 		len2 = stringLengthSearch(array2);
 
-		if (!isStringEmpty(array1) && !isStringEmpty(array2)) {
-			if (len1 >= len2) {
-				searchString(array1, len1, array2, len2);
-				break;
-			}
-			else {
-				cout << "Error: String 1 < String 2! Do not search on a string longer than another." << endl;
-				again = false;
-			}
+		if (isStringEmpty(array1) && isStringEmpty(array2)) {
+			cout << "Both strings are empty! Cannot perform search." << endl;
+			again = false;
+		}
+		else if (isStringEmpty(array1)) {
+			cout << "String 1 is empty! Cannot perform search." << endl;
+			again = false;
+		}
+		else if (isStringEmpty(array2)) {
+			cout << "String 2 is empty! Cannot perform search." << endl;
+			again = false;
+		}
+		else if (len1 < len2) {
+			cout << "Error: String 1 < String 2! Do not search on a string longer than another." << endl;
+			again = false;
 		}
 		else {
-			cout << "String is empty! Not search.Enter again." << endl;
-			again = false;
+			searchString(array1, len1, array2, len2);
+			break;
 		}
 	}
 	delete[] array1;
