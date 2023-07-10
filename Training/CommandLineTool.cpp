@@ -95,50 +95,54 @@ void searchPattern2(const string& path, const string& pattern) {
 }
 
 void searchPattern3(const string& path, const string& pattern) {
+
 	ifstream file(path, ios::in | ios::binary);
 	if (!file.is_open()) {
 		cout << "Failed to open this file! Check the path again." << endl;
 		return;
 	}
 	else {
-		cout << "Opened file" << endl;
+		cout << "Opened file." << endl;
 	}
 
-	file.seekg(0, ios::end); // Đặt con trỏ đọc tới cuối file để lấy kích thước
-	unsigned long long fileSize = file.tellg();		//8byte = 2^(8*8) 
-	file.seekg(0, ios::beg); // Đặt con trỏ đọc lại về đầu file
-	cout << "Size of file: " << fileSize << endl;
+	file.seekg(0, ios::end);
+	unsigned long long fileSize = file.tellg();
+	file.seekg(0, ios::beg);
 
-	unsigned long long sizeBuffer;		//Chỉ định size kích thước mỗi lần đọc ? Byte
+	size_t bufferSize = 0;
+	unsigned long long patternSize = pattern.length();
 
-	if (fileSize % 1000) {
-		sizeBuffer = 1000;
+	if (fileSize == 0) {
+		cout << "Empty file, check the file again!" << endl;
+		return;
 	}
-	else {
-		sizeBuffer = 500;
+	if (patternSize > fileSize) {
+		cout << "Error!!! " << "Pattern size = " << patternSize << " > File size = " << fileSize << endl;
+		return;
+	}
+	if (patternSize < fileSize) {
+		bufferSize = 8200;
 	}
 
-	// Cấp phát động buffer:
-	vector<char> buffer(sizeBuffer);
+	vector<char> buffer(bufferSize);
 
-	unsigned long long lineNumber = 0;
-	unsigned long long characterCount = 0;	
-	unsigned long long patternIndex = 0;
+	int lineNumber = 0;
+	int characterCount = 0;
+	size_t patternIndex = 0;
 
-	while (file) {	//Kiểm tra trạng thái đọc file: true/false
-		file.read(buffer.data(), sizeBuffer);		//Đọc size (byte) dữ liệu từ file và lưu vào buffer
-		unsigned long long bytesRead = file.gcount(); // Số lượng byte thực sự đã đọc được
-		for (unsigned long long i = 0; i < bytesRead; i++) {
+	while (file) {
+		file.read(buffer.data(), bufferSize); 
+		unsigned long long bytesRead = file.gcount();
+		for (size_t i = 0; i < bytesRead; i++) {
 			characterCount++;
-			/*Check the newline character to increment the line counter and reset the word counter*/
 			if (buffer[i] == '\n') {
 				lineNumber++;
 				characterCount = 0;
 			}
 			if (buffer[i] == pattern[patternIndex]) {
 				patternIndex++;
-				if (patternIndex == pattern.length()) {
-					cout << "Line " << lineNumber + 1 << ", character at " << (characterCount - pattern.length() + 1) << endl;
+				if (patternIndex == patternSize) {
+					cout << "Line " << lineNumber + 1 << ", character at " << (characterCount - patternSize + 1) << endl;
 					patternIndex = 0;
 				}
 			}
@@ -147,8 +151,8 @@ void searchPattern3(const string& path, const string& pattern) {
 			}
 		}
 	}
-	if (lineNumber == 0 && fileSize == 0) {
-		cout << "No line found in file, file is empty!" << endl;
+	if (lineNumber == 0) {
+		cout << "No line found in file! check the file again." << endl;
 	}
 	file.close();
 }
