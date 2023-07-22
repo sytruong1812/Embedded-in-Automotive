@@ -5,7 +5,7 @@ using namespace std;
 
 /*
 Iterator trong C++ là đối tượng được dùng để duyệt qua các phần tử trong các 
-cấu trúc dữ liệu như vector, map, set, list, ... bạn cũng có thể hiểu nó giống 
+cấu trúc dữ liệu như vector, map, set, list, ... cũng có thể hiểu nó giống 
 như 1 con trỏ mà trỏ tới các phần tử trong các cấu trúc dữ liệu này. 
 Ví dụ về sử dụng iterator để duyệt qua các phẩn tử trong vector:
 */

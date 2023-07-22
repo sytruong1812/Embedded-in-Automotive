@@ -2,7 +2,7 @@
 #include "stdint.h"
 #include "string.h"
 
-#define LENG_ARRAY(arr) (sizeof(arr)/sizeof(arr[0]))
+#define LENG_ARRAY(arr) (int)(sizeof(arr)/sizeof(arr[0]))
 
 uint8_t array[] = {0,1,2,3,4,6,5,5,3,2,5,5,1,4,1,0};
 
